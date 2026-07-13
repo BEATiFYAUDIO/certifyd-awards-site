@@ -104,3 +104,57 @@ export interface VotingRound {
   startsAt: string;
   endsAt: string;
 }
+
+export interface TechnicalCategory {
+  id: string;
+  slug: string;
+  title: string;
+  family: 'Infrastructure' | 'Platforms and Providers' | 'Developer Technology' | 'Commerce' | 'Data and Transparency' | 'AI';
+  summary: string;
+  eligibility: string[];
+  metrics: string[];
+}
+
+export interface MeasurementSource {
+  label: string;
+  status: 'demonstration' | 'preview' | 'verified' | 'unavailable';
+  lastUpdatedAt: string;
+  period: string;
+  methodology: string;
+}
+
+export interface TechnicalProvider {
+  id: string;
+  slug: string;
+  name: string;
+  type: string;
+  summary: string;
+  nodeOrigin: string;
+  verificationStatus: 'Demonstration Data' | 'Preview Ranking' | 'Verified';
+}
+
+export interface TechnicalRanking {
+  id: string;
+  title: string;
+  categorySlug: string;
+  metricName: string;
+  value: string;
+  providerId: string;
+  source: MeasurementSource;
+}
+
+export interface AwardCreator {
+  id: string;
+  slug: string;
+  displayName: string;
+  profileUrl: string;
+  avatarUrl?: string;
+  wallpaperUrl?: string;
+  verified: boolean;
+  verificationLabel: string;
+  primaryRole: string;
+  nominatedWorks: string[];
+  source: 'seeded-awards-data' | 'creator-node';
+  sourceUpdatedAt: string;
+  accentColor: string;
+}

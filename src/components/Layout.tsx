@@ -1,13 +1,12 @@
 import { NavLink, Outlet } from 'react-router-dom';
 
 const navItems = [
-  ['/', 'Home'],
-  ['/categories', 'Categories'],
+  ['/', 'Awards'],
+  ['/technology', 'Technology'],
+  ['/music', 'Music'],
   ['/nominees', 'Nominees'],
   ['/winners', 'Winners'],
-  ['/methodology', 'Rules'],
-  ['/nominate', 'Nominate'],
-  ['/about', 'About'],
+  ['/methodology', 'Methodology'],
 ];
 
 export function Layout() {
@@ -16,32 +15,17 @@ export function Layout() {
       <header className="site-header">
         <NavLink to="/" className="brand-lockup" aria-label="Certifyd Awards home">
           <span className="brand-mark"><img src="/certifyd-logo-refined.svg" alt="" /></span>
-          <span>
-            <strong>Certifyd Awards</strong>
-            <small>Proof-backed creator recognition</small>
-          </span>
+          <span><strong>Certifyd Awards</strong><small>Recognition backed by proof.</small></span>
         </NavLink>
         <nav className="site-nav" aria-label="Primary navigation">
-          {navItems.map(([to, label]) => (
-            <NavLink key={to} to={to} className={({ isActive }) => (isActive ? 'active' : undefined)} end={to === '/'}>
-              {label}
-            </NavLink>
-          ))}
+          {navItems.map(([to, label]) => <NavLink key={to} to={to} className={({ isActive }) => (isActive ? 'active' : undefined)} end={to === '/'}>{label}</NavLink>)}
         </nav>
+        <NavLink className="primary-action header-action" to="/nominate">Submit a Nomination</NavLink>
       </header>
-      <main>
-        <Outlet />
-      </main>
+      <main><Outlet /></main>
       <footer className="site-footer">
-        <div>
-          <strong>Certifyd Awards</strong>
-          <p>Preview site. No live production voting, blockchain recording, or final award results are claimed here.</p>
-        </div>
-        <div className="footer-links">
-          <NavLink to="/methodology">Methodology</NavLink>
-          <NavLink to="/nominate">Submit a work</NavLink>
-          <a href="https://certifyd.me" rel="noreferrer">Certifyd</a>
-        </div>
+        <div><strong>Certifyd Awards Weekend</strong><p>Day 1 Technology Awards. Day 2 Music Awards. Preview data is clearly labeled; live voting is not active.</p></div>
+        <div className="footer-links"><NavLink to="/technology">Technology</NavLink><NavLink to="/music">Music</NavLink><NavLink to="/methodology">Methodology</NavLink><NavLink to="/about">About</NavLink></div>
       </footer>
     </div>
   );
