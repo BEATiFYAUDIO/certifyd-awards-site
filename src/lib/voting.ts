@@ -5,5 +5,5 @@ export function previewVoteWeight(entry: AwardEntry): number {
 }
 
 export function votingDisclosure(): string {
-  return 'Voting is a public preview model only. No live production votes or blockchain commitments are being recorded on this site.';
+  return 'Fans may support participating creators through transparent sats-backed community voting. Participation can produce public receipts and reduce spam, but community support is only one component. It does not replace craft, context, judging, or contributor recognition.';
 }

@@ -2,8 +2,8 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 const navItems = [
   ['/', 'Awards'],
-  ['/technology', 'Technology'],
-  ['/music', 'Music'],
+  ['/music', 'Creative Excellence'],
+  ['/technology', 'Creator Innovation'],
   ['/nominees', 'Nominees'],
   ['/winners', 'Winners'],
   ['/methodology', 'Methodology'],
@@ -24,8 +24,8 @@ export function Layout() {
       </header>
       <main><Outlet /></main>
       <footer className="site-footer">
-        <div><strong>Certifyd Awards Weekend</strong><p>Day 1 Technology Awards. Day 2 Music Awards. Preview data is clearly labeled; live voting is not active.</p></div>
-        <div className="footer-links"><NavLink to="/technology">Technology</NavLink><NavLink to="/music">Music</NavLink><NavLink to="/methodology">Methodology</NavLink><NavLink to="/about">About</NavLink></div>
+        <div><strong>Certifyd Awards Weekend</strong><p>Creative Excellence and Creator Innovation. Preview data is clearly labeled; live voting is not active.</p></div>
+        <div className="footer-links"><NavLink to="/music">Creative Excellence</NavLink><NavLink to="/technology">Creator Innovation</NavLink><NavLink to="/methodology">Methodology</NavLink><NavLink to="/about">About</NavLink></div>
       </footer>
     </div>
   );

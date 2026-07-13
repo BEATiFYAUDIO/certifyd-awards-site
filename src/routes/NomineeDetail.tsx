@@ -5,7 +5,6 @@ import { ScoreBreakdown } from '../components/awards/ScoreBreakdown';
 import { VerificationBadge } from '../components/VerificationBadge';
 import { getCategory, getCreator, getEntry, getWork } from '../data/awards';
 import { formatSats } from '../lib/formatting';
-import { previewVoteWeight } from '../lib/voting';
 import { NotFound } from './NotFound';
 
 export function NomineeDetail() {
@@ -25,7 +24,7 @@ export function NomineeDetail() {
           <h1>{entry.title}</h1>
           <p className="lead">{entry.summary}</p>
           <div className="proof-stack">
-            <span>{creator?.name}</span><span>{work?.genre ?? creator?.role}</span><span>{formatSats(entry.fanSupportSats)}</span><span>{entry.publicVotes} preview votes</span><span>Vote weight {previewVoteWeight(entry)}</span>
+            <span>{creator?.name}</span><span>{work?.genre ?? creator?.role}</span><span>Community support: {formatSats(entry.fanSupportSats)}</span><span>{entry.publicVotes} preview participants</span><span>Proof available</span>
           </div>
         </div>
         <div className="detail-art" style={{ background: work?.image ?? creator?.avatarColor }} />
@@ -46,7 +45,7 @@ export function NomineeDetail() {
       <section className="glass-card disclosure-card">
         <span className="eyebrow">Preview disclosure</span>
         <h2>No live production result is claimed.</h2>
-        <p>This page demonstrates the structure of a Certifyd award credential: nominee identity, creator node, work proof, public support, contributors, and weighted scoring. Final live voting is not active on this site.</p>
+        <p>This page demonstrates the structure of a Certifyd award credential: nominee identity, creator node, work proof, community support, contributors, and weighted scoring. Final live voting is not active on this site.</p>
         <Link className="secondary-action" to="/methodology">Read methodology</Link>
       </section>
     </section>

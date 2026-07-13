@@ -21,9 +21,15 @@ export function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="creator-innovation" element={<Technology />} />
+        <Route path="creator-innovation/categories" element={<TechnologyCategories />} />
+        <Route path="creator-innovation/categories/:categoryId" element={<TechCategoryDetail />} />
         <Route path="technology" element={<Technology />} />
         <Route path="technology/categories" element={<TechnologyCategories />} />
         <Route path="technology/categories/:categoryId" element={<TechCategoryDetail />} />
+        <Route path="creative-excellence" element={<Music />} />
+        <Route path="creative-excellence/categories" element={<MusicCategories />} />
+        <Route path="creative-excellence/categories/:categoryId" element={<CategoryDetail />} />
         <Route path="music" element={<Music />} />
         <Route path="music/categories" element={<MusicCategories />} />
         <Route path="music/categories/:categoryId" element={<CategoryDetail />} />

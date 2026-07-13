@@ -11,17 +11,18 @@ export function Nominate() {
 
   return (
     <section className="page-section form-page">
-      <span className="eyebrow">Nomination form</span>
-      <h1>Submit a creator, work, proof trail, or category candidate.</h1>
-      <p className="lead">This form is wired as a production-ready frontend placeholder. It validates the intended fields locally until a live intake endpoint is connected.</p>
+      <span className="eyebrow">Nominations</span>
+      <h1>Nominate work worth celebrating.</h1>
+      <p className="lead">Tell us about a creator, work, collaboration, platform, provider, or technical contribution that made a meaningful impact.</p>
+      <p className="muted">Supporting links help us understand the work, confirm credits, and recognize everyone involved.</p>
       <form className="glass-card nomination-form" onSubmit={onSubmit}>
-        <label>Work or creator name<input required name="title" placeholder="Godspeed, Beatify Group, etc." /></label>
-        <label>Creator handle<input required name="handle" placeholder="@creator" /></label>
+        <label>Work, creator, collaboration, or contribution<input required name="title" placeholder="Godspeed, Beatify Group, a producer, a platform, etc." /></label>
+        <label>Creator or contributor handle<input required name="handle" placeholder="@creator or contributor name" /></label>
         <label>Category<select required name="category"><option value="">Choose a category</option>{categories.map((category) => <option key={category.id}>{category.title}</option>)}</select></label>
-        <label>Creator node or public URL<input required name="origin" type="url" placeholder="https://certifyd.example.com/buy/..." /></label>
-        <label>Proof summary<textarea required name="proof" rows={5} placeholder="List receipts, manifests, contributors, hashes, or public records." /></label>
-        <button className="primary-action" type="submit">Preview submission</button>
-        {submitted ? <p className="success-message">Submission preview captured locally. Connect an intake endpoint before accepting live nominations.</p> : null}
+        <label>Public work, profile, or supporting URL<input required name="origin" type="url" placeholder="https://certifyd.example.com/buy/..." /></label>
+        <label>Why should this be recognized?<textarea required name="proof" rows={5} placeholder="Tell the story, list contributors, and include receipts, manifests, credits, hashes, or public records when available." /></label>
+        <button className="primary-action" type="submit">Preview nomination</button>
+        {submitted ? <p className="success-message">Nomination preview captured locally. Connect an intake endpoint before accepting live nominations.</p> : null}
       </form>
     </section>
   );

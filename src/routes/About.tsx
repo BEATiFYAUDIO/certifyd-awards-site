@@ -4,21 +4,22 @@ export function About() {
   return (
     <section className="page-section">
       <span className="eyebrow">About Certifyd Awards</span>
-      <h1>Awards for creator-owned networks, not opaque recommendation systems.</h1>
+      <h1>Celebrating remarkable work and the full ecosystem behind it.</h1>
       <div className="split-section">
         <div>
-          <p className="lead">Certifyd Awards is built around the idea that recognition should be traceable. Works, creators, contributors, receipts, and support signals should be visible enough that fans can understand why something was nominated or awarded.</p>
-          <p className="muted">The public site is intentionally separate from live entitlement and voting infrastructure. Contentbox remains the authority for identity, publishing, commerce, receipts, and access.</p>
-          <Link className="secondary-action" to="/categories">Explore categories</Link>
+          <p className="lead">Certifyd Awards exists to celebrate remarkable work, recognize the people behind it, and make recognition more transparent. We honour creators first, while also acknowledging the contributors, platforms, providers, and technical systems that help creative work reach the world.</p>
+          <p className="muted">That includes creators, performers, writers, producers, engineers, contributors, publishers, platforms, technical providers, communities, and fans.</p>
+          <Link className="secondary-action" to="/music">Explore Creative Excellence</Link>
         </div>
         <div className="glass-card manifesto-card">
-          <h2>What should be visible?</h2>
+          <h2>Recognition should show</h2>
           <ul>
-            <li>Who created the work.</li>
-            <li>Who contributed to it.</li>
-            <li>Where the public record lives.</li>
-            <li>What proof was considered.</li>
-            <li>How the score was calculated.</li>
+            <li>The creator and the work.</li>
+            <li>The contributors who helped bring it to life.</li>
+            <li>The story and cultural context behind it.</li>
+            <li>The community support around it.</li>
+            <li>The credits, proof, and evidence considered.</li>
+            <li>How the result can be understood.</li>
           </ul>
         </div>
       </div>

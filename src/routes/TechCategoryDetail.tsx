@@ -10,18 +10,18 @@ export function TechCategoryDetail() {
 
   return (
     <section className="page-section detail-page">
-      <span className="eyebrow">Technology Awards · {category.family}</span>
+      <span className="eyebrow">Creator Innovation · {category.family}</span>
       <h1>{category.title}</h1>
       <p className="lead">{category.summary}</p>
       <div className="category-detail-grid">
-        <article className="glass-card"><span className="eyebrow">Eligibility</span><ul>{category.eligibility.map((item) => <li key={item}>{item}</li>)}</ul></article>
-        <article className="glass-card"><span className="eyebrow">Scoring signals</span><ul>{category.metrics.map((item) => <li key={item}>{item}</li>)}</ul></article>
+        <article className="glass-card"><span className="eyebrow">Who or what is recognized</span><ul>{category.eligibility.map((item) => <li key={item}>{item}</li>)}</ul></article>
+        <article className="glass-card"><span className="eyebrow">Evidence considered</span><ul>{category.metrics.map((item) => <li key={item}>{item}</li>)}</ul></article>
       </div>
       <section className="rankings-section">
-        <div className="section-heading"><span className="eyebrow">Technical metrics</span><h2>Preview rankings for this category</h2></div>
-        {rankings.length ? <div className="ranking-grid">{rankings.map((ranking) => { const provider = getTechnicalProvider(ranking.providerId); return <article className="ranking-card" key={ranking.id}><span className="status-pill preview">{ranking.source.status === 'demonstration' ? 'Demonstration Data' : 'Preview Ranking'}</span><h3>{ranking.title}</h3><strong>{ranking.value}</strong><p>{provider?.name} · {ranking.metricName}</p><small>{ranking.source.methodology}</small></article>; })}</div> : <div className="empty-state"><h3>No preview rankings are published for this category yet.</h3><p>Technical rankings will appear when the measurement model is connected for this category.</p></div>}
+        <div className="section-heading"><span className="eyebrow">Preview recognition</span><h2>Creator benefit and supporting evidence.</h2></div>
+        {rankings.length ? <div className="ranking-grid">{rankings.map((ranking) => { const provider = getTechnicalProvider(ranking.providerId); return <article className="ranking-card" key={ranking.id}><span className="status-pill preview">{ranking.source.status === 'demonstration' ? 'Demonstration model' : 'Preview ranking'}</span><h3>{ranking.title}</h3><p className="ranking-benefit">{provider?.summary}</p><strong>{ranking.value}</strong><p>{provider?.name} · {ranking.metricName}</p><small>{ranking.source.methodology}</small></article>; })}</div> : <div className="empty-state"><h3>No preview rankings are published for this category yet.</h3><p>Recognition appears when a category has meaningful, explainable evidence.</p></div>}
       </section>
-      <Link className="secondary-action" to="/technology">Back to Technology Awards</Link>
+      <Link className="secondary-action" to="/technology">Back to Creator Innovation</Link>
     </section>
   );
 }

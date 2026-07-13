@@ -4,8 +4,8 @@ import { votingRounds } from '../../data/awards';
 export function VotingPreview() {
   return (
     <section className="glass-card voting-preview">
-      <span className="eyebrow">Voting preview</span>
-      <h2>Sats-backed voting, disclosed as public signal</h2>
+      <span className="eyebrow">Community participation</span>
+      <h2>Sats-backed community voting, disclosed as one public signal.</h2>
       <p>{votingDisclosure()}</p>
       <div className="timeline">
         {votingRounds.map((round) => (

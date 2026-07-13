@@ -4,6 +4,14 @@ import { categories } from '../data/awards';
 import type { AwardGroup } from '../types';
 
 const filters: Array<AwardGroup | 'all'> = ['all', 'major', 'music', 'creator-integrity', 'community', 'innovation'];
+const labels: Record<AwardGroup | 'all', string> = {
+  all: 'All',
+  major: 'Signature',
+  music: 'Music and audio',
+  'creator-integrity': 'Credits and trust',
+  community: 'Community',
+  innovation: 'Innovation',
+};
 
 export function Categories() {
   const [active, setActive] = useState<AwardGroup | 'all'>('all');
@@ -11,10 +19,10 @@ export function Categories() {
 
   return (
     <section className="page-section">
-      <span className="eyebrow">Award categories</span>
-      <h1>Consistent categories for craft, proof, support, and transparency.</h1>
+      <span className="eyebrow">Creative Excellence</span>
+      <h1>Categories for remarkable work and the people behind it.</h1>
       <div className="filter-row">
-        {filters.map((filter) => <button className={active === filter ? 'active' : ''} key={filter} onClick={() => setActive(filter)}>{filter.replace('-', ' ')}</button>)}
+        {filters.map((filter) => <button className={active === filter ? 'active' : ''} key={filter} onClick={() => setActive(filter)}>{labels[filter]}</button>)}
       </div>
       <div className="card-grid categories-grid">
         {visible.map((category) => <CategoryCard key={category.id} category={category} />)}

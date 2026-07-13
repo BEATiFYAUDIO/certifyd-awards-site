@@ -40,11 +40,17 @@ const nomineeSlugs = [
 
 const routes = [
   'technology',
+  'creator-innovation',
   'technology/categories',
+  'creator-innovation/categories',
   ...technologyCategorySlugs.map((slug) => `technology/categories/${slug}`),
+  ...technologyCategorySlugs.map((slug) => `creator-innovation/categories/${slug}`),
   'music',
+  'creative-excellence',
   'music/categories',
+  'creative-excellence/categories',
   ...musicCategorySlugs.map((slug) => `music/categories/${slug}`),
+  ...musicCategorySlugs.map((slug) => `creative-excellence/categories/${slug}`),
   'categories',
   ...musicCategorySlugs.map((slug) => `categories/${slug}`),
   'nominees',
