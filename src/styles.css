@@ -487,3 +487,713 @@ main { width: 100%; }
   }
   .awards-hero .hero-content { max-width: 960px; }
 }
+
+/* Mobile repair pass */
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p,
+a,
+span,
+strong,
+small {
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px 18px 18px;
+    position: relative;
+  }
+
+  .brand-lockup {
+    min-width: 0;
+  }
+
+  .brand-mark {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 auto;
+  }
+
+  .site-nav {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 0 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-nav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 10px 15px;
+  }
+
+  .header-action {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 13px 16px;
+  }
+
+  .awards-hero {
+    min-height: auto;
+    display: block;
+    padding: 80px 20px 48px;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(3.55rem, 18vw, 5.2rem);
+    line-height: 0.86;
+    letter-spacing: -0.065em;
+    max-width: 100%;
+  }
+
+  .hero-content p {
+    max-width: 100%;
+    font-size: 1.08rem;
+  }
+
+  .hero-award-visual {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .hero-award-visual img {
+    border-radius: 24px;
+  }
+
+  .hero-award-visual .hero-score-panel {
+    width: calc(100% - 20px);
+    margin-top: -34px;
+  }
+
+  .hero-score-panel strong {
+    font-size: 3.8rem;
+  }
+
+  .weekend-section,
+  .content-section,
+  .page-section,
+  .rankings-section,
+  .final-cta,
+  .editorial-split {
+    width: calc(100% - 28px);
+  }
+
+  .page-section {
+    padding-top: 54px;
+  }
+
+  .page-section h1,
+  .awards-division-page h1 {
+    font-size: clamp(3rem, 15vw, 4.8rem);
+    line-height: 0.92;
+    letter-spacing: -0.065em;
+  }
+
+  .division-hero {
+    min-height: 0;
+    border-radius: 28px;
+    padding: 26px;
+  }
+
+  .division-hero h2,
+  .event-pillar h3,
+  .final-cta h2,
+  .section-heading h2 {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+  }
+
+  .event-pillar {
+    min-height: 420px;
+    padding: 26px;
+  }
+
+  .proof-stack span,
+  .criteria-row span,
+  .verification-badge,
+  .status-pill {
+    font-size: 0.7rem;
+  }
+
+  .nominee-card,
+  .award-creator-card,
+  .ranking-card,
+  .large-category-tile,
+  .glass-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-content h1 {
+    font-size: clamp(3.15rem, 16vw, 4.35rem);
+  }
+
+  .page-section h1,
+  .awards-division-page h1 {
+    font-size: clamp(2.7rem, 14vw, 4rem);
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-content h1 {
+    font-size: clamp(2.95rem, 13.2vw, 3.85rem);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
+  }
+
+  .page-section h1,
+  .awards-division-page h1 {
+    font-size: clamp(2.8rem, 12.5vw, 3.75rem);
+    line-height: 0.94;
+    letter-spacing: -0.055em;
+  }
+
+  .division-hero h2,
+  .event-pillar h3,
+  .final-cta h2,
+  .section-heading h2 {
+    font-size: clamp(1.85rem, 8.6vw, 2.65rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .division-hero p,
+  .page-section .lead,
+  .hero-content p {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-content h1 {
+    font-size: clamp(2.75rem, 12.4vw, 3.25rem);
+  }
+
+  .page-section h1,
+  .awards-division-page h1 {
+    font-size: clamp(2.55rem, 11.8vw, 3.25rem);
+  }
+
+  .division-hero h2,
+  .event-pillar h3,
+  .final-cta h2,
+  .section-heading h2 {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+  }
+}
+
+@media (max-width: 720px) {
+  .awards-hero .hero-content,
+  .division-hero > div,
+  .event-pillar > div,
+  .final-cta > div,
+  .large-category-tile,
+  .ranking-card,
+  .award-creator-card,
+  .nominee-card {
+    width: 100%;
+    max-width: calc(100vw - 40px) !important;
+    min-width: 0;
+  }
+
+  .awards-hero .hero-content {
+    max-width: calc(100vw - 40px) !important;
+  }
+
+  .division-hero,
+  .event-pillar,
+  .final-cta,
+  .glass-card {
+    overflow: hidden;
+  }
+
+  .division-hero h2 {
+    font-size: clamp(1.72rem, 7.2vw, 2.18rem);
+    max-width: 100%;
+  }
+
+  .hero-content p,
+  .division-hero p,
+  .event-pillar p,
+  .final-cta p,
+  .ranking-card p,
+  .large-category-tile p {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .awards-hero .hero-content,
+  .division-hero > div,
+  .event-pillar > div,
+  .final-cta > div,
+  .large-category-tile,
+  .ranking-card,
+  .award-creator-card,
+  .nominee-card {
+    max-width: calc(100vw - 28px) !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .awards-hero .hero-content,
+  .division-hero > div,
+  .event-pillar > div,
+  .final-cta > div {
+    width: auto !important;
+    max-width: calc(100vw - 64px) !important;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.55rem, 11.5vw, 3rem);
+    line-height: 0.94;
+    max-width: 100%;
+  }
+
+  .hero-content p,
+  .division-hero p,
+  .event-pillar p,
+  .final-cta p,
+  .page-section .lead {
+    max-width: calc(100vw - 72px) !important;
+  }
+
+  .division-hero h2 {
+    max-width: calc(100vw - 86px) !important;
+  }
+}
+
+@media (max-width: 720px) {
+  html,
+  body,
+  #root,
+  .site-shell {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+  }
+
+  body {
+    min-width: 0;
+  }
+
+  main,
+  .awards-hero,
+  .weekend-section,
+  .content-section,
+  .page-section,
+  .rankings-section,
+  .editorial-split,
+  .final-cta {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .site-header {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .brand-lockup {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .brand-lockup strong {
+    font-size: 0.98rem;
+  }
+
+  .brand-lockup small {
+    font-size: 0.72rem;
+  }
+
+  .header-action {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .site-nav {
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-nav a,
+  .filter-row button,
+  .secondary-action,
+  .primary-action {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .awards-hero,
+  .weekend-section,
+  .content-section,
+  .page-section,
+  .rankings-section,
+  .editorial-split {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .awards-hero {
+    min-height: auto;
+    padding-top: 68px !important;
+    padding-bottom: 42px !important;
+  }
+
+  .awards-hero .hero-content,
+  .hero-content,
+  .division-hero > div,
+  .event-pillar > div,
+  .final-cta > div,
+  .glass-card,
+  .large-category-tile,
+  .ranking-card,
+  .award-creator-card,
+  .nominee-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .hero-content h1,
+  .page-section h1,
+  .awards-division-page h1,
+  .division-hero h2,
+  .event-pillar h3,
+  .final-cta h2,
+  .section-heading h2,
+  .large-category-tile h3,
+  .ranking-card h3,
+  .nominee-card h3 {
+    max-width: 100% !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.22rem, 10vw, 2.85rem) !important;
+    line-height: 1 !important;
+    letter-spacing: -0.042em !important;
+  }
+
+  .page-section h1,
+  .awards-division-page h1 {
+    font-size: clamp(2.08rem, 9.2vw, 2.65rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.038em !important;
+  }
+
+  .division-hero h2,
+  .event-pillar h3,
+  .final-cta h2,
+  .section-heading h2 {
+    font-size: clamp(1.65rem, 7.5vw, 2.18rem) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  .hero-content p,
+  .division-hero p,
+  .event-pillar p,
+  .final-cta p,
+  .page-section .lead,
+  .section-heading p,
+  .large-category-tile p,
+  .ranking-card p,
+  .nominee-card p {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 0.98rem !important;
+    line-height: 1.52 !important;
+    overflow-wrap: anywhere;
+  }
+
+  .pillar-grid,
+  .creator-awards-grid,
+  .category-strip,
+  .category-detail-grid,
+  .ranking-grid,
+  .nominee-list.two-column,
+  .scoring-showcase,
+  .editorial-split,
+  .division-hero,
+  .final-cta {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .division-hero,
+  .event-pillar,
+  .final-cta,
+  .glass-card,
+  .large-category-tile,
+  .ranking-card,
+  .award-creator-card,
+  .nominee-card {
+    border-radius: 24px;
+  }
+
+  .division-hero,
+  .event-pillar,
+  .large-category-tile,
+  .ranking-card,
+  .glass-card {
+    padding: 22px !important;
+  }
+
+  .event-pillar {
+    min-height: 360px;
+  }
+
+  .division-hero {
+    min-height: 330px;
+    margin: 28px 0 22px;
+    align-items: end;
+  }
+
+  .final-cta {
+    overflow: hidden;
+  }
+
+  .final-cta > div:last-child {
+    padding: 24px !important;
+  }
+
+  .editorial-image,
+  .vegas-image {
+    min-height: 280px;
+  }
+
+  .award-creator-card {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 14px;
+    padding: 14px !important;
+  }
+
+  .creator-card-art span {
+    width: 54px;
+    height: 54px;
+    font-size: 1.45rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-content h1 {
+    font-size: clamp(2.05rem, 9.4vw, 2.55rem) !important;
+  }
+
+  .page-section h1,
+  .awards-division-page h1 {
+    font-size: clamp(1.92rem, 8.8vw, 2.42rem) !important;
+  }
+}
+
+/* Final mobile simplification: keep the site readable before it is fancy. */
+@media (max-width: 720px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .site-header {
+    padding: 12px 14px 14px !important;
+    gap: 12px !important;
+  }
+
+  .brand-lockup {
+    width: 100%;
+  }
+
+  .brand-mark {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .site-nav {
+    display: flex !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    padding: 0 0 4px !important;
+  }
+
+  .site-nav a {
+    padding: 9px 13px !important;
+    font-size: 0.92rem !important;
+  }
+
+  .header-action,
+  .hero-actions a,
+  .primary-action,
+  .secondary-action {
+    width: 100% !important;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .awards-hero {
+    padding: 56px 16px 36px !important;
+    min-height: auto !important;
+  }
+
+  .hero-content,
+  .awards-hero .hero-content {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.15rem, 9.4vw, 2.65rem) !important;
+    line-height: 1.03 !important;
+    letter-spacing: -0.035em !important;
+    margin-bottom: 18px !important;
+  }
+
+  .hero-content p,
+  .lead,
+  .page-section .lead,
+  .section-heading p,
+  .division-hero p,
+  .event-pillar p,
+  .large-category-tile p,
+  .ranking-card p,
+  .nominee-card p {
+    font-size: 0.96rem !important;
+    line-height: 1.48 !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .hero-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .hero-award-visual {
+    margin-top: 26px !important;
+  }
+
+  .hero-score-panel {
+    padding: 18px !important;
+    border-radius: 22px !important;
+  }
+
+  .hero-score-panel strong {
+    font-size: 3rem !important;
+  }
+
+  .weekend-section,
+  .content-section,
+  .page-section,
+  .rankings-section,
+  .editorial-split,
+  .final-cta {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .page-section h1,
+  .awards-division-page h1 {
+    font-size: clamp(2rem, 8.8vw, 2.45rem) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  .division-hero h2,
+  .event-pillar h3,
+  .final-cta h2,
+  .section-heading h2 {
+    font-size: clamp(1.55rem, 7vw, 2rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.025em !important;
+  }
+
+  .division-hero,
+  .event-pillar,
+  .glass-card,
+  .large-category-tile,
+  .ranking-card,
+  .award-creator-card,
+  .nominee-card {
+    padding: 18px !important;
+    border-radius: 20px !important;
+  }
+
+  .division-hero,
+  .event-pillar {
+    min-height: 300px !important;
+  }
+
+  .editorial-image,
+  .vegas-image {
+    min-height: 230px !important;
+    border-radius: 20px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-content p,
+  .division-hero p,
+  .event-pillar p,
+  .final-cta p,
+  .page-section .lead,
+  .section-heading p {
+    max-width: min(100%, 32ch) !important;
+  }
+}
