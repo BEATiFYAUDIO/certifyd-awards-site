@@ -18,6 +18,8 @@ export function toAwardCreator(creator: Creator): AwardCreator {
     slug: creator.handle,
     displayName: creator.name || creator.handle,
     profileUrl: `${safeUrl(creator.nodeOrigin)}/u/${creator.handle}`,
+    avatarUrl: creator.avatarUrl,
+    wallpaperUrl: creator.wallpaperUrl,
     verified: creator.verified,
     verificationLabel: creator.verified ? 'Verified identity' : 'Identity pending',
     primaryRole: creator.role || 'Creator',

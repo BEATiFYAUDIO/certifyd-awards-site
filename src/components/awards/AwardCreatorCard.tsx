@@ -5,7 +5,8 @@ export function AwardCreatorCard({ creator, category, score }: { creator: AwardC
   return (
     <article className="award-creator-card expressive-creator-card">
       <div className="creator-card-art" style={{ '--creator-accent': creator.accentColor } as CSSProperties}>
-        {creator.avatarUrl ? <img src={creator.avatarUrl} alt="" /> : <span>{creator.displayName.slice(0, 1)}</span>}
+        {creator.wallpaperUrl ? <img className="creator-wallpaper" src={creator.wallpaperUrl} alt="" loading="lazy" /> : null}
+        {creator.avatarUrl ? <img className="creator-avatar-image" src={creator.avatarUrl} alt="" loading="lazy" /> : <span>{creator.displayName.slice(0, 1)}</span>}
       </div>
       <div className="creator-card-copy">
         <div className="card-meta soft-meta"><span>{creator.verificationLabel}</span>{category ? <span>{category}</span> : null}</div>

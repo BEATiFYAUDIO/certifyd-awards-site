@@ -17,6 +17,8 @@ export interface Creator {
   bio: string;
   nodeOrigin: string;
   avatarColor: string;
+  avatarUrl?: string;
+  wallpaperUrl?: string;
   verified: boolean;
   trustScore: number;
   followers: number;

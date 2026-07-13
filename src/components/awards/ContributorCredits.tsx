@@ -8,7 +8,9 @@ export function ContributorCredits({ credits }: { credits: ContributorCredit[] }
         const creator = getCreator(credit.creatorId);
         return (
           <article className="credit-card" key={`${credit.creatorId}-${credit.role}`}>
-            <span className="avatar" style={{ background: creator?.avatarColor }}>{creator?.name.slice(0, 1)}</span>
+            <span className="avatar" style={creator?.avatarUrl ? undefined : { background: creator?.avatarColor }}>
+              {creator?.avatarUrl ? <img src={creator.avatarUrl} alt="" loading="lazy" /> : creator?.name.slice(0, 1)}
+            </span>
             <div>
               <strong>{creator?.name}</strong>
               <p>@{creator?.handle} · {credit.role}</p>

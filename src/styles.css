@@ -166,7 +166,8 @@ p { color: #d8dbe4; line-height: 1.65; }
 .proof-dot.verified { background: var(--green); box-shadow: 0 0 18px rgba(34,197,94,.55); }
 .proof-dot.public { background: var(--blue); }
 .proof-row code { color: var(--gold); word-break: break-all; }
-.avatar { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 999px; font-weight: 900; }
+.avatar { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 999px; font-weight: 900; overflow: hidden; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .detail-hero { display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: center; overflow: hidden; }
 .detail-art { min-height: 300px; }
 .directory-tools { display: grid; grid-template-columns: 1fr 280px; gap: 12px; margin: 24px 0; }
@@ -354,11 +355,46 @@ main { width: 100%; }
 .creator-card-art {
   display: grid;
   place-items: center;
+  position: relative;
   border-radius: 24px;
   background: radial-gradient(circle at 45% 35%, var(--creator-accent), transparent 34%), linear-gradient(135deg, rgba(84,165,240,.25), rgba(247,147,26,.2));
   border: 1px solid rgba(255,255,255,.1);
+  overflow: hidden;
 }
-.creator-card-art span { display: grid; place-items: center; width: 66px; height: 66px; border-radius: 999px; background: rgba(0,0,0,.42); font-weight: 950; font-size: 2rem; }
+.creator-card-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(3, 5, 11, 0.05), rgba(3, 5, 11, 0.54));
+}
+.creator-card-art span,
+.creator-avatar-image {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 66px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.42);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+  font-weight: 950;
+  font-size: 2rem;
+}
+.creator-avatar-image {
+  object-fit: cover;
+  display: block;
+}
+.creator-wallpaper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .creator-card-copy h3 { font-size: 1.45rem; margin-bottom: 4px; }
 .creator-card-copy p { color: var(--muted); margin-bottom: 12px; }
 .creator-card-copy strong { display: block; color: #e8f2ff; }
@@ -1297,7 +1333,7 @@ small {
   overflow: hidden;
 }
 
-.expressive-creator-card .creator-card-art img {
+.expressive-creator-card .creator-card-art .creator-wallpaper {
   width: 100%;
   height: 100%;
   object-fit: cover;
