@@ -31,6 +31,8 @@ export interface CreativeWork {
   genre: string;
   year: number;
   publicOrigin: string;
+  sourceContentId?: string;
+  publicUrl?: string;
   priceSats?: number;
   image: string;
   description: string;

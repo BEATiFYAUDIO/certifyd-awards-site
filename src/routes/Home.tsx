@@ -7,6 +7,7 @@ import { technicalRankings, getTechnicalProvider } from '../data/technology';
 import { compactNumber, formatSats } from '../lib/formatting';
 import { getAwardCreators } from '../lib/creatorAdapter';
 import { entryScore, formatScore, rankEntries } from '../lib/scoring';
+import { artworkUrl } from '../lib/artwork';
 
 const creativeCategories = ['Work of the Year', 'Creator of the Year', 'Song of the Year', 'Album of the Year', 'Video of the Year', 'Podcast of the Year', 'Spoken Word of the Year', 'Independent Creator', 'Collaboration of the Year', 'Live Performance', 'Fan-Supported Work', 'Cultural Impact'];
 const innovationCategories = ['Producer of the Year', 'Engineer of the Year', 'Publishing Provider of the Year', 'Creator Platform of the Year', 'Infrastructure Partner of the Year', 'Public Node Excellence', 'Metadata Excellence', 'Proof and Attribution Excellence', 'Creator Commerce Innovation', 'Developer Experience Award', 'Open Source Project', 'AI Creator Tool'];
@@ -19,6 +20,7 @@ export function Home() {
   const featuredCreator = featured ? getCreator(featured.creatorId) : undefined;
   const featuredWork = featured ? getWork(featured.workId) : undefined;
   const featuredCategory = featured ? getCategory(featured.categoryId) : undefined;
+  const featuredArtUrl = artworkUrl(featuredWork?.image);
 
   return (
     <>
@@ -46,7 +48,9 @@ export function Home() {
 
       {featured ? (
         <section className="featured-story-section">
-          <div className="featured-story-art" style={{ background: featuredWork?.image }} aria-hidden="true" />
+          <div className="featured-story-art" style={featuredArtUrl ? undefined : { background: featuredWork?.image }} aria-hidden="true">
+            {featuredArtUrl ? <img src={featuredArtUrl} alt="" /> : null}
+          </div>
           <div className="featured-story-copy">
             <span className="eyebrow">Stories Worth Celebrating</span>
             <h2>{featured.title}</h2>
@@ -58,7 +62,10 @@ export function Home() {
               <span>{featured.contributors.length} credited contributors</span>
               <span>Proof available</span>
             </div>
-            <Link className="secondary-action" to={`/nominees/${featured.id}`}>View the Story</Link>
+            <div className="story-actions">
+              <Link className="secondary-action" to={`/nominees/${featured.id}`}>View the Story</Link>
+              {featuredWork?.publicUrl ? <a className="secondary-action" href={featuredWork.publicUrl} target="_blank" rel="noreferrer">Open Work</a> : null}
+            </div>
           </div>
         </section>
       ) : null}

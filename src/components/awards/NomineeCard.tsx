@@ -4,6 +4,7 @@ import { formatSats } from '../../lib/formatting';
 import { getCategory, getCreator, getWork } from '../../data/awards';
 import type { AwardEntry } from '../../types';
 import { VerificationBadge } from '../VerificationBadge';
+import { artworkUrl } from '../../lib/artwork';
 
 function resultLabel(status: AwardEntry['resultStatus']) {
   if (status === 'sample-winner') return 'Sample recognition';
@@ -15,10 +16,13 @@ export function NomineeCard({ entry }: { entry: AwardEntry }) {
   const creator = getCreator(entry.creatorId);
   const work = getWork(entry.workId);
   const category = getCategory(entry.categoryId);
+  const artUrl = artworkUrl(work?.image);
 
   return (
     <Link className="glass-card nominee-card creator-first-card" to={`/nominees/${entry.id}`}>
-      <div className="nominee-art" style={{ background: work?.image ?? creator?.avatarColor }} />
+      <div className="nominee-art" style={artUrl ? undefined : { background: work?.image ?? creator?.avatarColor }}>
+        {artUrl ? <img src={artUrl} alt="" loading="lazy" /> : null}
+      </div>
       <div className="nominee-body">
         <div className="card-meta soft-meta">
           <VerificationBadge label={resultLabel(entry.resultStatus)} tone={entry.resultStatus === 'sample-winner' ? 'gold' : 'blue'} />
