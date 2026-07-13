@@ -15,7 +15,7 @@ export function Layout() {
     <div className="site-shell">
       <header className="site-header">
         <NavLink to="/" className="brand-lockup" aria-label="Certifyd Awards home">
-          <span className="brand-mark">C</span>
+          <span className="brand-mark"><img src="/certifyd-logo-refined.svg" alt="" /></span>
           <span>
             <strong>Certifyd Awards</strong>
             <small>Proof-backed creator recognition</small>
