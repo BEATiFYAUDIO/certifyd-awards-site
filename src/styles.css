@@ -1910,3 +1910,227 @@ h2,
     letter-spacing: 0.14em;
   }
 }
+
+.awards-hero.creator-hero {
+  display: grid !important;
+  grid-template-columns: minmax(430px, 0.95fr) minmax(320px, 420px) !important;
+  gap: clamp(28px, 4vw, 56px) !important;
+  min-height: clamp(460px, 58vh, 620px) !important;
+  align-items: center !important;
+}
+
+.awards-hero.creator-hero .hero-content {
+  max-width: 620px !important;
+}
+
+.awards-hero.creator-hero .hero-content h1 {
+  max-width: 620px !important;
+  font-size: clamp(4rem, 6.2vw, 6.4rem) !important;
+  line-height: 0.98 !important;
+}
+
+.awards-hero.creator-hero .hero-award-visual {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  width: 100% !important;
+  max-width: 420px !important;
+  justify-self: end !important;
+  transform: none !important;
+}
+
+.section-heading.centered {
+  max-width: 920px !important;
+}
+
+.section-heading.centered h2 {
+  max-width: 920px !important;
+  text-wrap: normal;
+}
+
+.weekend-section,
+.content-section,
+.rankings-section {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.featured-story-section,
+.behind-work-section {
+  grid-template-columns: minmax(360px, 0.82fr) minmax(460px, 1.18fr);
+  gap: clamp(28px, 4vw, 52px);
+}
+
+.featured-story-copy h2,
+.behind-work-section h2 {
+  font-size: clamp(2.25rem, 3.6vw, 3.8rem) !important;
+  line-height: 1.02 !important;
+}
+
+.founders-home-section {
+  grid-template-columns: minmax(520px, 1.15fr) minmax(320px, 0.85fr) !important;
+  gap: clamp(32px, 5vw, 72px) !important;
+  padding-top: clamp(38px, 5vw, 56px) !important;
+  padding-bottom: clamp(38px, 5vw, 56px) !important;
+}
+
+.founders-home-copy h2 {
+  max-width: 760px;
+  font-size: clamp(3rem, 5.4vw, 5.5rem) !important;
+  line-height: 0.98 !important;
+}
+
+.founders-home-copy p {
+  max-width: 68ch;
+}
+
+.nominee-list.two-column,
+.pillar-grid {
+  gap: 24px;
+}
+
+.nominee-card,
+.ranking-card,
+.award-creator-card,
+.large-category-tile {
+  min-width: 0;
+}
+
+@media (max-width: 1180px) {
+  .awards-hero.creator-hero,
+  .featured-story-section,
+  .behind-work-section,
+  .founders-home-section {
+    grid-template-columns: 1fr !important;
+  }
+
+  .awards-hero.creator-hero {
+    gap: 28px !important;
+  }
+
+  .awards-hero.creator-hero .hero-award-visual {
+    justify-self: start !important;
+  }
+
+  .founders-home-copy h2 {
+    font-size: clamp(2.65rem, 8vw, 4.5rem) !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .awards-hero.creator-hero {
+    display: block !important;
+    min-height: auto !important;
+  }
+
+  .featured-story-section,
+  .behind-work-section,
+  .founders-home-section {
+    gap: 20px;
+  }
+
+  .featured-story-copy h2,
+  .behind-work-section h2,
+  .founders-home-copy h2 {
+    font-size: clamp(2rem, 10vw, 3rem) !important;
+  }
+}
+
+.event-pillar {
+  justify-content: flex-start !important;
+  min-height: 430px !important;
+  padding: clamp(34px, 4vw, 48px) !important;
+}
+
+.event-pillar .day-label {
+  display: block;
+  min-height: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.event-pillar h3 {
+  min-height: 2.1em;
+  max-width: 11ch;
+  margin-bottom: 18px;
+  font-size: clamp(3rem, 4.2vw, 4.4rem) !important;
+  line-height: 0.96 !important;
+}
+
+.event-pillar .proof-stack {
+  align-content: flex-start;
+  min-height: 112px;
+}
+
+.event-pillar a {
+  margin-top: auto !important;
+}
+
+@media (max-width: 1180px) {
+  .event-pillar {
+    min-height: 360px !important;
+  }
+
+  .event-pillar .proof-stack {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .event-pillar h3 {
+    min-height: 0;
+    max-width: 12ch;
+    font-size: clamp(2.2rem, 11vw, 3.2rem) !important;
+  }
+}
+
+.awards-hero.creator-hero {
+  grid-template-columns: minmax(420px, 0.85fr) minmax(420px, 0.95fr) !important;
+}
+
+.awards-hero.creator-hero .hero-award-visual {
+  max-width: 560px !important;
+}
+
+.hero-award-visual img {
+  max-height: min(640px, 66vh) !important;
+  object-fit: cover;
+}
+
+.founders-home-section {
+  grid-template-columns: minmax(460px, 0.95fr) minmax(460px, 1.05fr) !important;
+}
+
+.founders-home-visual img,
+.founders-hero-visual img {
+  min-height: 360px;
+  object-fit: cover;
+}
+
+.founders-hero {
+  grid-template-columns: minmax(420px, 0.9fr) minmax(480px, 1.1fr) !important;
+}
+
+@media (max-width: 1180px) {
+  .awards-hero.creator-hero,
+  .founders-home-section,
+  .founders-hero {
+    grid-template-columns: 1fr !important;
+  }
+
+  .awards-hero.creator-hero .hero-award-visual {
+    max-width: 620px !important;
+  }
+
+  .founders-home-visual img,
+  .founders-hero-visual img {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-award-visual img,
+  .founders-home-visual img,
+  .founders-hero-visual img {
+    min-height: 240px;
+  }
+}

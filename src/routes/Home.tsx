@@ -126,7 +126,7 @@ export function Home() {
           </div>
         </div>
         <figure className="founders-home-visual" aria-label={foundersAward.name}>
-          <img src="/media/certifyd-awards-trophy.png" alt="Vassal Benford Founders' Award crystal globe trophy" />
+          <img src="/media/vassal-benford-founders-award.png" alt="Vassal Benford Founders' Award crystal globe trophy" />
         </figure>
       </section>
 
