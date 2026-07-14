@@ -2141,9 +2141,10 @@ h2,
 @media (min-width: 1181px) {
   .site-header {
     display: grid !important;
-    grid-template-columns: 128px minmax(0, 1fr) 220px !important;
+    grid-template-columns: auto auto auto !important;
+    justify-content: center !important;
     align-items: center !important;
-    gap: 16px !important;
+    gap: 14px !important;
     padding-top: 10px !important;
     padding-bottom: 10px !important;
   }
