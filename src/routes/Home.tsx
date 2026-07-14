@@ -100,7 +100,7 @@ export function Home() {
           </div>
         </div>
         <figure className="founders-home-visual" aria-label={foundersAward.name}>
-          <img src="/media/awards-trophy-crystal-20260714.webp" alt="Certifyd Awards crystal globe trophy" />
+          <img src="/media/founders-award-trophy-20260714.webp" alt="Vassal Benford Founders' Award crystal globe trophy" />
         </figure>
       </section>
 
