@@ -61,7 +61,7 @@ export function Home() {
           </div>
         </div>
         <aside className="hero-award-visual" aria-label="Certifyd Awards trophy concept">
-          <img src="/media/awards-trophy-crystal-20260714.webp" alt="Certifyd Awards crystal globe trophy" />
+          <img src="/media/certifyd-awards-trophy.png" alt="Certifyd Awards crystal globe trophy" />
           <div className="hero-score-panel human-proof-panel">
             <span>Certifyd Awards</span>
             <p>Great work first. Evidence close behind.</p>
@@ -126,7 +126,7 @@ export function Home() {
           </div>
         </div>
         <figure className="founders-home-visual" aria-label={foundersAward.name}>
-          <img src="/media/founders-award-trophy-20260714.webp" alt="Vassal Benford Founders' Award crystal globe trophy" />
+          <img src="/media/certifyd-awards-trophy.png" alt="Vassal Benford Founders' Award crystal globe trophy" />
         </figure>
       </section>
 
