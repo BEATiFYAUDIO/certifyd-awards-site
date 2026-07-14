@@ -33,10 +33,21 @@ export function Technology() {
           <h2>Founding node nominees.</h2>
           <p className="muted">Active network nodes are shown when preview data is ready for public review.</p>
         </div>
-        <div className="ranking-grid">
+        <div className="ranking-grid innovation-ranking-grid">
           {technicalRankings.map((ranking) => {
             const provider = getTechnicalProvider(ranking.providerId);
-            return <article className="ranking-card" key={ranking.id}><span className="status-pill preview">{ranking.source.status === 'demonstration' ? 'Demonstration model' : 'Preview ranking'}</span><h3>{ranking.title}</h3><p className="ranking-benefit">{provider?.summary}</p><strong>{ranking.value}</strong><p>{provider?.name} · {ranking.metricName}</p><small>{ranking.source.methodology}</small></article>;
+            return (
+              <article className="ranking-card technology-ranking-card" key={ranking.id}>
+                <span className="status-pill preview">{ranking.source.status === 'demonstration' ? 'Demonstration model' : 'Preview ranking'}</span>
+                <h3>{ranking.title}</h3>
+                <p className="ranking-benefit">{ranking.source.methodology}</p>
+                <div className="ranking-metric">
+                  <strong>{ranking.value}</strong>
+                  <span>{ranking.metricName}</span>
+                </div>
+                <small>{provider?.name} · {ranking.source.period} · Updated {ranking.source.lastUpdatedAt}</small>
+              </article>
+            );
           })}
         </div>
       </section>

@@ -178,17 +178,19 @@ export function Home() {
           <div><span className="eyebrow">The people and technology behind the work</span><h2>Creator Innovation</h2></div>
           <Link to="/technology">Explore Creator Innovation</Link>
         </div>
-        <div className="ranking-grid">
+        <div className="ranking-grid innovation-ranking-grid">
           {technicalRankings.map((ranking) => {
             const provider = getTechnicalProvider(ranking.providerId);
             return (
-              <article className="ranking-card" key={ranking.id}>
+              <article className="ranking-card technology-ranking-card" key={ranking.id}>
                 <span className="status-pill preview">{ranking.source.status === 'demonstration' ? 'Demonstration model' : 'Preview ranking'}</span>
                 <h3>{ranking.title}</h3>
-                <p className="ranking-benefit">{provider?.summary}</p>
-                <strong>{ranking.value}</strong>
-                <p>{ranking.metricName}</p>
-                <small>{ranking.source.period} · Updated {ranking.source.lastUpdatedAt}</small>
+                <p className="ranking-benefit">{ranking.source.methodology}</p>
+                <div className="ranking-metric">
+                  <strong>{ranking.value}</strong>
+                  <span>{ranking.metricName}</span>
+                </div>
+                <small>{provider?.name} · {ranking.source.period} · Updated {ranking.source.lastUpdatedAt}</small>
               </article>
             );
           })}
