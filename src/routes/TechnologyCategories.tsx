@@ -7,7 +7,6 @@ export function TechnologyCategories() {
       <span className="eyebrow">Creator Innovation</span>
       <h1>Creator Innovation categories</h1>
       <p className="lead">{networkAwardIntro}</p>
-      <p className="muted">Technology is recognized because it enables great creative work—not because it is technically impressive on its own.</p>
       <div className="category-strip full">
         {technologyCategories.map((category) => <Link className="large-category-tile" to={`/technology/categories/${category.slug}`} key={category.id}><span className="eyebrow">{category.family}</span><h3>{category.title}</h3><p>{category.summary}</p></Link>)}
       </div>

@@ -13,7 +13,6 @@ export function TechCategoryDetail() {
       <span className="eyebrow">Creator Innovation · {category.family}</span>
       <h1>{category.title}</h1>
       <p className="lead">{category.summary}</p>
-      <p className="muted">Creator impact comes first. Measurements are included only when they explain how a node, provider, or organization helps creators publish, verify, distribute, protect, or monetize their work.</p>
       <div className="category-detail-grid">
         <article className="glass-card"><span className="eyebrow">Who or what is recognized</span><ul>{category.eligibility.map((item) => <li key={item}>{item}</li>)}</ul></article>
         <article className="glass-card"><span className="eyebrow">Evidence considered</span><ul>{category.metrics.map((item) => <li key={item}>{item}</li>)}</ul></article>

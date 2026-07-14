@@ -8,9 +8,8 @@ export function Technology() {
       <span className="eyebrow">Day 1 · Creator Innovation</span>
       <h1>Creator Innovation</h1>
       <p className="lead">{networkAwardIntro}</p>
-      <p className="muted">{networkParticipationCopy}</p>
       <div className="division-hero tech-division">
-        <div><h2>How did this organization help creators?</h2><p>Every Creator Innovation honor starts with creator impact: publishing, verification, identity, discovery, commerce, and network availability.</p></div>
+        <div><h2>How did this organization help creators?</h2><p>{networkParticipationCopy}</p></div>
         <div className="hero-actions">
           <Link className="primary-action" to="/technology/categories">Creator Innovation Categories</Link>
           <a className="secondary-action" href="https://network.certifyd.me/" target="_blank" rel="noreferrer">Learn more about the Certifyd Network</a>
@@ -32,7 +31,7 @@ export function Technology() {
         <div className="section-heading">
           <span className="eyebrow">Preview recognition</span>
           <h2>Founding node nominees.</h2>
-          <p className="muted">Current preview nominees are Beatify Group and Certifyd Creator, the two active Certifyd Network nodes.</p>
+          <p className="muted">Beatify Group and Certifyd Creator are the two active network nodes.</p>
         </div>
         <div className="ranking-grid">
           {technicalRankings.map((ranking) => {
@@ -43,8 +42,7 @@ export function Technology() {
       </section>
       <section className="glass-card network-cta-card">
         <span className="eyebrow">Network participation</span>
-        <h2>Running a node is how organizations help creators directly.</h2>
-        <p>Certifyd Network operators provide identity, content, commerce, settlement, and proof capabilities so creators can publish, sell, and verify work from their own origin.</p>
+        <h2>Run a node. Help creators publish, sell, and verify work.</h2>
         <div className="hero-actions">
           <a className="primary-action" href="https://network.certifyd.me/join" target="_blank" rel="noreferrer">Become a Node Operator</a>
           <a className="secondary-action" href="https://network.certifyd.me/" target="_blank" rel="noreferrer">View Network Map</a>

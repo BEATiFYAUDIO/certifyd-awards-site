@@ -13,7 +13,6 @@ export function AwardCreatorCard({ creator, category, score }: { creator: AwardC
         <h3>{creator.displayName}</h3>
         <p className="creator-line">{creator.primaryRole}</p>
         {creator.nominatedWorks.length ? <strong>Nominated for {creator.nominatedWorks[0]}</strong> : null}
-        <p className="muted">A creator connected to public credits, proof, and award-season recognition.</p>
         <div className="creator-card-actions">
           {score ? <span className="score-chip">{score}</span> : null}
           <a href={creator.profileUrl} target="_blank" rel="noreferrer">View Creator Profile</a>

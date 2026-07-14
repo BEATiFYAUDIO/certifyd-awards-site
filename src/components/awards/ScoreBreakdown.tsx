@@ -20,8 +20,7 @@ export function ScoreBreakdown({ scoring }: { scoring: ScoreComponent[] }) {
           {validateWeights(scoring) ? 'Model balanced' : 'Weights need review'}
         </span>
       </div>
-      <p>Strong creative work can be supported by visible credits, community participation, and clear public evidence.</p>
-      <p className="muted">Sample calculation: {scoreFormula(scoring)}</p>
+      <p className="muted">{scoreFormula(scoring)}</p>
       <div className="score-list">
         {scoring.map((component) => {
           const label = publicLabels[component.label] ?? component.label;

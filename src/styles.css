@@ -254,11 +254,11 @@ main { width: 100%; }
 .site-nav a.active { color: #07101d; }
 
 .awards-hero {
-  min-height: clamp(720px, 92vh, 1040px);
+  min-height: clamp(560px, 72vh, 760px);
   position: relative;
   display: grid;
   align-items: end;
-  padding: 140px max(20px, calc((100vw - 1320px) / 2)) 86px;
+  padding: 110px max(20px, calc((100vw - 1320px) / 2)) 58px;
   overflow: hidden;
   border-bottom: 1px solid rgba(84, 165, 240, 0.16);
 }
@@ -280,16 +280,16 @@ main { width: 100%; }
 }
 .hero-content { position: relative; max-width: 960px; }
 .hero-content h1 {
-  font-size: clamp(4.4rem, 11vw, 12rem);
-  line-height: 0.82;
-  margin-bottom: 28px;
+  font-size: clamp(4.2rem, 9.4vw, 9.8rem);
+  line-height: 0.84;
+  margin-bottom: 20px;
   letter-spacing: -0.09em;
 }
-.hero-content p { font-size: clamp(1.2rem, 2.1vw, 2rem); max-width: 760px; color: #dce8f6; }
+.hero-content p { font-size: clamp(1.15rem, 1.8vw, 1.55rem); max-width: 680px; color: #dce8f6; }
 .hero-score-panel {
   position: absolute;
   right: max(20px, calc((100vw - 1320px) / 2));
-  bottom: 86px;
+  bottom: 58px;
   width: min(320px, calc(100vw - 40px));
   padding: 22px;
   border-radius: 28px;
@@ -311,12 +311,12 @@ main { width: 100%; }
   width: min(1320px, calc(100% - 40px));
   margin: 0 auto;
 }
-.weekend-section { padding: 110px 0 70px; }
-.section-heading.centered { text-align: center; max-width: 820px; margin: 0 auto 42px; }
+.weekend-section { padding: 72px 0 44px; }
+.section-heading.centered { text-align: center; max-width: 820px; margin: 0 auto 28px; }
 .section-heading.centered p { color: var(--muted); font-size: 1.08rem; }
 .pillar-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .event-pillar {
-  min-height: 520px;
+  min-height: 390px;
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -332,7 +332,7 @@ main { width: 100%; }
 .music-pillar::before { background-image: linear-gradient(120deg, rgba(10,7,21,.74), rgba(10,7,21,.2)), url('/media/awards-stage.webp'); }
 .event-pillar > * { position: relative; }
 .day-label { color: var(--orange-highlight); font-weight: 900; text-transform: uppercase; letter-spacing: .18em; }
-.event-pillar h3 { font-size: clamp(2.4rem, 5vw, 5.2rem); line-height: .88; letter-spacing: -.06em; }
+.event-pillar h3 { font-size: clamp(2.3rem, 4.4vw, 4.4rem); line-height: .9; letter-spacing: -.06em; }
 .event-pillar p { max-width: 560px; }
 .event-pillar a { margin-top: 24px; color: white; font-weight: 900; }
 
@@ -403,33 +403,33 @@ main { width: 100%; }
 .score-chip { color: var(--orange-highlight); border-color: rgba(247,147,26,.35); }
 
 .scoring-showcase { display: grid; grid-template-columns: .55fr 1fr; gap: 32px; align-items: start; }
-.rankings-section { padding: 80px 0; }
+.rankings-section { padding: 54px 0; }
 .ranking-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .ranking-card {
-  min-height: 260px;
-  padding: 26px;
+  min-height: 220px;
+  padding: 22px;
   border-radius: 30px;
   border: 1px solid rgba(84,165,240,.18);
   background: linear-gradient(145deg, rgba(27,34,48,.9), rgba(6,9,18,.9));
 }
-.ranking-card h3 { font-size: 1.35rem; margin-top: 18px; }
-.ranking-card strong { display: block; color: var(--orange); font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: .95; }
+.ranking-card h3 { font-size: 1.28rem; margin-top: 14px; }
+.ranking-card strong { display: block; color: var(--orange); font-size: clamp(2rem, 4vw, 3.4rem); line-height: .95; }
 .ranking-card small { color: var(--muted); line-height: 1.55; display: block; }
 
-.final-cta { margin-top: 50px; margin-bottom: 90px; display: grid; grid-template-columns: .7fr 1fr; align-items: stretch; border-radius: 44px; overflow: hidden; border: 1px solid rgba(84,165,240,.2); background: var(--panel-strong); }
-.vegas-image { min-height: 430px; background: linear-gradient(90deg, rgba(10,7,21,.2), rgba(10,7,21,.62)), url('/media/awards-vegas.webp') center/cover; }
-.final-cta > div:last-child { padding: clamp(28px, 5vw, 58px); }
-.final-cta h2 { font-size: clamp(2.4rem, 5vw, 5rem); }
+.final-cta { margin-top: 28px; margin-bottom: 56px; display: grid; grid-template-columns: .55fr 1fr; align-items: stretch; border-radius: 34px; overflow: hidden; border: 1px solid rgba(84,165,240,.2); background: var(--panel-strong); }
+.vegas-image { min-height: 300px; background: linear-gradient(90deg, rgba(10,7,21,.2), rgba(10,7,21,.62)), url('/media/awards-vegas.webp') center/cover; }
+.final-cta > div:last-child { padding: clamp(24px, 4vw, 42px); }
+.final-cta h2 { font-size: clamp(2.2rem, 4vw, 3.8rem); }
 
-.awards-division-page { padding-top: 96px; }
+.awards-division-page { padding-top: 72px; }
 .division-hero {
-  min-height: 430px;
+  min-height: 320px;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 24px;
   align-items: end;
-  margin: 44px 0 28px;
-  padding: clamp(26px, 5vw, 54px);
+  margin: 32px 0 18px;
+  padding: clamp(24px, 4vw, 42px);
   border-radius: 40px;
   border: 1px solid rgba(84,165,240,.2);
   overflow: hidden;
@@ -445,15 +445,15 @@ main { width: 100%; }
 .music-division::before { background-image: linear-gradient(90deg, rgba(10,7,21,.95), rgba(10,7,21,.38)), url('/media/awards-stage.webp'); }
 .division-hero > * { position: relative; }
 .division-hero h2 { max-width: 760px; }
-.content-section.tight { padding: 46px 0; }
+.content-section.tight { padding: 32px 0; }
 .category-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .category-strip.full { margin-top: 32px; }
 .large-category-tile {
-  min-height: 230px;
+  min-height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 24px;
+  padding: 22px;
   border-radius: 30px;
   border: 1px solid rgba(84,165,240,.18);
   background: linear-gradient(145deg, rgba(27,34,48,.88), rgba(7,10,18,.86));
@@ -1243,7 +1243,7 @@ small {
 .behind-work-section {
   width: min(1320px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 88px 0;
+  padding: 58px 0;
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
   gap: 34px;
@@ -1251,8 +1251,8 @@ small {
 }
 
 .featured-story-art {
-  min-height: 560px;
-  border-radius: 44px;
+  min-height: 440px;
+  border-radius: 34px;
   border: 1px solid rgba(84, 165, 240, 0.22);
   background-size: cover !important;
   background-position: center !important;
@@ -1262,15 +1262,15 @@ small {
 .featured-story-copy,
 .behind-work-section > div:first-child {
   border: 1px solid rgba(84, 165, 240, 0.18);
-  border-radius: 36px;
-  padding: clamp(26px, 5vw, 54px);
+  border-radius: 30px;
+  padding: clamp(24px, 4vw, 42px);
   background: linear-gradient(145deg, rgba(27, 34, 48, 0.9), rgba(9, 12, 22, 0.78));
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
 }
 
 .featured-story-copy h2,
 .behind-work-section h2 {
-  font-size: clamp(2.35rem, 5vw, 5rem);
+  font-size: clamp(2.2rem, 4.4vw, 4.2rem);
 }
 
 .story-meta-list,
@@ -1278,7 +1278,7 @@ small {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 22px 0;
+  margin: 16px 0;
 }
 
 .story-meta-list span,

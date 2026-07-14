@@ -4,7 +4,6 @@ import { NomineeCard } from '../components/awards/NomineeCard';
 import { ScoreBreakdown } from '../components/awards/ScoreBreakdown';
 import { entries, getCategory, getCreator, getWork } from '../data/awards';
 import { technicalRankings, getTechnicalProvider } from '../data/technology';
-import { compactNumber, formatSats } from '../lib/formatting';
 import { getAwardCreators } from '../lib/creatorAdapter';
 import { entryScore, formatScore, rankEntries } from '../lib/scoring';
 import { artworkUrl } from '../lib/artwork';
@@ -15,7 +14,6 @@ const innovationCategories = ['Network Partner of the Year', 'Public Node Excell
 export function Home() {
   const featuredEntries = rankEntries(entries).slice(0, 4);
   const creators = getAwardCreators().slice(0, 3);
-  const totalSats = entries.reduce((sum, entry) => sum + entry.fanSupportSats, 0);
   const featured = featuredEntries[0];
   const featuredCreator = featured ? getCreator(featured.creatorId) : undefined;
   const featuredWork = featured ? getWork(featured.workId) : undefined;
@@ -30,8 +28,7 @@ export function Home() {
         <div className="hero-content">
           <span className="eyebrow">Certifyd Awards</span>
           <h1>Recognition<br />Backed by Proof.</h1>
-          <p>Celebrating remarkable creators, original work, and the people who help bring it to life.</p>
-          <p className="hero-subline">A two-day celebration of creative excellence, innovation, community, and transparent recognition.</p>
+          <p>Creators. Work. Credits. Proof.</p>
           <div className="hero-actions">
             <Link className="primary-action" to="/music">Explore the Awards</Link>
             <Link className="secondary-action" to="/nominate">Submit a Nomination</Link>
@@ -41,7 +38,7 @@ export function Home() {
           <img src="/media/awards-trophy.webp" alt="Certifyd Awards trophy concept with blue and orange lighting" />
           <div className="hero-score-panel human-proof-panel">
             <span>Recognition backed by proof</span>
-            <p>Great work first. Clear credits, community support, and transparent evidence behind it.</p>
+            <p>Great work first. Evidence close behind.</p>
           </div>
         </aside>
       </section>
@@ -54,7 +51,6 @@ export function Home() {
           <div className="featured-story-copy">
             <span className="eyebrow">Stories Worth Celebrating</span>
             <h2>{featured.title}</h2>
-            <p className="lead">Every work begins with an idea—and grows through the people who believe in it.</p>
             <p>{featured.summary}</p>
             <div className="story-meta-list">
               <span>{featuredCreator?.name}</span>
@@ -73,20 +69,18 @@ export function Home() {
       <section className="weekend-section">
         <div className="section-heading centered">
           <span className="eyebrow">Certifyd Awards Weekend</span>
-          <h2>Two days celebrating outstanding work and the people, ideas, and technology that help bring it into the world.</h2>
+          <h2>Creative work. Creator infrastructure. Public proof.</h2>
         </div>
         <div className="pillar-grid">
           <article className="event-pillar music-pillar creator-pillar">
             <span className="day-label">Day 2</span>
             <h3>Creative Excellence</h3>
-            <p>Honouring original work, unforgettable performances, meaningful stories, and the creators who move audiences.</p>
             <div className="proof-stack">{creativeCategories.slice(0, 6).map((label) => <span key={label}>{label}</span>)}</div>
             <Link to="/music">Explore Creative Excellence</Link>
           </article>
           <article className="event-pillar tech-pillar creator-pillar">
             <span className="day-label">Day 1</span>
             <h3>Creator Innovation</h3>
-            <p>Recognizing the people, tools, platforms, and technical contributions that help creators build, publish, protect, and share their work.</p>
             <div className="proof-stack">{innovationCategories.slice(0, 6).map((label) => <span key={label}>{label}</span>)}</div>
             <Link to="/technology">Explore Creator Innovation</Link>
           </article>
@@ -97,7 +91,7 @@ export function Home() {
         <div className="section-heading inline">
           <div>
             <span className="eyebrow">Featured nominees</span>
-            <h2>Creators and works first. Supporting evidence close behind.</h2>
+            <h2>Works with visible proof.</h2>
           </div>
           <span className="status-pill preview">Preview season</span>
         </div>
@@ -109,9 +103,7 @@ export function Home() {
       <section className="behind-work-section">
         <div>
           <span className="eyebrow">Behind Every Great Work</span>
-          <h2>Great content is rarely created alone.</h2>
-          <p>Certifyd Awards recognizes the artists, writers, producers, engineers, developers, publishers, platforms, and collaborators who help bring an idea to life.</p>
-          <p className="muted">Technology serves the work. Credits and proof help everyone involved be seen.</p>
+          <h2>Credit the people behind it.</h2>
         </div>
         <div className="contributor-cloud">
           {['Creator', 'Songwriter', 'Producer', 'Engineer', 'Performer', 'Visual artist', 'Publisher', 'Platform', 'Provider', 'Technical collaborator'].map((role) => <span key={role}>{role}</span>)}
@@ -121,9 +113,7 @@ export function Home() {
       <section className="content-section scoring-showcase warm-scoring">
         <div>
           <span className="eyebrow">Recognition You Can Understand</span>
-          <h2>Data supports the decision. It does not replace human creativity, context, or judgment.</h2>
-          <p>Strong writing, thoughtful production, meaningful community support, and complete contributor credits can all help a work stand out.</p>
-          <p className="muted">Scores may reflect craft, originality, verified credits, community support, transparency, and category-specific evidence.</p>
+          <h2>Clear signals. Human judgment.</h2>
         </div>
         {featured ? <ScoreBreakdown scoring={featured.scoring} /> : null}
       </section>
@@ -168,8 +158,7 @@ export function Home() {
         <div>
           <span className="eyebrow">Participation</span>
           <h2>Nominate work worth celebrating.</h2>
-          <p>Tell us about a creator, work, collaboration, platform, provider, or technical contribution that made a meaningful impact.</p>
-          <p className="muted">Fans may support participating creators through transparent sats-backed community voting. Community support is one component, not the whole result. Seeded records currently represent {compactNumber(totalSats)} preview sats ({formatSats(totalSats)}).</p>
+          <p>Submit a creator, work, collaboration, or provider with public proof.</p>
           <Link className="primary-action" to="/nominate">Submit a Nomination</Link>
         </div>
       </section>
