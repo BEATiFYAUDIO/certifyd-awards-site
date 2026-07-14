@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { NomineeCard } from '../components/awards/NomineeCard';
 import { ScoreBreakdown } from '../components/awards/ScoreBreakdown';
-import { entries, getCategory } from '../data/awards';
+import { entries, getCategory, getCategoryAwardImageUrl } from '../data/awards';
 import { rankEntries } from '../lib/scoring';
 import { NotFound } from './NotFound';
 
@@ -12,14 +12,20 @@ export function CategoryDetail() {
 
   const nominees = rankEntries(entries.filter((entry) => entry.categoryId === category.id));
   const example = nominees[0];
+  const imageUrl = getCategoryAwardImageUrl(category);
 
   return (
     <section className="page-section">
-      <span className="eyebrow">{category.group.replace('-', ' ')}</span>
-      <h1>{category.title}</h1>
-      <p className="lead">{category.summary}</p>
-      <div className="criteria-row large">
-        {category.criteria.map((criterion) => <span key={criterion}>{criterion}</span>)}
+      <div className="category-detail-hero">
+        <div>
+          <span className="eyebrow">{category.group.replace('-', ' ')}</span>
+          <h1>{category.title}</h1>
+          <p className="lead">{category.summary}</p>
+          <div className="criteria-row large">
+            {category.criteria.map((criterion) => <span key={criterion}>{criterion}</span>)}
+          </div>
+        </div>
+        {imageUrl ? <img className="category-detail-award" src={imageUrl} alt={`${category.title} award trophy`} /> : null}
       </div>
       {example ? <ScoreBreakdown scoring={example.scoring} /> : null}
       <div className="section-heading inline">

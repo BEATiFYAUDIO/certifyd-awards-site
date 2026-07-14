@@ -61,7 +61,7 @@ export function Home() {
           </div>
         </div>
         <aside className="hero-award-visual" aria-label="Certifyd Awards trophy concept">
-          <img src="/media/certifyd-awards-trophy.png" alt="Certifyd Awards crystal globe trophy" />
+          <img src="/media/certifyd-awards-music-note.webp" alt="Certifyd Awards gold music note trophy" />
           <div className="hero-score-panel human-proof-panel">
             <span>Certifyd Awards</span>
             <p>Great work first. Evidence close behind.</p>

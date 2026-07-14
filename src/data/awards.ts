@@ -292,3 +292,23 @@ export function getCreator(id: string) { return creators.find((creator) => creat
 export function getWork(id?: string) { return works.find((work) => work.id === id); }
 export function getCategory(idOrSlug: string) { return categories.find((category) => category.id === idOrSlug || category.slug === idOrSlug); }
 export function getEntry(id: string) { return entries.find((entry) => entry.id === id); }
+const categoryAwardImageSlugs = new Set([
+  'work-of-the-year',
+  'song-of-the-year',
+  'music-video-of-the-year',
+  'artist-of-the-year',
+  'new-artist-of-the-year',
+  'producer-of-the-year',
+  'songwriter-of-the-year',
+  'independent-release-of-the-year',
+  'most-transparent-creator',
+  'best-verified-catalog',
+  'proof-of-authorship',
+  'creator-trust-award',
+  'best-rights-documentation',
+  'most-complete-credits',
+  'fan-supported-creator',
+]);
+export function getCategoryAwardImageUrl(category: AwardCategory) {
+  return categoryAwardImageSlugs.has(category.slug) ? `/media/categories/${category.slug}.webp` : undefined;
+}
