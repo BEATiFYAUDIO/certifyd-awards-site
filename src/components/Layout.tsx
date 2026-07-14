@@ -15,7 +15,6 @@ export function Layout() {
       <header className="site-header">
         <NavLink to="/" className="brand-lockup" aria-label="Certifyd Awards home">
           <span className="brand-mark"><img src="/certifyd-logo-refined.svg" alt="" /></span>
-          <span><strong>Certifyd Awards</strong><small>Creators. Work. Credits.</small></span>
         </NavLink>
         <nav className="site-nav" aria-label="Primary navigation">
           {navItems.map(([to, label]) => <NavLink key={to} to={to} className={({ isActive }) => (isActive ? 'active' : undefined)} end={to === '/'}>{label}</NavLink>)}

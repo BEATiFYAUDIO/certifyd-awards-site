@@ -52,7 +52,6 @@ export function Home() {
         />
         <div className="hero-shade" />
         <div className="hero-content">
-          <span className="eyebrow">Certifyd Awards</span>
           <h1>Certifyd<br />Awards</h1>
           <p>Creators. Work. Credits. Culture.</p>
           <div className="hero-actions">
