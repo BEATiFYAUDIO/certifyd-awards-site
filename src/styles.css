@@ -2304,9 +2304,14 @@ h2,
   .site-nav a {
     flex: 0 0 auto !important;
     min-width: auto !important;
-    min-height: 44px !important;
-    padding: 0 16px !important;
-    font-size: 0.98rem !important;
+    width: auto !important;
+    height: 40px !important;
+    min-height: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 14px !important;
+    font-size: 0.9rem !important;
     line-height: 1 !important;
     white-space: nowrap !important;
   }
@@ -2314,7 +2319,13 @@ h2,
   .header-action {
     width: 100% !important;
     min-width: 0 !important;
-    min-height: 48px !important;
+    height: 46px !important;
+    min-height: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 16px !important;
+    line-height: 1 !important;
   }
 
   .awards-hero.creator-hero {
@@ -2340,6 +2351,28 @@ h2,
   }
 
   .awards-hero.creator-hero .hero-award-visual {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-self: stretch !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+
+  .awards-hero.creator-hero .hero-award-visual img {
+    width: 100% !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 5 !important;
+    object-fit: cover !important;
+    object-position: center 42% !important;
+    border-radius: 28px !important;
+    border: 1px solid rgba(84,165,240,.24);
+    box-shadow: 0 26px 80px rgba(0,0,0,.45);
+  }
+
+  .awards-hero.creator-hero .hero-score-panel {
     display: none !important;
   }
 }
