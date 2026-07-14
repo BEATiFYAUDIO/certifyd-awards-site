@@ -2141,10 +2141,10 @@ h2,
 @media (min-width: 1181px) {
   .site-header {
     display: grid !important;
-    grid-template-columns: auto auto auto !important;
-    justify-content: center !important;
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
+    justify-content: stretch !important;
     align-items: center !important;
-    gap: 14px !important;
+    gap: clamp(24px, 3.2vw, 56px) !important;
     padding-top: 10px !important;
     padding-bottom: 10px !important;
   }
@@ -2154,11 +2154,11 @@ h2,
   }
 
   .site-nav {
-    justify-self: center !important;
+    justify-self: stretch !important;
     display: flex !important;
     flex-wrap: nowrap !important;
-    justify-content: center !important;
-    gap: 8px !important;
+    justify-content: space-evenly !important;
+    gap: 12px !important;
   }
 
   .site-nav a,
