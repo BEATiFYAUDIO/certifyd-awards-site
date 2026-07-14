@@ -10,7 +10,7 @@ import { entryScore, formatScore, rankEntries } from '../lib/scoring';
 import { artworkUrl } from '../lib/artwork';
 
 const creativeCategories = ['Work of the Year', 'Creator of the Year', 'Song of the Year', 'Album of the Year', 'Video of the Year', 'Podcast of the Year', 'Spoken Word of the Year', 'Independent Creator', 'Collaboration of the Year', 'Live Performance', 'Fan-Supported Work', 'Cultural Impact'];
-const innovationCategories = ['Producer of the Year', 'Engineer of the Year', 'Publishing Provider of the Year', 'Creator Platform of the Year', 'Infrastructure Partner of the Year', 'Public Node Excellence', 'Metadata Excellence', 'Proof and Attribution Excellence', 'Creator Commerce Innovation', 'Developer Experience Award', 'Open Source Project', 'AI Creator Tool'];
+const innovationCategories = ['Network Partner of the Year', 'Public Node Excellence', 'Creator Infrastructure Award', 'Publishing Excellence Award', 'Discovery Excellence Award', 'Identity Excellence Award', 'Community Node Award', 'Open Network Leadership Award', 'Verification Excellence Award', 'Creator Commerce Provider'];
 
 export function Home() {
   const featuredEntries = rankEntries(entries).slice(0, 4);

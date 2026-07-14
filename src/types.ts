@@ -113,7 +113,7 @@ export interface TechnicalCategory {
   id: string;
   slug: string;
   title: string;
-  family: 'Infrastructure' | 'Platforms and Providers' | 'Developer Technology' | 'Commerce' | 'Data and Transparency' | 'AI';
+  family: 'Network Excellence' | 'Network Providers' | 'Infrastructure' | 'Platforms and Providers' | 'Developer Technology' | 'Commerce' | 'Data and Transparency' | 'AI';
   summary: string;
   eligibility: string[];
   metrics: string[];
