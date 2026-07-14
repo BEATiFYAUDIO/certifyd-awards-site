@@ -2138,6 +2138,49 @@ h2,
   object-fit: cover;
 }
 
+@media (min-width: 1181px) {
+  .site-header {
+    display: grid !important;
+    grid-template-columns: 128px minmax(0, 1fr) 220px !important;
+    align-items: center !important;
+    gap: 16px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  .brand-lockup {
+    justify-self: start !important;
+  }
+
+  .site-nav {
+    justify-self: center !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+  .site-nav a,
+  .header-action {
+    min-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 16px !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  .site-nav a {
+    min-width: 88px !important;
+  }
+
+  .header-action {
+    justify-self: end !important;
+    min-width: 182px !important;
+  }
+}
+
 .founders-home-section {
   grid-template-columns: minmax(460px, 0.95fr) minmax(460px, 1.05fr) !important;
 }
