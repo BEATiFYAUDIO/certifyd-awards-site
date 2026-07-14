@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AwardCreatorCard } from '../components/awards/AwardCreatorCard';
 import { NomineeCard } from '../components/awards/NomineeCard';
@@ -10,8 +11,15 @@ import { artworkUrl } from '../lib/artwork';
 
 const creativeCategories = ['Work of the Year', 'Creator of the Year', 'Song of the Year', 'Album of the Year', 'Video of the Year', 'Podcast of the Year', 'Spoken Word of the Year', 'Independent Creator', 'Collaboration of the Year', 'Live Performance', 'Fan-Supported Work', 'Cultural Impact'];
 const innovationCategories = ['Network Partner of the Year', 'Public Node Excellence', 'Creator Infrastructure Award', 'Publishing Excellence Award', 'Discovery Excellence Award', 'Identity Excellence Award', 'Community Node Award', 'Open Network Leadership Award', 'Verification Excellence Award', 'Creator Commerce Provider'];
+const heroVideos = [
+  '/media/awards-hero-carousel-1.mp4',
+  '/media/awards-hero-carousel-2.mp4',
+  '/media/awards-hero-carousel-3.mp4',
+  '/media/awards-hero-carousel-4.mp4',
+];
 
 export function Home() {
+  const [activeHeroVideo, setActiveHeroVideo] = useState(0);
   const featuredEntries = rankEntries(entries).slice(0, 4);
   const creators = getAwardCreators().slice(0, 3);
   const featured = featuredEntries[0];
@@ -20,10 +28,28 @@ export function Home() {
   const featuredCategory = featured ? getCategory(featured.categoryId) : undefined;
   const featuredArtUrl = artworkUrl(featuredWork?.image);
 
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveHeroVideo((current) => (current + 1) % heroVideos.length);
+    }, 9000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   return (
     <>
       <section className="awards-hero creator-hero">
-        <video className="hero-video" src="/media/awards-hero-1080.mp4" autoPlay muted loop playsInline poster="/media/awards-stage.webp" aria-hidden="true" />
+        <video
+          key={heroVideos[activeHeroVideo]}
+          className="hero-video"
+          src={heroVideos[activeHeroVideo]}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/media/awards-stage.webp"
+          aria-hidden="true"
+        />
         <div className="hero-shade" />
         <div className="hero-content">
           <span className="eyebrow">Certifyd Awards</span>
