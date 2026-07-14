@@ -16,7 +16,7 @@ export function Nominate() {
       <p className="lead">Tell us about a creator, work, collaboration, platform, provider, or technical contribution that made a meaningful impact.</p>
       <p className="muted">Supporting links help us understand the work, confirm credits, and recognize everyone involved.</p>
       <form className="glass-card nomination-form" onSubmit={onSubmit}>
-        <label>Work, creator, collaboration, or contribution<input required name="title" placeholder="Godspeed, Beatify Group, a producer, a platform, etc." /></label>
+        <label>Work, creator, collaboration, or contribution<input required name="title" placeholder="Godspeed, a producer, a platform, etc." /></label>
         <label>Creator or contributor handle<input required name="handle" placeholder="@creator or contributor name" /></label>
         <label>Category<select required name="category"><option value="">Choose a category</option>{categories.map((category) => <option key={category.id}>{category.title}</option>)}</select></label>
         <label>Public work, profile, or supporting URL<input required name="origin" type="url" placeholder="https://certifyd.example.com/buy/..." /></label>

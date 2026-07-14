@@ -7,7 +7,7 @@ const filters: Array<AwardGroup | 'all'> = ['all', 'major', 'music', 'creator-in
 const labels: Record<AwardGroup | 'all', string> = {
   all: 'All',
   major: 'Signature',
-  music: 'Music and audio',
+  music: 'Music',
   'creator-integrity': 'Credits and trust',
   community: 'Community',
   innovation: 'Innovation',

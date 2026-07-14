@@ -27,8 +27,8 @@ export function Home() {
         <div className="hero-shade" />
         <div className="hero-content">
           <span className="eyebrow">Certifyd Awards</span>
-          <h1>Recognition<br />Backed by Proof.</h1>
-          <p>Creators. Work. Credits. Proof.</p>
+          <h1>Certifyd<br />Awards</h1>
+          <p>Creators. Work. Credits. Culture.</p>
           <div className="hero-actions">
             <Link className="primary-action" to="/music">Explore the Awards</Link>
             <Link className="secondary-action" to="/nominate">Submit a Nomination</Link>
@@ -37,7 +37,7 @@ export function Home() {
         <aside className="hero-award-visual" aria-label="Certifyd Awards trophy concept">
           <img src="/media/awards-trophy-crystal-20260714.webp" alt="Certifyd Awards crystal globe trophy" />
           <div className="hero-score-panel human-proof-panel">
-            <span>Recognition backed by proof</span>
+            <span>Certifyd Awards</span>
             <p>Great work first. Evidence close behind.</p>
           </div>
         </aside>
@@ -129,7 +129,7 @@ export function Home() {
 
       <section className="content-section scoring-showcase warm-scoring">
         <div>
-          <span className="eyebrow">Recognition You Can Understand</span>
+          <span className="eyebrow">Recognition Backed by Proof</span>
           <h2>Clear signals. Human judgment.</h2>
         </div>
         {featured ? <ScoreBreakdown scoring={featured.scoring} /> : null}

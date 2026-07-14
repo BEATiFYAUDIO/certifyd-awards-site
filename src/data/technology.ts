@@ -101,15 +101,6 @@ export const technologyCategories: TechnicalCategory[] = [
 
 export const technicalProviders: TechnicalProvider[] = [
   {
-    id: 'provider-beatify-node',
-    slug: 'beatify-group',
-    name: 'Beatify Group',
-    type: 'Founding Certifyd node operator',
-    summary: 'Operates a public creator node with identity, content, commerce, settlement, and proof roles for creator-owned publishing and support.',
-    nodeOrigin: 'https://certifyd.beatifygroup.com',
-    verificationStatus: 'Preview Ranking',
-  },
-  {
     id: 'provider-certifyd-creator-node',
     slug: 'certifyd-creator',
     name: 'Certifyd Creator',
@@ -122,15 +113,6 @@ export const technicalProviders: TechnicalProvider[] = [
 
 export const technicalRankings: TechnicalRanking[] = [
   {
-    id: 'rank-network-partner-beatify',
-    title: 'Network Partner of the Year',
-    categorySlug: 'network-partner-of-the-year',
-    metricName: 'Network participation',
-    value: '6 roles',
-    providerId: 'provider-beatify-node',
-    source: { label: 'Network map preview', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Beatify Group advertises creator, identity, content, commerce, settlement, and proof roles. This matters because creators need more than hosting: they need publish, verify, sell, and get paid paths.' },
-  },
-  {
     id: 'rank-network-partner-certifyd',
     title: 'Network Partner of the Year',
     categorySlug: 'network-partner-of-the-year',
@@ -138,15 +120,6 @@ export const technicalRankings: TechnicalRanking[] = [
     value: '6 roles',
     providerId: 'provider-certifyd-creator-node',
     source: { label: 'Network map preview', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Certifyd Creator advertises creator, identity, content, commerce, settlement, and proof roles. This supports creator-owned commerce without forcing creators into a single closed platform.' },
-  },
-  {
-    id: 'rank-public-node-beatify',
-    title: 'Public Node Excellence',
-    categorySlug: 'public-node-excellence',
-    metricName: 'Published works hosted',
-    value: '18 works',
-    providerId: 'provider-beatify-node',
-    source: { label: 'Public discovery preview', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Published works hosted is shown as a creator-facing measure: more available works means more creator inventory fans can discover, inspect, and support.' },
   },
   {
     id: 'rank-public-node-certifyd',
@@ -158,15 +131,6 @@ export const technicalRankings: TechnicalRanking[] = [
     source: { label: 'Public discovery preview', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Published works hosted is treated as creator impact, not raw infrastructure trivia: it reflects how much work can be surfaced and routed back to its creator node.' },
   },
   {
-    id: 'rank-community-node-beatify',
-    title: 'Community Node Award',
-    categorySlug: 'community-node-award',
-    metricName: 'Proof records maintained',
-    value: '8 proofs',
-    providerId: 'provider-beatify-node',
-    source: { label: 'Network map preview', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Proof records help fans and collaborators understand who published work, who contributed, and how commerce or access should be verified.' },
-  },
-  {
     id: 'rank-reliability-certifyd',
     title: 'Network Reliability Award',
     categorySlug: 'network-reliability-award',
@@ -176,15 +140,6 @@ export const technicalRankings: TechnicalRanking[] = [
     source: { label: 'Network map preview', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Reachability matters because creators lose discovery and commerce opportunities when their public node cannot be reached.' },
   },
   {
-    id: 'rank-discovery-beatify',
-    title: 'Discovery Excellence Award',
-    categorySlug: 'discovery-excellence-award',
-    metricName: 'Successful discovery routes',
-    value: 'Live',
-    providerId: 'provider-beatify-node',
-    source: { label: 'Public discovery preview', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Discovery routing helps fans find a work and return to the correct creator-owned origin for proof, playback, or support.' },
-  },
-  {
     id: 'rank-identity-certifyd',
     title: 'Identity Excellence Award',
     categorySlug: 'identity-excellence-award',
@@ -192,15 +147,6 @@ export const technicalRankings: TechnicalRanking[] = [
     value: '12 profiles',
     providerId: 'provider-certifyd-creator-node',
     source: { label: 'Profile preview data', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Creator profiles hosted is presented because identity is how creators carry attribution, trust, and commerce context across the network.' },
-  },
-  {
-    id: 'rank-commerce-beatify',
-    title: 'Creator Commerce Provider',
-    categorySlug: 'creator-commerce-provider-award',
-    metricName: 'Commerce readiness',
-    value: 'Limited',
-    providerId: 'provider-beatify-node',
-    source: { label: 'Network map preview', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Commerce readiness is disclosed with context. Limited status still matters because the node advertises commerce/settlement capability while the network remains early.' },
   },
 ];
 

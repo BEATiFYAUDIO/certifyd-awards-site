@@ -31,7 +31,7 @@ export function Technology() {
         <div className="section-heading">
           <span className="eyebrow">Preview recognition</span>
           <h2>Founding node nominees.</h2>
-          <p className="muted">Beatify Group and Certifyd Creator are the two active network nodes.</p>
+          <p className="muted">Active network nodes are shown when preview data is ready for public review.</p>
         </div>
         <div className="ranking-grid">
           {technicalRankings.map((ranking) => {
