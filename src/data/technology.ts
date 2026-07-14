@@ -157,3 +157,8 @@ export function getTechnologyCategory(slug: string) {
 export function getTechnicalProvider(id: string) {
   return technicalProviders.find((provider) => provider.id === id || provider.slug === id);
 }
+
+const technologyAwardImageSlugs = new Set(technologyCategories.map((category) => category.slug));
+export function getTechnologyAwardImageUrl(category: TechnicalCategory) {
+  return technologyAwardImageSlugs.has(category.slug) ? `/media/technology-categories/${category.slug}.webp` : undefined;
+}

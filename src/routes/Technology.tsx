@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { technologyCategories, technicalRankings, getTechnicalProvider, networkAwardIntro, networkParticipationCopy } from '../data/technology';
+import { technologyCategories, technicalRankings, getTechnicalProvider, getTechnologyAwardImageUrl, networkAwardIntro, networkParticipationCopy } from '../data/technology';
 
 export function Technology() {
   const families = Array.from(new Set(technologyCategories.map((category) => category.family)));
@@ -21,6 +21,7 @@ export function Technology() {
           <div className="category-strip">
             {technologyCategories.filter((category) => category.family === family).map((category) => (
               <Link className="large-category-tile" to={`/technology/categories/${category.slug}`} key={category.id}>
+                {getTechnologyAwardImageUrl(category) ? <img className="category-award-image technology-award-image" src={getTechnologyAwardImageUrl(category)} alt="" loading="lazy" /> : null}
                 <h3>{category.title}</h3><p>{category.summary}</p>
               </Link>
             ))}

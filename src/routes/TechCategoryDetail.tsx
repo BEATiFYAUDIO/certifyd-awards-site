@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { getTechnologyCategory, technicalRankings, getTechnicalProvider } from '../data/technology';
+import { getTechnologyCategory, technicalRankings, getTechnicalProvider, getTechnologyAwardImageUrl } from '../data/technology';
 import { NotFound } from './NotFound';
 
 export function TechCategoryDetail() {
@@ -7,12 +7,18 @@ export function TechCategoryDetail() {
   const category = categoryId ? getTechnologyCategory(categoryId) : undefined;
   if (!category) return <NotFound />;
   const rankings = technicalRankings.filter((ranking) => ranking.categorySlug === category.slug);
+  const imageUrl = getTechnologyAwardImageUrl(category);
 
   return (
     <section className="page-section detail-page">
-      <span className="eyebrow">Creator Innovation · {category.family}</span>
-      <h1>{category.title}</h1>
-      <p className="lead">{category.summary}</p>
+      <div className="category-detail-hero">
+        <div>
+          <span className="eyebrow">Creator Innovation · {category.family}</span>
+          <h1>{category.title}</h1>
+          <p className="lead">{category.summary}</p>
+        </div>
+        {imageUrl ? <img className="category-detail-award technology-award-image" src={imageUrl} alt={`${category.title} award trophy`} /> : null}
+      </div>
       <div className="category-detail-grid">
         <article className="glass-card"><span className="eyebrow">Who or what is recognized</span><ul>{category.eligibility.map((item) => <li key={item}>{item}</li>)}</ul></article>
         <article className="glass-card"><span className="eyebrow">Evidence considered</span><ul>{category.metrics.map((item) => <li key={item}>{item}</li>)}</ul></article>
