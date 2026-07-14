@@ -58,6 +58,7 @@ const routes = [
   'winners',
   'winners/2026',
   'winners/2025',
+  'founders-award',
   'methodology',
   'nominate',
   'about',

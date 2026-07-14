@@ -1,4 +1,4 @@
-import type { AwardCategory, AwardEntry, AwardYear, CreativeWork, Creator, VotingRound } from '../types';
+import type { AwardCategory, AwardEntry, AwardYear, CreativeWork, Creator, HonoraryAward, VotingRound } from '../types';
 
 export const awardYears: AwardYear[] = [
   {
@@ -20,6 +20,38 @@ export const awardYears: AwardYear[] = [
     ceremonyDate: 'Archived sample',
   },
 ];
+
+export const honoraryAwards: HonoraryAward[] = [
+  {
+    id: 'honor-vassal-benford-founders-award',
+    slug: 'founders-award',
+    name: "The Vassal Benford Founders' Award",
+    shortName: "Founders' Award",
+    description: 'The highest non-competitive honor presented by the Certifyd Awards, recognizing a lifetime of leadership, creativity, innovation, mentorship, and service to creators and culture.',
+    status: 'not-presented',
+    selectionModel: 'Formal Certifyd Awards Council review process',
+    values: ['Excellence', 'Leadership', 'Innovation', 'Ownership', 'Integrity', 'Legacy'],
+    eligibility: [
+      'Artists',
+      'Producers',
+      'Songwriters',
+      'Engineers',
+      'Executives',
+      'Entrepreneurs',
+      'Publishers',
+      'Educators',
+      'Technologists',
+      'Philanthropists',
+      'Cultural leaders',
+      'Advocates for creator ownership and independence',
+    ],
+    recipientIds: [],
+    presentationHistory: [],
+    citation: null,
+  },
+];
+
+export const foundersAward = honoraryAwards[0];
 
 export const creators: Creator[] = [
   {

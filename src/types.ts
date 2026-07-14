@@ -100,6 +100,21 @@ export interface AwardYear {
   ceremonyDate: string;
 }
 
+export interface HonoraryAward {
+  id: string;
+  slug: string;
+  name: string;
+  shortName: string;
+  description: string;
+  status: 'established' | 'not-presented' | 'announced' | 'presented';
+  selectionModel: string;
+  values: string[];
+  eligibility: string[];
+  recipientIds: string[];
+  presentationHistory: string[];
+  citation: string | null;
+}
+
 export interface VotingRound {
   id: string;
   title: string;

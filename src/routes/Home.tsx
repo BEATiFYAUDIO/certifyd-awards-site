@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { AwardCreatorCard } from '../components/awards/AwardCreatorCard';
 import { NomineeCard } from '../components/awards/NomineeCard';
 import { ScoreBreakdown } from '../components/awards/ScoreBreakdown';
-import { entries, getCategory, getCreator, getWork } from '../data/awards';
+import { entries, foundersAward, getCategory, getCreator, getWork } from '../data/awards';
 import { technicalRankings, getTechnicalProvider } from '../data/technology';
 import { getAwardCreators } from '../lib/creatorAdapter';
 import { entryScore, formatScore, rankEntries } from '../lib/scoring';
@@ -85,6 +85,23 @@ export function Home() {
             <Link to="/technology">Explore Creator Innovation</Link>
           </article>
         </div>
+      </section>
+
+      <section className="founders-home-section">
+        <div className="founders-home-copy">
+          <span className="eyebrow">The Highest Honor</span>
+          <h2>The Vassal Benford<br />Founders&apos; Award</h2>
+          <p>Presented only in exceptional circumstances, the Vassal Benford Founders&apos; Award recognizes an individual whose lifetime of leadership, creativity, innovation, mentorship, and service has fundamentally advanced creators, music, culture, and the wider creative community.</p>
+          <p>Unlike competitive categories, this honor is not defined by a single work or a single year. It recognizes those whose vision opened doors for others and helped shape the future of creative independence.</p>
+          <strong>Presented only when truly earned.</strong>
+          <div className="story-actions">
+            <Link className="primary-action" to="/founders-award">Learn About the Founders&apos; Award</Link>
+            <span className="status-pill preview">Non-competitive honor</span>
+          </div>
+        </div>
+        <figure className="founders-home-visual" aria-label={foundersAward.name}>
+          <img src="/media/awards-trophy.webp" alt="Certifyd Awards trophy concept" />
+        </figure>
       </section>
 
       <section className="content-section">

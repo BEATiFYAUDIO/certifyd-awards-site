@@ -24,8 +24,8 @@ export function Layout() {
       </header>
       <main><Outlet /></main>
       <footer className="site-footer">
-        <div><strong>Certifyd Awards Weekend</strong><p>Creative Excellence and Creator Innovation. Preview data is clearly labeled; live voting is not active.</p></div>
-        <div className="footer-links"><NavLink to="/music">Creative Excellence</NavLink><NavLink to="/technology">Creator Innovation</NavLink><NavLink to="/methodology">Methodology</NavLink><NavLink to="/about">About</NavLink></div>
+        <div><strong>Certifyd Awards Weekend</strong><p>Creative Excellence, Creator Innovation, and honorary recognition. Preview data is clearly labeled; live voting is not active.</p></div>
+        <div className="footer-links"><NavLink to="/music">Creative Excellence</NavLink><NavLink to="/technology">Creator Innovation</NavLink><NavLink to="/founders-award">Founders&apos; Award</NavLink><NavLink to="/methodology">Methodology</NavLink><NavLink to="/about">About</NavLink></div>
       </footer>
     </div>
   );

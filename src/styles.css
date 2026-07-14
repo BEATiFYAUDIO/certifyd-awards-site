@@ -1470,3 +1470,268 @@ small {
 .detail-art {
   overflow: hidden;
 }
+
+.founders-home-section,
+.founders-page,
+.honorary-archive-note,
+.methodology-honor-note {
+  width: min(1320px, calc(100% - 40px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.founders-home-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(280px, 0.7fr);
+  gap: clamp(24px, 4vw, 54px);
+  align-items: center;
+  padding: 62px clamp(22px, 4vw, 52px);
+  border: 1px solid rgba(247, 147, 26, 0.28);
+  border-radius: 42px;
+  background:
+    radial-gradient(circle at 78% 24%, rgba(247, 147, 26, 0.2), transparent 26rem),
+    radial-gradient(circle at 8% 82%, rgba(84, 165, 240, 0.16), transparent 28rem),
+    linear-gradient(145deg, rgba(27, 34, 48, 0.92), rgba(8, 8, 18, 0.92));
+  box-shadow: 0 34px 120px rgba(0, 0, 0, 0.38);
+}
+
+.founders-home-copy h2 {
+  font-size: clamp(2.6rem, 6.4vw, 6.6rem);
+  line-height: 0.88;
+  letter-spacing: -0.072em;
+  margin: 12px 0 24px;
+}
+
+.founders-home-copy,
+.founders-hero-copy {
+  min-width: 0;
+}
+
+.founders-home-copy p {
+  max-width: 760px;
+  color: #e4ebf6;
+}
+
+.founders-home-copy > strong {
+  display: block;
+  color: var(--orange-highlight);
+  margin-top: 12px;
+}
+
+.founders-home-visual {
+  margin: 0;
+}
+
+.founders-home-visual img,
+.founders-hero-visual img {
+  display: block;
+  width: 100%;
+  border-radius: 34px;
+  border: 1px solid rgba(84, 165, 240, 0.24);
+  box-shadow: 0 34px 120px rgba(0, 0, 0, 0.48), 0 0 72px rgba(247, 147, 26, 0.12);
+}
+
+.founders-page {
+  padding: 58px 0 72px;
+}
+
+.founders-hero,
+.founders-section,
+.founders-closing,
+.founders-empty-state {
+  border: 1px solid rgba(84, 165, 240, 0.18);
+  border-radius: 38px;
+  background: linear-gradient(145deg, rgba(27, 34, 48, 0.9), rgba(8, 10, 18, 0.86));
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+}
+
+.founders-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 460px);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
+  padding: clamp(26px, 5vw, 64px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 82% 20%, rgba(247, 147, 26, 0.18), transparent 24rem),
+    radial-gradient(circle at 10% 76%, rgba(84, 165, 240, 0.16), transparent 28rem),
+    linear-gradient(145deg, rgba(27, 34, 48, 0.92), rgba(8, 10, 18, 0.9));
+}
+
+.founders-hero h1 {
+  font-size: clamp(3.3rem, 7.8vw, 8.2rem);
+  line-height: 0.88;
+  letter-spacing: -0.075em;
+  margin: 14px 0 24px;
+}
+
+.founders-hero h1 span {
+  display: block;
+}
+
+.founders-section {
+  margin-top: 22px;
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.founders-split {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.44fr) minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 48px);
+}
+
+.founders-pill-grid,
+.founders-value-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.founders-pill-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.founders-pill-grid span {
+  border: 1px solid rgba(84, 165, 240, 0.22);
+  border-radius: 999px;
+  padding: 11px 13px;
+  background: rgba(255, 255, 255, 0.055);
+  font-weight: 850;
+  color: #edf6ff;
+}
+
+.founders-value-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.founders-value-grid .glass-card {
+  min-height: 110px;
+  display: grid;
+  place-items: center start;
+}
+
+.founders-callout,
+.founders-inscription {
+  border-left: 3px solid var(--orange);
+  margin: 24px 0 0;
+  padding: 18px 20px;
+  border-radius: 0 22px 22px 0;
+  background: rgba(247, 147, 26, 0.1);
+}
+
+.founders-callout strong,
+.founders-inscription p {
+  display: block;
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+.founders-principles {
+  margin: 0;
+  padding-left: 20px;
+  color: #dce8f6;
+  line-height: 1.85;
+}
+
+.founders-empty-state,
+.founders-closing {
+  margin-top: 22px;
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.founders-empty-state {
+  border-style: dashed;
+}
+
+.founders-closing {
+  text-align: center;
+}
+
+.founders-closing h2 {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.honorary-archive-note,
+.methodology-honor-note {
+  margin-top: 28px;
+  margin-bottom: 28px;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid rgba(247, 147, 26, 0.24);
+  border-radius: 30px;
+  background: linear-gradient(145deg, rgba(27, 34, 48, 0.92), rgba(9, 12, 22, 0.82));
+}
+
+.honorary-archive-note {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.honorary-archive-note h2,
+.methodology-honor-note h2 {
+  font-size: clamp(1.65rem, 3vw, 2.6rem);
+  margin: 8px 0 10px;
+}
+
+@media (max-width: 900px) {
+  .founders-home-section,
+  .founders-hero,
+  .founders-split,
+  .honorary-archive-note {
+    grid-template-columns: 1fr;
+  }
+
+  .founders-pill-grid,
+  .founders-value-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .honorary-archive-note {
+    display: grid;
+    align-items: start;
+  }
+}
+
+@media (max-width: 720px) {
+  .founders-home-section,
+  .founders-page,
+  .honorary-archive-note,
+  .methodology-honor-note {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .founders-home-section,
+  .founders-page {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .founders-home-section,
+  .founders-hero,
+  .founders-section,
+  .founders-empty-state,
+  .founders-closing,
+  .honorary-archive-note,
+  .methodology-honor-note {
+    border-radius: 22px;
+  }
+
+  .founders-home-copy h2,
+  .founders-hero h1 {
+    font-size: clamp(2.15rem, 9vw, 2.65rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  .founders-pill-grid,
+  .founders-value-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .founders-home-visual img,
+  .founders-hero-visual img {
+    border-radius: 22px;
+  }
+}

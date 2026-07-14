@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { About } from './routes/About';
 import { CategoryDetail } from './routes/CategoryDetail';
+import { FoundersAward } from './routes/FoundersAward';
 import { Home } from './routes/Home';
 import { LegacyCategoryRedirect } from './routes/LegacyCategoryRedirect';
 import { Methodology } from './routes/Methodology';
@@ -39,6 +40,7 @@ export function App() {
         <Route path="nominees/:entryId" element={<NomineeDetail />} />
         <Route path="winners" element={<Winners />} />
         <Route path="winners/:year" element={<Winners />} />
+        <Route path="founders-award" element={<FoundersAward />} />
         <Route path="methodology" element={<Methodology />} />
         <Route path="nominate" element={<Nominate />} />
         <Route path="about" element={<About />} />
