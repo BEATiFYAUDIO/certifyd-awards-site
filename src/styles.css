@@ -2119,8 +2119,8 @@ h2,
 }
 
 .awards-hero.creator-hero {
-  grid-template-columns: minmax(500px, 1fr) minmax(360px, 0.78fr) !important;
-  gap: clamp(10px, 1.8vw, 26px) !important;
+  grid-template-columns: minmax(640px, 1.18fr) minmax(340px, 0.72fr) !important;
+  gap: clamp(0px, 0.8vw, 12px) !important;
 }
 
 .awards-hero.creator-hero .hero-award-visual {
@@ -2128,9 +2128,9 @@ h2,
 }
 
 .awards-hero.creator-hero .hero-content h1 {
-  max-width: 760px !important;
-  font-size: clamp(5.8rem, 9.2vw, 9.4rem) !important;
-  line-height: 0.88 !important;
+  max-width: 920px !important;
+  font-size: clamp(7.4rem, 11.4vw, 12rem) !important;
+  line-height: 0.82 !important;
 }
 
 .hero-award-visual img {
