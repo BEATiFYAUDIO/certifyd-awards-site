@@ -8,11 +8,11 @@ export function WinnerCard({ entry }: { entry: AwardEntry }) {
   const category = getCategory(entry.categoryId);
   return (
     <article className="glass-card winner-card">
-      <VerificationBadge label="sample credential" />
+      <VerificationBadge label="live signal" />
       <h3>{category?.title}</h3>
       <p>{entry.title} · {creator?.name}</p>
       <strong>{formatScore(entryScore(entry))}</strong>
-      <small>Preview score calculated from seeded proof data.</small>
+      <small>Score calculated from current Fan PWA discovery signals.</small>
     </article>
   );
 }

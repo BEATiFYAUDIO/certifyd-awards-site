@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { entryScore, formatScore } from '../../lib/scoring';
 import { formatSats } from '../../lib/formatting';
 import { getCategory, getCreator, getWork } from '../../data/awards';
 import type { AwardEntry } from '../../types';
@@ -17,8 +16,9 @@ export function NomineeCard({ entry }: { entry: AwardEntry }) {
   const creator = getCreator(entry.creatorId);
   const work = getWork(entry.workId);
   const category = getCategory(entry.categoryId);
-  const artUrl = artworkUrl(work?.image);
   const liveEntry = entry as AwardEntry & Partial<FanHydratedEntry>;
+  const artUrl = liveEntry.fanItem?.coverUrl || artworkUrl(work?.image);
+  const creatorLabel = liveEntry.fanItem?.creatorHandle ? `@${String(liveEntry.fanItem.creatorHandle).replace(/^@+/, '')}` : creator?.name;
 
   return (
     <Link className="glass-card nominee-card creator-first-card" to={`/nominees/${entry.id}`}>
@@ -32,7 +32,7 @@ export function NomineeCard({ entry }: { entry: AwardEntry }) {
           {liveEntry.liveRankSource === 'fan-pwa' ? <span>Live Fan PWA</span> : null}
         </div>
         <h3>{entry.title}</h3>
-        <p className="creator-line">{creator?.name}</p>
+        <p className="creator-line">{creatorLabel}</p>
         <p>{entry.summary}</p>
         <div className="proof-stack card-proof-stack">
           <span>{creator?.verified ? 'Verified creator' : 'Identity pending'}</span>
@@ -41,7 +41,7 @@ export function NomineeCard({ entry }: { entry: AwardEntry }) {
           <span>Community support</span>
         </div>
         <div className="supporting-metrics">
-          <span>{liveEntry.liveRankSource === 'fan-pwa' ? 'Live fan signal' : `Preview score: ${formatScore(entryScore(entry))}`}</span>
+          <span>Live fan signal</span>
           <span>Community support: {liveEntry.fanSupportScore ? `${liveEntry.fanSupportScore} public signals` : formatSats(entry.fanSupportSats)}</span>
         </div>
         <strong className="story-link-label">View the Story</strong>

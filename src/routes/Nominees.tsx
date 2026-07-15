@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react';
 import { NomineeCard } from '../components/awards/NomineeCard';
-import { categories, entries, getCreator, getWork } from '../data/awards';
+import { categories, getCreator, getWork } from '../data/awards';
 import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
 
 export function Nominees() {
   const [query, setQuery] = useState('');
   const [categoryId, setCategoryId] = useState('all');
-  const { entries: hydratedEntries } = useFanHydratedEntries(entries);
+  const { entries: hydratedEntries } = useFanHydratedEntries();
   const visible = useMemo(() => hydratedEntries.filter((entry) => {
     const creator = getCreator(entry.creatorId);
     const work = getWork(entry.workId);
@@ -19,7 +19,7 @@ export function Nominees() {
   return (
     <section className="page-section">
       <span className="eyebrow">Nominees directory</span>
-      <h1>Browse works, creators, proofs, and preview scores.</h1>
+      <h1>Browse live works, creators, proofs, and Fan PWA scores.</h1>
       <div className="directory-tools">
         <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search nominees, creators, genres..." />
         <select value={categoryId} onChange={(event) => setCategoryId(event.target.value)}>
@@ -28,7 +28,7 @@ export function Nominees() {
         </select>
       </div>
       <div className="nominee-list two-column">
-        {visible.map((entry) => <NomineeCard key={entry.id} entry={entry} />)}
+        {visible.length ? visible.map((entry) => <NomineeCard key={entry.id} entry={entry} />) : <p className="muted">No live Fan PWA entries match this view right now.</p>}
       </div>
     </section>
   );

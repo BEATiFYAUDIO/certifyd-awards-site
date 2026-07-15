@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 import { AwardCreatorCard } from '../components/awards/AwardCreatorCard';
 import { NomineeCard } from '../components/awards/NomineeCard';
 import { ScoreBreakdown } from '../components/awards/ScoreBreakdown';
-import { entries, foundersAward, getCategory, getCreator, getWork } from '../data/awards';
-import { technicalRankings, getTechnicalProvider } from '../data/technology';
-import { getAwardCreators } from '../lib/creatorAdapter';
-import { entryScore, formatScore } from '../lib/scoring';
+import { foundersAward, getCategory, getCreator, getWork } from '../data/awards';
+import { getTechnicalProvider } from '../data/technology';
 import { artworkUrl } from '../lib/artwork';
 import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
+import { creatorsFromFanEntries, technologyRankingsFromFanEntries } from '../lib/fanDiscovery';
 
 const creativeCategories = ['Work of the Year', 'Creator of the Year', 'Song of the Year', 'Album of the Year', 'Video of the Year', 'Podcast of the Year', 'Spoken Word of the Year', 'Independent Creator', 'Collaboration of the Year', 'Live Performance', 'Fan-Supported Work', 'Cultural Impact'];
 const innovationCategories = ['Network Partner of the Year', 'Public Node Excellence', 'Creator Infrastructure Award', 'Publishing Excellence Award', 'Discovery Excellence Award', 'Identity Excellence Award', 'Community Node Award', 'Open Network Leadership Award', 'Verification Excellence Award', 'Creator Commerce Provider'];
@@ -21,14 +20,15 @@ const heroVideos = [
 
 export function Home() {
   const [activeHeroVideo, setActiveHeroVideo] = useState(0);
-  const { entries: hydratedEntries, loading: fanHydrating, updatedAt: fanUpdatedAt } = useFanHydratedEntries(entries);
+  const { entries: hydratedEntries, loading: fanHydrating, updatedAt: fanUpdatedAt } = useFanHydratedEntries();
   const featuredEntries = hydratedEntries.slice(0, 4);
-  const creators = getAwardCreators().slice(0, 3);
+  const creators = creatorsFromFanEntries(hydratedEntries, 3);
+  const liveTechnologyRankings = technologyRankingsFromFanEntries(hydratedEntries).slice(0, 4);
   const featured = featuredEntries[0];
   const featuredCreator = featured ? getCreator(featured.creatorId) : undefined;
   const featuredWork = featured ? getWork(featured.workId) : undefined;
   const featuredCategory = featured ? getCategory(featured.categoryId) : undefined;
-  const featuredArtUrl = artworkUrl(featuredWork?.image);
+  const featuredArtUrl = featured?.fanItem?.coverUrl || artworkUrl(featuredWork?.image);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -81,18 +81,19 @@ export function Home() {
             <p>{featured.summary}</p>
             <div className="story-meta-list">
               <span>{featuredCreator?.name}</span>
+              {featured.fanItem?.creatorHandle ? <span>@{String(featured.fanItem.creatorHandle).replace(/^@+/, '')}</span> : null}
               <span>{featuredCategory?.title}</span>
               <span>{featured.contributors.length} credited contributors</span>
               <span>Proof available</span>
             </div>
             <div className="story-actions">
               <Link className="secondary-action" to={`/nominees/${featured.id}`}>View the Story</Link>
-              {featuredWork?.publicUrl ? <a className="secondary-action" href={featuredWork.publicUrl} target="_blank" rel="noreferrer">Open Work</a> : null}
+              {featured.fanItem?.buyUrl || featured.fanItem?.publicUrl || featuredWork?.publicUrl ? <a className="secondary-action" href={String(featured.fanItem?.buyUrl || featured.fanItem?.publicUrl || featuredWork?.publicUrl)} target="_blank" rel="noreferrer">Open Work</a> : null}
             </div>
-            <small className="muted">{featured.liveRankSource === 'fan-pwa' ? `Hydrated from Fan PWA${fanUpdatedAt ? ` · ${fanUpdatedAt.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}` : ''}` : fanHydrating ? 'Hydrating Fan PWA signals…' : 'Seeded fallback ranking'}</small>
+            <small className="muted">Live from Fan PWA{fanUpdatedAt ? ` · ${fanUpdatedAt.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}` : ''}</small>
           </div>
         </section>
-      ) : null}
+      ) : fanHydrating ? null : <section className="featured-story-section"><div className="featured-story-copy"><span className="eyebrow">Stories Worth Celebrating</span><h2>No live Fan PWA entries available.</h2><p>Current awards surfaces only show works returned by public Fan PWA discovery.</p></div></section>}
 
       <section className="weekend-section">
         <div className="section-heading centered">
@@ -172,7 +173,7 @@ export function Home() {
           <Link to="/nominees">View nominees</Link>
         </div>
         <div className="creator-awards-grid">
-          {creators.map((creator, index) => <AwardCreatorCard key={creator.id} creator={creator} category={getCategory(featuredEntries[index]?.categoryId ?? '')?.title} score={featuredEntries[index]?.liveRankSource === 'fan-pwa' ? 'Live fan signal' : `Preview score: ${formatScore(entryScore(featuredEntries[index] ?? featuredEntries[0]))}`} />)}
+          {creators.map((creator, index) => <AwardCreatorCard key={creator.id} creator={creator} category={getCategory(featuredEntries[index]?.categoryId ?? '')?.title} score="Live fan signal" />)}
         </div>
       </section>
 
@@ -182,11 +183,11 @@ export function Home() {
           <Link to="/technology">Explore Creator Innovation</Link>
         </div>
         <div className="ranking-grid innovation-ranking-grid">
-          {technicalRankings.map((ranking) => {
+          {liveTechnologyRankings.map((ranking) => {
             const provider = getTechnicalProvider(ranking.providerId);
             return (
               <article className="ranking-card technology-ranking-card" key={ranking.id}>
-                <span className="status-pill preview">{ranking.source.status === 'demonstration' ? 'Demonstration model' : 'Preview ranking'}</span>
+                <span className="status-pill ok">Live Fan PWA</span>
                 <h3>{ranking.title}</h3>
                 <p className="ranking-benefit">{ranking.source.methodology}</p>
                 <div className="ranking-metric">

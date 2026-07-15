@@ -1,6 +1,6 @@
-import { entries, getWork } from '../data/awards';
+import { getCreator, getWork } from '../data/awards';
 import { calculateWeightedScore } from './scoring';
-import type { AwardEntry, CreativeWork } from '../types';
+import type { AwardCreator, AwardEntry, CreativeWork, TechnicalRanking } from '../types';
 
 export type FanDiscoverableItem = {
   contentId?: string;
@@ -167,6 +167,84 @@ function fanDiscoveryScore(item: FanDiscoverableItem): number {
     + itemSortTime(item) / 1_000_000;
 }
 
+function normalizedScore(value: number, max: number): number {
+  if (!Number.isFinite(value) || value <= 0) return 0;
+  return Math.max(0, Math.min(100, (value / max) * 100));
+}
+
+function recencyScore(item: FanDiscoverableItem): number {
+  const sortTime = itemSortTime(item);
+  if (!sortTime) return 0;
+  const days = Math.max(0, (Date.now() - sortTime) / 86_400_000);
+  return Math.max(0, Math.min(100, 100 - days));
+}
+
+function categoryForFanItem(item: FanDiscoverableItem): string {
+  const type = String(item.contentType || '').toLowerCase();
+  if (type === 'song' || type === 'audio') return 'cat-song-year';
+  if (type === 'video') return 'cat-video-year';
+  if (publicSupportScore(item) > 0) return 'cat-fan-supported';
+  return 'cat-work-year';
+}
+
+function creatorIdForFanItem(item: FanDiscoverableItem): string {
+  const handle = String(item.creatorHandle || '').replace(/^@+/, '').toLowerCase();
+  const creator = ['creator-darryl', 'creator-blessedrthe', 'creator-certifyd', 'creator-david']
+    .map((id) => getCreator(id))
+    .find((candidate) => candidate?.handle.replace(/^@+/, '').toLowerCase() === handle);
+  return creator?.id || 'creator-certifyd';
+}
+
+function safeEntryId(item: FanDiscoverableItem): string {
+  const origin = normalizeOrigin(item.publicOrigin).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const contentId = normalizeId(item.contentId || item.sourceContentId || item.id).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  return `fan-${origin}-${contentId}`;
+}
+
+export function fanItemToAwardEntry(item: FanDiscoverableItem): FanHydratedEntry {
+  const support = publicSupportScore(item);
+  const relationship = publicRelationshipScore(item);
+  const recent = recencyScore(item);
+  const posture = publicPostureScore(item);
+  const supportNormalized = normalizedScore(support, 100);
+  const relationshipNormalized = normalizedScore(relationship, 12);
+  const postureNormalized = normalizedScore(posture, 20);
+  const title = String(item.title || 'Untitled work').trim();
+  return {
+    id: safeEntryId(item),
+    year: 2026,
+    categoryId: categoryForFanItem(item),
+    creatorId: creatorIdForFanItem(item),
+    title,
+    summary: String(item.description || `Live Fan PWA entry from ${item.creatorHandle || 'a Certifyd creator'}.`).trim(),
+    contributors: [{ creatorId: creatorIdForFanItem(item), role: 'Creator' }],
+    proofs: [
+      {
+        id: `${safeEntryId(item)}-discovery`,
+        label: 'Fan PWA discovery record',
+        status: 'public',
+        hash: String(item.contentId || item.sourceContentId || item.id || 'fan-pwa'),
+        source: String(item.publicOrigin || 'Fan PWA'),
+      },
+    ],
+    scoring: [
+      { label: 'Support', reason: 'Public support, purchase, unlock, tip, or popularity signal from Fan PWA discovery.', normalizedScore: supportNormalized, weight: 0.35 },
+      { label: 'Recency', reason: 'Freshness from published, created, or updated timestamps.', normalizedScore: recent, weight: 0.25 },
+      { label: 'Relationships', reason: 'Public collaborator, contributor, split, lineage, or connected-work signal.', normalizedScore: relationshipNormalized, weight: 0.25 },
+      { label: 'Availability', reason: 'Reachable public discovery item with commerce or healthy origin signals.', normalizedScore: postureNormalized, weight: 0.15 },
+    ],
+    fanSupportSats: 0,
+    publicVotes: Math.round(support),
+    resultStatus: 'nominee',
+    fanItem: item,
+    fanScore: fanDiscoveryScore(item),
+    fanSupportScore: support,
+    fanRelationshipScore: relationship,
+    fanSortTime: itemSortTime(item),
+    liveRankSource: 'fan-pwa',
+  };
+}
+
 function staticFallbackScore(entry: AwardEntry): number {
   return calculateWeightedScore(entry.scoring);
 }
@@ -224,6 +302,14 @@ function normalizeItem(item: FanDiscoverableItem, origin: string): FanDiscoverab
   };
 }
 
+function isLiveDiscoverableItem(item: FanDiscoverableItem): boolean {
+  const status = String(item.discoveryStatus || '').trim().toLowerCase();
+  const health = String(item.originHealth || '').trim().toLowerCase();
+  if (status === 'unpublished' || status === 'unavailable' || status === 'offline') return false;
+  if (health === 'failed' || health === 'cooldown' || health === 'offline') return false;
+  return Boolean(normalizeId(item.contentId || item.sourceContentId || item.id));
+}
+
 export async function fetchFanDiscoverableItems(): Promise<FanDiscoverableItem[]> {
   const now = Date.now();
   if (cache && cache.expiresAt > now) return cache.promise;
@@ -249,6 +335,7 @@ export async function fetchFanDiscoverableItems(): Promise<FanDiscoverableItem[]
     for (const page of pages) {
       if (page.status !== 'fulfilled') continue;
       for (const item of page.value) {
+        if (!isLiveDiscoverableItem(item)) continue;
         const key = itemKeys(item)[0];
         if (!key || seen.has(key)) continue;
         seen.add(key);
@@ -287,15 +374,92 @@ export function rankHydratedEntries(baseEntries: AwardEntry[], fanItems: FanDisc
   });
 }
 
-export function getSeededRankedEntries(): FanHydratedEntry[] {
-  return entries
-    .map((entry) => ({
-      ...entry,
-      fanScore: 0,
-      fanSupportScore: 0,
-      fanRelationshipScore: 0,
-      fanSortTime: 0,
-      liveRankSource: 'seeded-awards-data' as const,
-    }))
-    .sort((a, b) => staticFallbackScore(b) - staticFallbackScore(a));
+export function rankFanAwardEntries(fanItems: FanDiscoverableItem[]): FanHydratedEntry[] {
+  return fanItems
+    .map(fanItemToAwardEntry)
+    .sort((a, b) => {
+      if (a.fanScore !== b.fanScore) return b.fanScore - a.fanScore;
+      if (a.fanSupportScore !== b.fanSupportScore) return b.fanSupportScore - a.fanSupportScore;
+      if (a.fanSortTime !== b.fanSortTime) return b.fanSortTime - a.fanSortTime;
+      return a.id.localeCompare(b.id);
+    });
+}
+
+export function creatorsFromFanEntries(liveEntries: FanHydratedEntry[], limit = 6): AwardCreator[] {
+  const grouped = new Map<string, FanHydratedEntry[]>();
+  for (const entry of liveEntries) {
+    const item = entry.fanItem;
+    const handle = String(item?.creatorHandle || 'certifyd').replace(/^@+/, '').toLowerCase();
+    const origin = normalizeOrigin(item?.publicOrigin);
+    const key = `${origin}::${handle}`;
+    grouped.set(key, [...(grouped.get(key) || []), entry]);
+  }
+
+  return [...grouped.entries()]
+    .sort((a, b) => {
+      const scoreFor = (rows: FanHydratedEntry[]) => rows.reduce((sum, entry) => sum + entry.fanScore, 0);
+      return scoreFor(b[1]) - scoreFor(a[1]);
+    })
+    .slice(0, limit)
+    .map(([key, rows]) => {
+      const first = rows[0];
+      const item = first.fanItem;
+      const handle = String(item?.creatorHandle || 'certifyd').replace(/^@+/, '');
+      const origin = String(item?.publicOrigin || 'https://certifyd.me').replace(/\/+$/, '');
+      const profileUrl = `${origin}/u/${encodeURIComponent(handle)}`;
+      return {
+        id: key,
+        slug: handle,
+        displayName: handle || 'Certifyd creator',
+        profileUrl,
+        avatarUrl: typeof item?.creatorAvatarUrl === 'string' ? item.creatorAvatarUrl : undefined,
+        wallpaperUrl: typeof item?.coverUrl === 'string' ? item.coverUrl : undefined,
+        verified: true,
+        verificationLabel: 'Live Fan PWA creator',
+        primaryRole: 'Creator',
+        nominatedWorks: rows.map((entry) => entry.title),
+        source: 'creator-node',
+        sourceUpdatedAt: new Date().toISOString(),
+        accentColor: '#ff9f0a',
+      };
+    });
+}
+
+export function technologyRankingsFromFanEntries(liveEntries: FanHydratedEntry[]): TechnicalRanking[] {
+  const grouped = new Map<string, FanHydratedEntry[]>();
+  for (const entry of liveEntries) {
+    const origin = String(entry.fanItem?.publicOrigin || '').replace(/\/+$/, '');
+    if (!origin) continue;
+    grouped.set(origin, [...(grouped.get(origin) || []), entry]);
+  }
+
+  return [...grouped.entries()]
+    .map(([origin, rows]) => {
+      const creators = new Set(rows.map((entry) => String(entry.fanItem?.creatorHandle || '').replace(/^@+/, '').toLowerCase()).filter(Boolean));
+      const support = rows.reduce((sum, entry) => sum + entry.fanSupportScore, 0);
+      const latest = Math.max(...rows.map((entry) => entry.fanSortTime), 0);
+      const score = rows.length * 1_000_000 + creators.size * 100_000 + support * 10_000 + latest / 1_000_000;
+      return {
+        id: `live-origin-${origin.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()}`,
+        title: new URL(origin).hostname,
+        categorySlug: 'public-node-excellence',
+        metricName: 'Live works discoverable',
+        value: `${rows.length} ${rows.length === 1 ? 'work' : 'works'}`,
+        providerId: 'provider-certifyd-creator-node',
+        source: {
+          label: 'Fan PWA discovery',
+          status: 'verified',
+          lastUpdatedAt: new Date().toISOString().slice(0, 10),
+          period: 'Live public discovery',
+          methodology: `${creators.size} creator ${creators.size === 1 ? 'profile' : 'profiles'} currently returning public discoverable works. Score uses live works, creator coverage, public support, and latest activity.`,
+        },
+        __score: score,
+      } as TechnicalRanking & { __score: number };
+    })
+    .sort((a, b) => b.__score - a.__score)
+    .map((ranking) => {
+      const { __score, ...publicRanking } = ranking;
+      void __score;
+      return publicRanking;
+    });
 }

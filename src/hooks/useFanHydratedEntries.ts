@@ -2,15 +2,15 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AwardEntry } from '../types';
 import {
   fetchFanDiscoverableItems,
-  getSeededRankedEntries,
+  rankFanAwardEntries,
   rankHydratedEntries,
   type FanHydratedEntry,
 } from '../lib/fanDiscovery';
 
 const REFRESH_MS = 60_000;
 
-export function useFanHydratedEntries(baseEntries: AwardEntry[]): { entries: FanHydratedEntry[]; loading: boolean; updatedAt: Date | null } {
-  const [hydratedEntries, setHydratedEntries] = useState<FanHydratedEntry[]>(() => getSeededRankedEntries());
+export function useFanHydratedEntries(baseEntries: AwardEntry[] = []): { entries: FanHydratedEntry[]; loading: boolean; updatedAt: Date | null } {
+  const [hydratedEntries, setHydratedEntries] = useState<FanHydratedEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [updatedAt, setUpdatedAt] = useState<Date | null>(null);
   const ids = useMemo(() => baseEntries.map((entry) => entry.id).join('|'), [baseEntries]);
@@ -29,13 +29,11 @@ export function useFanHydratedEntries(baseEntries: AwardEntry[]): { entries: Fan
         const fanItems = await fetchFanDiscoverableItems();
         const currentEntries = baseEntriesRef.current;
         if (cancelled) return;
-        setHydratedEntries(rankHydratedEntries(currentEntries, fanItems));
+        const ranked = currentEntries.length > 0 ? rankHydratedEntries(currentEntries, fanItems) : rankFanAwardEntries(fanItems);
+        setHydratedEntries(ranked.filter((entry) => entry.liveRankSource === 'fan-pwa'));
         setUpdatedAt(new Date());
       } catch {
-        if (!cancelled) {
-          const currentEntries = baseEntriesRef.current;
-          setHydratedEntries(getSeededRankedEntries().filter((entry) => currentEntries.some((base) => base.id === entry.id)));
-        }
+        if (!cancelled) setHydratedEntries([]);
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -53,5 +51,9 @@ export function useFanHydratedEntries(baseEntries: AwardEntry[]): { entries: Fan
     };
   }, [ids]);
 
-  return { entries: hydratedEntries.filter((entry) => baseEntries.some((base) => base.id === entry.id)), loading, updatedAt };
+  return {
+    entries: baseEntries.length > 0 ? hydratedEntries.filter((entry) => baseEntries.some((base) => base.id === entry.id)) : hydratedEntries,
+    loading,
+    updatedAt,
+  };
 }

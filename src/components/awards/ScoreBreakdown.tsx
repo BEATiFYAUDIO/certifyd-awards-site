@@ -14,7 +14,7 @@ export function ScoreBreakdown({ scoring }: { scoring: ScoreComponent[] }) {
       <div className="section-heading inline">
         <div>
           <span className="eyebrow">How this score was calculated</span>
-          <h2>{formatScore(total)} preview score</h2>
+          <h2>{formatScore(total)} signal score</h2>
         </div>
         <span className={validateWeights(scoring) ? 'status-pill ok' : 'status-pill warn'}>
           {validateWeights(scoring) ? 'Model balanced' : 'Weights need review'}

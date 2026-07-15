@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
-import { technologyCategories, technicalRankings, getTechnicalProvider, getTechnologyAwardImageUrl, networkAwardIntro, networkParticipationCopy } from '../data/technology';
+import { technologyCategories, getTechnicalProvider, getTechnologyAwardImageUrl, networkAwardIntro, networkParticipationCopy } from '../data/technology';
+import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
+import { technologyRankingsFromFanEntries } from '../lib/fanDiscovery';
 
 export function Technology() {
   const families = Array.from(new Set(technologyCategories.map((category) => category.family)));
+  const { entries } = useFanHydratedEntries();
+  const liveRankings = technologyRankingsFromFanEntries(entries);
   return (
     <section className="page-section awards-division-page">
       <span className="eyebrow">Day 1 · Creator Innovation</span>
@@ -30,16 +34,16 @@ export function Technology() {
       ))}
       <section className="rankings-section">
         <div className="section-heading">
-          <span className="eyebrow">Preview recognition</span>
-          <h2>Founding node nominees.</h2>
-          <p className="muted">Active network nodes are shown when preview data is ready for public review.</p>
+          <span className="eyebrow">Live recognition</span>
+          <h2>Active public nodes.</h2>
+          <p className="muted">Ranked from current Fan PWA discovery data.</p>
         </div>
         <div className="ranking-grid innovation-ranking-grid">
-          {technicalRankings.map((ranking) => {
+          {liveRankings.map((ranking) => {
             const provider = getTechnicalProvider(ranking.providerId);
             return (
               <article className="ranking-card technology-ranking-card" key={ranking.id}>
-                <span className="status-pill preview">{ranking.source.status === 'demonstration' ? 'Demonstration model' : 'Preview ranking'}</span>
+                <span className="status-pill ok">Live Fan PWA</span>
                 <h3>{ranking.title}</h3>
                 <p className="ranking-benefit">{ranking.source.methodology}</p>
                 <div className="ranking-metric">
