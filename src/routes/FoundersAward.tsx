@@ -48,7 +48,11 @@ export function FoundersAward() {
       <section className="founders-hero">
         <div className="founders-hero-copy">
           <span className="eyebrow">The Highest Honor</span>
-          <h1>The Vassal Benford <span>Founders&apos; Award</span></h1>
+          <h1 className="founders-title">
+            <span>The Vassal</span>
+            <span>Benford</span>
+            <span>Founders&apos; Award</span>
+          </h1>
           <p className="lead">Honoring those whose vision, leadership, and lifelong contribution have shaped the future of creators and culture.</p>
           <div className="hero-actions">
             <span className="status-pill preview">Non-competitive honor</span>

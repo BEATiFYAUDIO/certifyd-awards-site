@@ -2542,19 +2542,22 @@ h2,
     gap: 20px !important;
   }
 
-  .founders-hero h1 {
+  .founders-hero .founders-title {
     max-width: 100% !important;
-    font-size: clamp(3.2rem, 14vw, 4.4rem) !important;
+    font-size: clamp(2.9rem, 12vw, 3.95rem) !important;
     line-height: 0.94 !important;
     letter-spacing: -0.045em !important;
     overflow-wrap: normal !important;
-    word-break: normal !important;
+    word-break: keep-all !important;
     hyphens: manual !important;
   }
 
-  .founders-hero h1 span {
+  .founders-hero .founders-title span {
     display: block;
-    max-width: 9ch;
+    max-width: none !important;
+    overflow-wrap: normal !important;
+    word-break: keep-all !important;
+    white-space: nowrap !important;
   }
 
   .founders-home-visual img,
