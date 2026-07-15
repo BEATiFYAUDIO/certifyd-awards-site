@@ -1,18 +1,20 @@
 import { useMemo, useState } from 'react';
 import { NomineeCard } from '../components/awards/NomineeCard';
 import { categories, entries, getCreator, getWork } from '../data/awards';
+import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
 
 export function Nominees() {
   const [query, setQuery] = useState('');
   const [categoryId, setCategoryId] = useState('all');
-  const visible = useMemo(() => entries.filter((entry) => {
+  const { entries: hydratedEntries } = useFanHydratedEntries(entries);
+  const visible = useMemo(() => hydratedEntries.filter((entry) => {
     const creator = getCreator(entry.creatorId);
     const work = getWork(entry.workId);
     const haystack = `${entry.title} ${entry.summary} ${creator?.name} ${creator?.handle} ${work?.genre}`.toLowerCase();
     const matchesQuery = haystack.includes(query.toLowerCase());
     const matchesCategory = categoryId === 'all' || entry.categoryId === categoryId;
     return matchesQuery && matchesCategory;
-  }), [query, categoryId]);
+  }), [hydratedEntries, query, categoryId]);
 
   return (
     <section className="page-section">

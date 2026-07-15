@@ -3,11 +3,13 @@ import { AwardCreatorCard } from '../components/awards/AwardCreatorCard';
 import { NomineeCard } from '../components/awards/NomineeCard';
 import { categories, entries, getCategory, getCategoryAwardImageUrl } from '../data/awards';
 import { getAwardCreators } from '../lib/creatorAdapter';
-import { entryScore, formatScore, rankEntries } from '../lib/scoring';
+import { entryScore, formatScore } from '../lib/scoring';
+import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
 
 export function Music() {
   const creativeCategories = categories.filter((category) => ['major', 'music', 'creator-integrity', 'community'].includes(category.group));
-  const featuredEntries = rankEntries(entries).slice(0, 5);
+  const { entries: hydratedEntries } = useFanHydratedEntries(entries);
+  const featuredEntries = hydratedEntries.slice(0, 5);
   const creators = getAwardCreators();
 
   return (
@@ -24,7 +26,7 @@ export function Music() {
         return <Link className="large-category-tile" to={`/music/categories/${category.slug}`} key={category.id}>{imageUrl ? <img className="category-award-image" src={imageUrl} alt="" loading="lazy" /> : null}<h3>{category.title}</h3><p>{category.summary}</p></Link>;
       })}</div></section>
       <section className="content-section tight"><div className="section-heading"><span className="eyebrow">Featured nominees</span><h2>Works with visible credit and proof trails.</h2></div><div className="nominee-list two-column">{featuredEntries.map((entry) => <NomineeCard key={entry.id} entry={entry} />)}</div></section>
-      <section className="content-section tight"><div className="section-heading"><span className="eyebrow">Creators</span><h2>People behind the work.</h2></div><div className="creator-awards-grid">{creators.map((creator, index) => <AwardCreatorCard key={creator.id} creator={creator} category={getCategory(featuredEntries[index]?.categoryId ?? '')?.title} score={`Preview score: ${formatScore(entryScore(featuredEntries[index] ?? featuredEntries[0]))}`} />)}</div></section>
+      <section className="content-section tight"><div className="section-heading"><span className="eyebrow">Creators</span><h2>People behind the work.</h2></div><div className="creator-awards-grid">{creators.map((creator, index) => <AwardCreatorCard key={creator.id} creator={creator} category={getCategory(featuredEntries[index]?.categoryId ?? '')?.title} score={featuredEntries[index]?.liveRankSource === 'fan-pwa' ? 'Live fan signal' : `Preview score: ${formatScore(entryScore(featuredEntries[index] ?? featuredEntries[0]))}`} />)}</div></section>
     </section>
   );
 }

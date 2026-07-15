@@ -2,15 +2,15 @@ import { Link, useParams } from 'react-router-dom';
 import { NomineeCard } from '../components/awards/NomineeCard';
 import { ScoreBreakdown } from '../components/awards/ScoreBreakdown';
 import { entries, getCategory, getCategoryAwardImageUrl } from '../data/awards';
-import { rankEntries } from '../lib/scoring';
+import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
 import { NotFound } from './NotFound';
 
 export function CategoryDetail() {
   const { categoryId } = useParams();
   const category = categoryId ? getCategory(categoryId) : undefined;
+  const categoryEntries = category ? entries.filter((entry) => entry.categoryId === category.id) : [];
+  const { entries: nominees } = useFanHydratedEntries(categoryEntries);
   if (!category) return <NotFound />;
-
-  const nominees = rankEntries(entries.filter((entry) => entry.categoryId === category.id));
   const example = nominees[0];
   const imageUrl = getCategoryAwardImageUrl(category);
 

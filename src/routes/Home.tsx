@@ -6,8 +6,9 @@ import { ScoreBreakdown } from '../components/awards/ScoreBreakdown';
 import { entries, foundersAward, getCategory, getCreator, getWork } from '../data/awards';
 import { technicalRankings, getTechnicalProvider } from '../data/technology';
 import { getAwardCreators } from '../lib/creatorAdapter';
-import { entryScore, formatScore, rankEntries } from '../lib/scoring';
+import { entryScore, formatScore } from '../lib/scoring';
 import { artworkUrl } from '../lib/artwork';
+import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
 
 const creativeCategories = ['Work of the Year', 'Creator of the Year', 'Song of the Year', 'Album of the Year', 'Video of the Year', 'Podcast of the Year', 'Spoken Word of the Year', 'Independent Creator', 'Collaboration of the Year', 'Live Performance', 'Fan-Supported Work', 'Cultural Impact'];
 const innovationCategories = ['Network Partner of the Year', 'Public Node Excellence', 'Creator Infrastructure Award', 'Publishing Excellence Award', 'Discovery Excellence Award', 'Identity Excellence Award', 'Community Node Award', 'Open Network Leadership Award', 'Verification Excellence Award', 'Creator Commerce Provider'];
@@ -20,7 +21,8 @@ const heroVideos = [
 
 export function Home() {
   const [activeHeroVideo, setActiveHeroVideo] = useState(0);
-  const featuredEntries = rankEntries(entries).slice(0, 4);
+  const { entries: hydratedEntries, loading: fanHydrating, updatedAt: fanUpdatedAt } = useFanHydratedEntries(entries);
+  const featuredEntries = hydratedEntries.slice(0, 4);
   const creators = getAwardCreators().slice(0, 3);
   const featured = featuredEntries[0];
   const featuredCreator = featured ? getCreator(featured.creatorId) : undefined;
@@ -87,6 +89,7 @@ export function Home() {
               <Link className="secondary-action" to={`/nominees/${featured.id}`}>View the Story</Link>
               {featuredWork?.publicUrl ? <a className="secondary-action" href={featuredWork.publicUrl} target="_blank" rel="noreferrer">Open Work</a> : null}
             </div>
+            <small className="muted">{featured.liveRankSource === 'fan-pwa' ? `Hydrated from Fan PWA${fanUpdatedAt ? ` · ${fanUpdatedAt.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}` : ''}` : fanHydrating ? 'Hydrating Fan PWA signals…' : 'Seeded fallback ranking'}</small>
           </div>
         </section>
       ) : null}
@@ -169,7 +172,7 @@ export function Home() {
           <Link to="/nominees">View nominees</Link>
         </div>
         <div className="creator-awards-grid">
-          {creators.map((creator, index) => <AwardCreatorCard key={creator.id} creator={creator} category={getCategory(featuredEntries[index]?.categoryId ?? '')?.title} score={`Preview score: ${formatScore(entryScore(featuredEntries[index] ?? featuredEntries[0]))}`} />)}
+          {creators.map((creator, index) => <AwardCreatorCard key={creator.id} creator={creator} category={getCategory(featuredEntries[index]?.categoryId ?? '')?.title} score={featuredEntries[index]?.liveRankSource === 'fan-pwa' ? 'Live fan signal' : `Preview score: ${formatScore(entryScore(featuredEntries[index] ?? featuredEntries[0]))}`} />)}
         </div>
       </section>
 

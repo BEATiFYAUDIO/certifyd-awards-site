@@ -5,6 +5,7 @@ import { getCategory, getCreator, getWork } from '../../data/awards';
 import type { AwardEntry } from '../../types';
 import { VerificationBadge } from '../VerificationBadge';
 import { artworkUrl } from '../../lib/artwork';
+import type { FanHydratedEntry } from '../../lib/fanDiscovery';
 
 function resultLabel(status: AwardEntry['resultStatus']) {
   if (status === 'sample-winner') return 'Sample recognition';
@@ -17,6 +18,7 @@ export function NomineeCard({ entry }: { entry: AwardEntry }) {
   const work = getWork(entry.workId);
   const category = getCategory(entry.categoryId);
   const artUrl = artworkUrl(work?.image);
+  const liveEntry = entry as AwardEntry & Partial<FanHydratedEntry>;
 
   return (
     <Link className="glass-card nominee-card creator-first-card" to={`/nominees/${entry.id}`}>
@@ -27,6 +29,7 @@ export function NomineeCard({ entry }: { entry: AwardEntry }) {
         <div className="card-meta soft-meta">
           <VerificationBadge label={resultLabel(entry.resultStatus)} tone={entry.resultStatus === 'sample-winner' ? 'gold' : 'blue'} />
           <span>{category?.title}</span>
+          {liveEntry.liveRankSource === 'fan-pwa' ? <span>Live Fan PWA</span> : null}
         </div>
         <h3>{entry.title}</h3>
         <p className="creator-line">{creator?.name}</p>
@@ -38,8 +41,8 @@ export function NomineeCard({ entry }: { entry: AwardEntry }) {
           <span>Community support</span>
         </div>
         <div className="supporting-metrics">
-          <span>Preview score: {formatScore(entryScore(entry))}</span>
-          <span>Community support: {formatSats(entry.fanSupportSats)}</span>
+          <span>{liveEntry.liveRankSource === 'fan-pwa' ? 'Live fan signal' : `Preview score: ${formatScore(entryScore(entry))}`}</span>
+          <span>Community support: {liveEntry.fanSupportScore ? `${liveEntry.fanSupportScore} public signals` : formatSats(entry.fanSupportSats)}</span>
         </div>
         <strong className="story-link-label">View the Story</strong>
       </div>

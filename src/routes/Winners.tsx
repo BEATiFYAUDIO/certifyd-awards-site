@@ -1,10 +1,11 @@
 import { WinnerCard } from '../components/awards/WinnerCard';
 import { Link } from 'react-router-dom';
 import { awardYears, entries, foundersAward } from '../data/awards';
-import { rankEntries } from '../lib/scoring';
+import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
 
 export function Winners() {
-  const sampleWinners = rankEntries(entries).slice(0, 5).map((entry) => ({ ...entry, resultStatus: 'sample-winner' as const }));
+  const { entries: hydratedEntries } = useFanHydratedEntries(entries);
+  const sampleWinners = hydratedEntries.slice(0, 5).map((entry) => ({ ...entry, resultStatus: 'sample-winner' as const }));
 
   return (
     <section className="page-section">
