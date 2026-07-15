@@ -93,7 +93,7 @@ export function Home() {
               {featured.fanItem?.creatorHandle ? <span>@{String(featured.fanItem.creatorHandle).replace(/^@+/, '')}</span> : null}
               <span>{featuredCategory?.title}</span>
               <span>{featured.contributors.length} credited contributors</span>
-              <span>Proof available</span>
+              <span>Records available</span>
             </div>
             <div className="story-actions">
               <Link className="secondary-action" to={`/nominees/${featured.id}`}>View the Story</Link>
@@ -107,7 +107,7 @@ export function Home() {
       <section className="weekend-section">
         <div className="section-heading centered">
           <span className="eyebrow">Certifyd Awards Weekend</span>
-          <h2>Creative work. Creator infrastructure. Public proof.</h2>
+          <h2>Creative work. Creator infrastructure. Public record.</h2>
         </div>
         <div className="pillar-grid">
           <article className="event-pillar music-pillar creator-pillar">
@@ -146,7 +146,7 @@ export function Home() {
         <div className="section-heading inline">
           <div>
             <span className="eyebrow">Featured nominees</span>
-            <h2>Works with visible proof.</h2>
+            <h2>Works with visible records.</h2>
           </div>
           <span className="status-pill preview">Preview season</span>
         </div>
@@ -167,8 +167,8 @@ export function Home() {
 
       <section className="content-section scoring-showcase warm-scoring">
         <div>
-          <span className="eyebrow">Recognition Backed by Proof</span>
-          <h2>Clear signals. Human judgment.</h2>
+          <span className="eyebrow">Special Merit Review</span>
+          <h2>Technical achievement, carefully considered.</h2>
         </div>
         {featured ? <ScoreBreakdown scoring={featured.scoring} /> : null}
       </section>
@@ -189,9 +189,9 @@ export function Home() {
       <section className="rankings-section innovation-rankings">
         <div className="section-heading inline">
           <div>
-            <span className="eyebrow">Network operators supporting creators</span>
-            <h2>{networkLoading ? 'Eligible network candidates' : `${liveTechnologyRankings.length} eligible network candidates`}</h2>
-            <p className="muted">Pulled from the Certifyd Network map. This is the current operator candidate pool, not a broad public leaderboard.</p>
+            <span className="eyebrow">Creator Innovation · Technical Merit</span>
+            <h2>{networkLoading ? 'Eligible technical contributors' : `${liveTechnologyRankings.length} eligible technical contributors`}</h2>
+            <p className="muted">Current candidates are sourced from the Certifyd Network map and reviewed for creator-facing services, public availability, and technical contribution to the creative field.</p>
           </div>
           <Link to="/technology">Explore Creator Innovation</Link>
         </div>
@@ -207,7 +207,7 @@ export function Home() {
         <div>
           <span className="eyebrow">Participation</span>
           <h2>Nominate work worth celebrating.</h2>
-          <p>Submit a creator, work, collaboration, or provider with public proof.</p>
+          <p>Submit a creator, work, collaboration, or provider with public materials.</p>
           <Link className="primary-action" to="/nominate">Submit a Nomination</Link>
         </div>
       </section>

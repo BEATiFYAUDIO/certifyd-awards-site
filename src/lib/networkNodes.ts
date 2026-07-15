@@ -15,6 +15,7 @@ export type NetworkNode = {
   trust?: { operatorVerified?: boolean; proofCapable?: boolean; proofCount?: number };
   history?: { nodeAgeDays?: number | null; reliability30d?: number | null; reliability90d?: number | null; successfulPayments30d?: number | null };
   connect?: { providerCanonicalUrl?: string; capabilities?: Record<string, boolean> };
+  presentation?: { avatarUrl?: string; wallpaperUrl?: string; accentColor?: string };
   networkProfileUrl?: string;
   settingsUrl?: string;
 };
@@ -31,6 +32,9 @@ export type NetworkRanking = TechnicalRanking & {
     proofCount: number;
     nodeAgeDays?: number | null;
     services: { label: string; status: string; score?: number }[];
+    avatarUrl?: string;
+    wallpaperUrl?: string;
+    accentColor?: string;
   };
 };
 
@@ -41,6 +45,20 @@ export type NetworkNodesSnapshot = {
 };
 
 const NETWORK_NODES_PATH = '/network-nodes.json';
+const providerPresentationCache = new Map<string, Promise<NetworkNode['presentation']>>();
+
+type ProviderDiscoveryItem = {
+  creatorAvatarUrl?: string | null;
+  avatarUrl?: string | null;
+  creatorProfileImageUrl?: string | null;
+  profileImageUrl?: string | null;
+  coverUrl?: string | null;
+  profileTheme?: {
+    themeWallpaperImageUrl?: string | null;
+    themeResolvedAccentColor?: string | null;
+    themeAccentColor?: string | null;
+  } | null;
+};
 
 function hostForNode(node: NetworkNode): string {
   const url = node.connect?.providerCanonicalUrl || node.providerCanonicalUrl;
@@ -76,6 +94,45 @@ function statusScore(status: unknown): number {
   }
 }
 
+function resolveProviderUrl(value: string | null | undefined, origin: string): string | undefined {
+  if (!value) return undefined;
+  try {
+    return new URL(value, origin).toString();
+  } catch {
+    return undefined;
+  }
+}
+
+async function fetchProviderPresentation(providerUrl: string): Promise<NetworkNode['presentation']> {
+  const origin = providerUrl.replace(/\/+$/, '');
+  if (!origin) return undefined;
+  const cached = providerPresentationCache.get(origin);
+  if (cached) return cached;
+
+  const promise = (async () => {
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 4500);
+    try {
+      const response = await fetch(`${origin}/public/discoverable-content?limit=1`, { signal: controller.signal, cache: 'no-cache' });
+      if (!response.ok) return undefined;
+      const data = await response.json() as { items?: ProviderDiscoveryItem[] };
+      const item = data.items?.[0];
+      if (!item) return undefined;
+      return {
+        avatarUrl: resolveProviderUrl(item.creatorAvatarUrl || item.avatarUrl || item.creatorProfileImageUrl || item.profileImageUrl, origin),
+        wallpaperUrl: resolveProviderUrl(item.profileTheme?.themeWallpaperImageUrl || item.coverUrl, origin),
+        accentColor: item.profileTheme?.themeResolvedAccentColor || item.profileTheme?.themeAccentColor || undefined,
+      };
+    } catch {
+      return undefined;
+    } finally {
+      window.clearTimeout(timeoutId);
+    }
+  })();
+  providerPresentationCache.set(origin, promise);
+  return promise;
+}
+
 function metricForCategory(node: NetworkNode, categorySlug = 'network-partner-of-the-year') {
   const roles = node.roles || [];
   const services = node.services || {};
@@ -106,7 +163,7 @@ function metricForCategory(node: NetworkNode, categorySlug = 'network-partner-of
     case 'identity-excellence-award':
       return { metricName: 'Identity service', value: statusLabel(identity?.status || node.overallStatus), score: statusScore(identity?.status) + (trust.operatorVerified ? 20 : 0) };
     case 'verification-excellence-award':
-      return { metricName: 'Proof capability', value: `${proofCount} ${proofCount === 1 ? 'proof' : 'proofs'}`, score: proofCount * 10 + statusScore(proofs?.status) };
+      return { metricName: 'Record capability', value: `${proofCount} ${proofCount === 1 ? 'record' : 'records'}`, score: proofCount * 10 + statusScore(proofs?.status) };
     case 'creator-commerce-provider-award':
       return { metricName: 'Commerce + settlement', value: `${statusLabel(commerce?.status)} / ${statusLabel(settlement?.status)}`, score: Number(commerce?.score || 0) + Number(settlement?.score || 0) };
     case 'network-partner-of-the-year':
@@ -116,25 +173,32 @@ function metricForCategory(node: NetworkNode, categorySlug = 'network-partner-of
 }
 
 function methodologyForNode(node: NetworkNode, categorySlug?: string): string {
+  const serviceNames: Record<string, string> = { proofs: 'records' };
   const readyServices = Object.entries(node.services || {})
     .filter(([, service]) => service.status === 'ready')
-    .map(([key]) => key)
+    .map(([key]) => serviceNames[key] || key)
     .join(', ');
   const status = statusLabel(node.overallStatus);
   const proofCount = Number(node.trust?.proofCount || 0);
   const categoryContext = categorySlug ? ` Category filter: ${categorySlug.replace(/-/g, ' ')}.` : '';
-  return `${status} network candidate with ${proofCount} public proof ${proofCount === 1 ? 'record' : 'records'}${readyServices ? ` and ready ${readyServices} services` : ''}.${categoryContext}`;
+  return `${status} technical candidate with ${proofCount} public ${proofCount === 1 ? 'record' : 'records'}${readyServices ? ` and active ${readyServices} services` : ''}.${categoryContext}`;
 }
 
 export async function fetchNetworkNodes(): Promise<NetworkNodesSnapshot> {
   const response = await fetch(NETWORK_NODES_PATH, { cache: 'no-cache' });
   if (!response.ok) throw new Error(`Failed to load ${NETWORK_NODES_PATH}`);
-  return await response.json() as NetworkNodesSnapshot;
+  const snapshot = await response.json() as NetworkNodesSnapshot;
+  const nodes = await Promise.all((snapshot.nodes || []).map(async (node) => {
+    const presentation = await fetchProviderPresentation(providerUrlForNode(node));
+    return presentation ? { ...node, presentation } : node;
+  }));
+  return { ...snapshot, nodes };
 }
 
 function serviceListForNode(node: NetworkNode) {
+  const serviceLabels: Record<string, string> = { proofs: 'Records' };
   return Object.entries(node.services || {}).map(([key, service]) => ({
-    label: key.charAt(0).toUpperCase() + key.slice(1),
+    label: serviceLabels[key] || key.charAt(0).toUpperCase() + key.slice(1),
     status: statusLabel(service.status),
     score: service.score,
   }));
@@ -172,6 +236,9 @@ export function networkRankingsFromNodes(snapshot: NetworkNodesSnapshot | null, 
           proofCount: Number(node.trust?.proofCount || 0),
           nodeAgeDays: node.history?.nodeAgeDays,
           services: serviceListForNode(node),
+          avatarUrl: node.presentation?.avatarUrl,
+          wallpaperUrl: node.presentation?.wallpaperUrl,
+          accentColor: node.presentation?.accentColor,
         },
         __score: metric.score,
       } as NetworkRanking & { __score: number };

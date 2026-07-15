@@ -1,10 +1,10 @@
 import type { TechnicalCategory, TechnicalProvider, TechnicalRanking } from '../types';
 
 export const networkAwardIntro =
-  'Creator Innovation recognizes the people, organizations, platforms, and infrastructure that help creators make, publish, verify, distribute, protect, and monetize their work.';
+  'Creator Innovation honors individuals, organizations, platforms, and institutions whose technical contributions materially advance how creators publish, distribute, document, and sustain their work.';
 
 export const networkParticipationCopy =
-  'Network awards focus on creator impact: helping work stay online, discoverable, verifiable, and ready for creator-owned commerce.';
+  'These awards recognize outstanding technical significance in creator infrastructure: reliable access, portable identity, durable records, direct commerce, and systems that help creative work reach its audience.';
 
 export const technologyCategories: TechnicalCategory[] = [
   {
@@ -12,17 +12,17 @@ export const technologyCategories: TechnicalCategory[] = [
     slug: 'network-partner-of-the-year',
     title: 'Network Partner of the Year',
     family: 'Network Excellence',
-    summary: 'Recognizes a Certifyd Network participant helping creators earn, publish, verify, and stay discoverable.',
+    summary: 'Recognizes a Certifyd Network participant making a substantial technical contribution to creator publishing, access, and direct commerce.',
     eligibility: ['Registered Certifyd Network node', 'Creator-facing services', 'Public operator identity', 'Reachable canonical provider URL'],
-    metrics: ['Network participation', 'Creator profiles hosted', 'Verified works served', 'Community contribution'],
+    metrics: ['Network participation', 'Creator profiles hosted', 'Recorded works served', 'Community contribution'],
   },
   {
     id: 'tech-public-node',
     slug: 'public-node-excellence',
     title: 'Public Node Excellence',
     family: 'Network Excellence',
-    summary: 'Honors public nodes that make creator works, profiles, proof records, and commerce endpoints available to fans.',
-    eligibility: ['Public node origin', 'Identity/content/proof roles', 'Reachable public routes', 'Node identity continuity'],
+    summary: 'Honors public nodes that make creator works, profiles, release records, and commerce endpoints available to audiences.',
+    eligibility: ['Public node origin', 'Identity/content/records roles', 'Reachable public routes', 'Node identity continuity'],
     metrics: ['Availability', 'Successful discovery requests', 'Published works hosted', 'Average response time'],
   },
   {
@@ -31,8 +31,8 @@ export const technologyCategories: TechnicalCategory[] = [
     title: 'Community Node Award',
     family: 'Network Excellence',
     summary: 'Recognizes operators supporting independent creator communities with reliable discovery and commerce infrastructure.',
-    eligibility: ['Community or creator-group operator', 'Public profile support', 'Proof capability', 'Operator contact path'],
-    metrics: ['Creator profiles hosted', 'Proof records maintained', 'Community contribution', 'Network participation'],
+    eligibility: ['Community or creator-group operator', 'Public profile support', 'Record capability', 'Operator contact path'],
+    metrics: ['Creator profiles hosted', 'Release records maintained', 'Community contribution', 'Network participation'],
   },
   {
     id: 'tech-open-network',
@@ -41,7 +41,7 @@ export const technologyCategories: TechnicalCategory[] = [
     family: 'Network Excellence',
     summary: 'Recognizes leadership in building open, creator-serving infrastructure instead of closed platform dependency.',
     eligibility: ['Public network participation', 'Stable canonical URL', 'Published capabilities', 'Creator benefit clearly documented'],
-    metrics: ['Published works hosted', 'Verification requests completed', 'Proof records maintained', 'Network participation'],
+    metrics: ['Published works hosted', 'Review requests completed', 'Release records maintained', 'Network participation'],
   },
   {
     id: 'tech-availability',
@@ -66,16 +66,16 @@ export const technologyCategories: TechnicalCategory[] = [
     slug: 'publishing-excellence-award',
     title: 'Publishing Excellence Award',
     family: 'Network Providers',
-    summary: 'Recognizes infrastructure that helps creators publish durable work records with clear identity and proof trails.',
-    eligibility: ['Content hosting capability', 'Public publishing surface', 'Manifest/proof records', 'Creator-owned profile linkage'],
-    metrics: ['Published works hosted', 'Verified works served', 'Proof records maintained', 'Content availability'],
+    summary: 'Recognizes infrastructure that helps creators publish durable work records with clear identity and reviewable release materials.',
+    eligibility: ['Content hosting capability', 'Public publishing surface', 'Manifest and release records', 'Creator-owned profile linkage'],
+    metrics: ['Published works hosted', 'Recorded works served', 'Release records maintained', 'Content availability'],
   },
   {
     id: 'tech-identity',
     slug: 'identity-excellence-award',
     title: 'Identity Excellence Award',
     family: 'Network Providers',
-    summary: 'Recognizes identity infrastructure that helps creators carry verified profiles, handles, and trust across surfaces.',
+    summary: 'Recognizes identity infrastructure that helps creators carry consistent profiles, handles, and attribution across surfaces.',
     eligibility: ['Identity capability', 'Public creator profiles', 'Stable handles', 'Profile portability'],
     metrics: ['Creator profiles hosted', 'Verification requests completed', 'Profile completeness', 'Network participation'],
   },
@@ -84,9 +84,9 @@ export const technologyCategories: TechnicalCategory[] = [
     slug: 'verification-excellence-award',
     title: 'Verification Excellence Award',
     family: 'Network Providers',
-    summary: 'Recognizes proof and verification infrastructure that makes authorship, publishing, and receipt records easier to inspect.',
-    eligibility: ['Proof capability', 'Public proof records', 'Verifiable creator/work relationships', 'Inspectable source data'],
-    metrics: ['Verification requests completed', 'Proof records maintained', 'Verified works served', 'Average response time'],
+    summary: 'Recognizes verification infrastructure that makes authorship, publishing, and receipt records easier to inspect.',
+    eligibility: ['Verification capability', 'Public release records', 'Reviewable creator/work relationships', 'Inspectable source data'],
+    metrics: ['Verification requests completed', 'Release records maintained', 'Recorded works served', 'Average response time'],
   },
   {
     id: 'tech-commerce',
@@ -119,7 +119,7 @@ export const technicalRankings: TechnicalRanking[] = [
     metricName: 'Network participation',
     value: '6 roles',
     providerId: 'provider-certifyd-creator-node',
-    source: { label: 'Network map preview', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Certifyd Creator advertises creator, identity, content, commerce, settlement, and proof roles. This supports creator-owned commerce without forcing creators into a single closed platform.' },
+    source: { label: 'Network map preview', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Certifyd Creator advertises creator, identity, content, commerce, settlement, and records roles. This supports creator-owned commerce without forcing creators into a single closed platform.' },
   },
   {
     id: 'rank-public-node-certifyd',
@@ -146,7 +146,7 @@ export const technicalRankings: TechnicalRanking[] = [
     metricName: 'Creator profiles hosted',
     value: '12 profiles',
     providerId: 'provider-certifyd-creator-node',
-    source: { label: 'Profile preview data', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Creator profiles hosted is presented because identity is how creators carry attribution, trust, and commerce context across the network.' },
+    source: { label: 'Profile preview data', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Creator profiles hosted is presented because identity is how creators carry attribution, credits, and commerce context across the network.' },
   },
 ];
 

@@ -12,7 +12,7 @@ export function Technology() {
       <h1>Creator Innovation</h1>
       <p className="lead">{networkAwardIntro}</p>
       <div className="division-hero tech-division">
-        <div><h2>How did this organization help creators?</h2><p>{networkParticipationCopy}</p></div>
+        <div><h2>Outstanding technical contribution to creator infrastructure.</h2><p>{networkParticipationCopy}</p></div>
         <div className="hero-actions">
           <Link className="primary-action" to="/technology/categories">Creator Innovation Categories</Link>
           <a className="secondary-action" href="https://network.certifyd.me/" target="_blank" rel="noreferrer">Learn more about the Certifyd Network</a>
@@ -33,11 +33,11 @@ export function Technology() {
       ))}
       <section className="rankings-section">
         <div className="section-heading">
-          <span className="eyebrow">Live recognition</span>
-          <h2>{loading ? 'Eligible network candidates' : `${liveRankings.length} eligible network candidates`}</h2>
-          <p className="muted">Hydrated from the Certifyd Network map. These are the current operator candidates with registered node status, advertised roles, and proof records.</p>
+          <span className="eyebrow">Current technical candidates</span>
+          <h2>{loading ? 'Eligible contributors' : `${liveRankings.length} eligible technical contributors`}</h2>
+          <p className="muted">Sourced from the Certifyd Network map. Candidates are reviewed for registered service status, creator-facing capabilities, public availability, and documented technical contribution.</p>
         </div>
-        {loading ? <p className="muted">Loading network operators…</p> : null}
+        {loading ? <p className="muted">Loading technical contributors…</p> : null}
         <div className="ranking-grid innovation-ranking-grid operator-candidate-grid">
           {liveRankings.map((ranking, index) => (
             <NetworkCandidateCard ranking={ranking} index={index} total={liveRankings.length} key={ranking.id} />
@@ -46,7 +46,7 @@ export function Technology() {
       </section>
       <section className="glass-card network-cta-card">
         <span className="eyebrow">Network participation</span>
-        <h2>Run a node. Help creators publish, sell, and verify work.</h2>
+        <h2>Run a service. Help creators publish, distribute, and sustain their work.</h2>
         <div className="hero-actions">
           <a className="primary-action" href="https://network.certifyd.me/join" target="_blank" rel="noreferrer">Become a Node Operator</a>
           <a className="secondary-action" href="https://network.certifyd.me/" target="_blank" rel="noreferrer">View Network Map</a>

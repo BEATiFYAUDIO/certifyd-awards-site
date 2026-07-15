@@ -18,7 +18,7 @@ export function TechnologyCategories() {
         ))}
       </div>
       <div className="hero-actions">
-        <a className="secondary-action" href="https://network.certifyd.me/" target="_blank" rel="noreferrer">Learn more about the Certifyd Network</a>
+        <a className="secondary-action" href="https://network.certifyd.me/" target="_blank" rel="noreferrer">View the Network Map</a>
       </div>
     </section>
   );
