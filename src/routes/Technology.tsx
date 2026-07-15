@@ -33,14 +33,14 @@ export function Technology() {
       <section className="rankings-section">
         <div className="section-heading">
           <span className="eyebrow">Live recognition</span>
-          <h2>Network operators supporting creators.</h2>
-          <p className="muted">Hydrated from the Certifyd Network map snapshot. These cards show node roles, readiness, proof capability, and creator-commerce support.</p>
+          <h2>{loading ? 'Eligible network candidates' : `${liveRankings.length} eligible network candidates`}</h2>
+          <p className="muted">Hydrated from the Certifyd Network map. These are the current operator candidates with registered node status, advertised roles, and proof records.</p>
         </div>
         {loading ? <p className="muted">Loading network operators…</p> : null}
-        <div className="ranking-grid innovation-ranking-grid">
-          {liveRankings.map((ranking) => (
-            <article className="ranking-card technology-ranking-card" key={ranking.id}>
-              <span className="status-pill ok">Network map</span>
+        <div className="ranking-grid innovation-ranking-grid operator-candidate-grid">
+          {liveRankings.map((ranking, index) => (
+            <article className="ranking-card technology-ranking-card operator-candidate-card" key={ranking.id}>
+              <span className="status-pill ok">Candidate {index + 1} of {liveRankings.length}</span>
               <h3>{ranking.title}</h3>
               <p className="ranking-benefit">{ranking.source.methodology}</p>
               <div className="ranking-metric">

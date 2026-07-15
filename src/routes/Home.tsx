@@ -21,7 +21,7 @@ const heroVideos = [
 export function Home() {
   const [activeHeroVideo, setActiveHeroVideo] = useState(0);
   const { entries: hydratedEntries, loading: fanHydrating, updatedAt: fanUpdatedAt } = useFanHydratedEntries();
-  const { rankings: liveTechnologyRankings } = useNetworkRankings(undefined, 4);
+  const { rankings: liveTechnologyRankings, loading: networkLoading } = useNetworkRankings(undefined, 4);
   const featuredEntries = hydratedEntries.slice(0, 4);
   const creators = creatorsFromFanEntries(hydratedEntries, 3);
   const featured = featuredEntries[0];
@@ -179,13 +179,17 @@ export function Home() {
 
       <section className="rankings-section innovation-rankings">
         <div className="section-heading inline">
-          <div><span className="eyebrow">Network operators supporting creators</span><h2>Creator Innovation</h2></div>
+          <div>
+            <span className="eyebrow">Network operators supporting creators</span>
+            <h2>{networkLoading ? 'Eligible network candidates' : `${liveTechnologyRankings.length} eligible network candidates`}</h2>
+            <p className="muted">Pulled from the Certifyd Network map. This is the current operator candidate pool, not a broad public leaderboard.</p>
+          </div>
           <Link to="/technology">Explore Creator Innovation</Link>
         </div>
-        <div className="ranking-grid innovation-ranking-grid">
-          {liveTechnologyRankings.map((ranking) => (
-            <article className="ranking-card technology-ranking-card" key={ranking.id}>
-              <span className="status-pill ok">Network map</span>
+        <div className="ranking-grid innovation-ranking-grid operator-candidate-grid">
+          {liveTechnologyRankings.map((ranking, index) => (
+            <article className="ranking-card technology-ranking-card operator-candidate-card" key={ranking.id}>
+              <span className="status-pill ok">Candidate {index + 1} of {liveTechnologyRankings.length}</span>
               <h3>{ranking.title}</h3>
               <p className="ranking-benefit">{ranking.source.methodology}</p>
               <div className="ranking-metric">

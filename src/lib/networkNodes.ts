@@ -89,7 +89,7 @@ function metricForCategory(node: NetworkNode, categorySlug = 'network-partner-of
       return { metricName: 'Commerce + settlement', value: `${statusLabel(commerce?.status)} / ${statusLabel(settlement?.status)}`, score: Number(commerce?.score || 0) + Number(settlement?.score || 0) };
     case 'network-partner-of-the-year':
     default:
-      return { metricName: 'Network participation', value: `${roles.length} roles`, score: roles.length * 15 + statusScore(node.overallStatus) + (trust.operatorVerified ? 20 : 0) };
+      return { metricName: `${roles.length} advertised roles`, value: statusLabel(node.overallStatus), score: roles.length * 15 + statusScore(node.overallStatus) + (trust.operatorVerified ? 20 : 0) };
   }
 }
 
@@ -98,8 +98,8 @@ function methodologyForNode(node: NetworkNode, categorySlug?: string): string {
   const status = statusLabel(node.overallStatus);
   const proofCount = Number(node.trust?.proofCount || 0);
   const url = node.connect?.providerCanonicalUrl || node.providerCanonicalUrl || hostForNode(node);
-  const categoryContext = categorySlug ? ` This ranking is filtered for ${categorySlug.replace(/-/g, ' ')}.` : '';
-  return `${hostForNode(node)} is a registered Certifyd Network node at ${url}. Network map status is ${status}; advertised roles: ${roles}; public proof records: ${proofCount}.${categoryContext}`;
+  const categoryContext = categorySlug ? ` Category filter: ${categorySlug.replace(/-/g, ' ')}.` : '';
+  return `Registered network node: ${url}. Status: ${status}. Roles: ${roles}. Public proof records: ${proofCount}.${categoryContext}`;
 }
 
 export async function fetchNetworkNodes(): Promise<NetworkNodesSnapshot> {
