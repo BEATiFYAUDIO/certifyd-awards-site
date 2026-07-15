@@ -2382,3 +2382,150 @@ h2,
     font-size: clamp(4.15rem, 19vw, 5.25rem) !important;
   }
 }
+
+/* Final mobile containment: keep detail, nominee, category, and methodology pages inside the viewport. */
+@media (max-width: 720px) {
+  *,
+  *::before,
+  *::after {
+    max-width: 100%;
+  }
+
+  html,
+  body,
+  #root,
+  .site-shell {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  main,
+  .page-section,
+  .detail-page,
+  .content-section,
+  .rankings-section,
+  .weekend-section,
+  .final-cta,
+  .featured-story-section,
+  .behind-work-section,
+  .founders-home-section,
+  .founders-page,
+  .honorary-archive-note,
+  .methodology-honor-note {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    overflow-x: hidden !important;
+  }
+
+  .detail-hero,
+  .category-detail-hero,
+  .split-section,
+  .directory-tools,
+  .metric-grid,
+  .metric-grid.compact,
+  .score-row,
+  .proof-row,
+  .credit-card,
+  .hero-actions,
+  .story-actions,
+  .filter-row,
+  .card-meta,
+  .proof-stack,
+  .criteria-row {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .detail-hero,
+  .category-detail-hero,
+  .split-section,
+  .directory-tools,
+  .metric-grid,
+  .metric-grid.compact,
+  .score-row,
+  .credit-grid,
+  .timeline,
+  .year-grid,
+  .principle-grid,
+  .winner-grid,
+  .nominee-list.two-column,
+  .ranking-grid,
+  .category-strip,
+  .creator-awards-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .glass-card,
+  .detail-hero,
+  .score-card,
+  .proof-row,
+  .credit-card,
+  .nominee-card,
+  .ranking-card,
+  .large-category-tile,
+  .award-creator-card,
+  .category-detail-award,
+  .detail-art {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .detail-art,
+  .category-detail-award {
+    min-height: 220px !important;
+  }
+
+  .proof-row,
+  .credit-card {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) !important;
+  }
+
+  .proof-row code,
+  code,
+  .proof-row p,
+  .credit-card p,
+  .score-row p,
+  .score-row span,
+  .proof-stack span,
+  .criteria-row span,
+  .verification-badge,
+  .status-pill,
+  .score-chip {
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+  }
+
+  .proof-stack,
+  .criteria-row,
+  .filter-row,
+  .card-meta,
+  .hero-actions,
+  .story-actions {
+    flex-wrap: wrap !important;
+    overflow-x: hidden !important;
+  }
+
+  .hero-actions a,
+  .story-actions a,
+  .primary-action,
+  .secondary-action {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+  }
+}
