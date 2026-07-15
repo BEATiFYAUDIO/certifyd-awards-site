@@ -1,6 +1,6 @@
 {
   "source": "https://network.certifyd.me/",
-  "generatedAt": "2026-07-15T16:24:43.480Z",
+  "generatedAt": "2026-07-15T18:06:37.992Z",
   "nodes": [
     {
       "nodeId": "node:d6d094696d223d809d5c8b70559b746d15b2a9a6b5bc9d86380cdd27ece9b04c",
@@ -100,7 +100,9 @@
       },
       "technical": {
         "version": "network-map-v1"
-      }
+      },
+      "networkProfileUrl": "https://network.certifyd.me/node/node%3Ad6d094696d223d809d5c8b70559b746d15b2a9a6b5bc9d86380cdd27ece9b04c",
+      "settingsUrl": "https://certifyd.beatifygroup.com/dashboard/network"
     },
     {
       "nodeId": "node:768fef95328f2621ed0b01caf69d39ac4a0a915a1de6ec4506ac5a075928d76e",
@@ -198,7 +200,9 @@
       "technical": {
         "version": "network-map-v1",
         "network": "certifyd"
-      }
+      },
+      "networkProfileUrl": "https://network.certifyd.me/node/node%3A768fef95328f2621ed0b01caf69d39ac4a0a915a1de6ec4506ac5a075928d76e",
+      "settingsUrl": "https://public.certifyd.me/dashboard/network"
     }
   ]
 }

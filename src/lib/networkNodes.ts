@@ -8,12 +8,30 @@ export type NetworkNode = {
   displayName?: string;
   operator?: string;
   roles?: string[];
+  location?: { displayLocation?: string; country?: string; region?: string; city?: string };
   overallStatus?: NetworkNodeStatus;
   services?: Record<string, { status?: NetworkNodeStatus; score?: number; message?: string; reasonCodes?: string[] }>;
   readiness?: Record<string, { status?: NetworkNodeStatus; score?: number; message?: string; reasonCodes?: string[] }>;
   trust?: { operatorVerified?: boolean; proofCapable?: boolean; proofCount?: number };
   history?: { nodeAgeDays?: number | null; reliability30d?: number | null; reliability90d?: number | null; successfulPayments30d?: number | null };
   connect?: { providerCanonicalUrl?: string; capabilities?: Record<string, boolean> };
+  networkProfileUrl?: string;
+  settingsUrl?: string;
+};
+
+export type NetworkRanking = TechnicalRanking & {
+  profile: {
+    operator: string;
+    providerUrl: string;
+    networkProfileUrl: string;
+    settingsUrl?: string;
+    location?: string;
+    status: string;
+    roles: string[];
+    proofCount: number;
+    nodeAgeDays?: number | null;
+    services: { label: string; status: string; score?: number }[];
+  };
 };
 
 export type NetworkNodesSnapshot = {
@@ -32,6 +50,10 @@ function hostForNode(node: NetworkNode): string {
   } catch {
     return url.replace(/^https?:\/\//, '').replace(/\/+$/, '');
   }
+}
+
+function providerUrlForNode(node: NetworkNode): string {
+  return node.connect?.providerCanonicalUrl || node.providerCanonicalUrl || '';
 }
 
 function statusLabel(status: unknown): string {
@@ -94,12 +116,14 @@ function metricForCategory(node: NetworkNode, categorySlug = 'network-partner-of
 }
 
 function methodologyForNode(node: NetworkNode, categorySlug?: string): string {
-  const roles = (node.roles || []).join(', ') || 'registered network';
+  const readyServices = Object.entries(node.services || {})
+    .filter(([, service]) => service.status === 'ready')
+    .map(([key]) => key)
+    .join(', ');
   const status = statusLabel(node.overallStatus);
   const proofCount = Number(node.trust?.proofCount || 0);
-  const url = node.connect?.providerCanonicalUrl || node.providerCanonicalUrl || hostForNode(node);
   const categoryContext = categorySlug ? ` Category filter: ${categorySlug.replace(/-/g, ' ')}.` : '';
-  return `Registered network node: ${url}. Status: ${status}. Roles: ${roles}. Public proof records: ${proofCount}.${categoryContext}`;
+  return `${status} network candidate with ${proofCount} public proof ${proofCount === 1 ? 'record' : 'records'}${readyServices ? ` and ready ${readyServices} services` : ''}.${categoryContext}`;
 }
 
 export async function fetchNetworkNodes(): Promise<NetworkNodesSnapshot> {
@@ -108,12 +132,21 @@ export async function fetchNetworkNodes(): Promise<NetworkNodesSnapshot> {
   return await response.json() as NetworkNodesSnapshot;
 }
 
-export function networkRankingsFromNodes(snapshot: NetworkNodesSnapshot | null, categorySlug?: string): TechnicalRanking[] {
+function serviceListForNode(node: NetworkNode) {
+  return Object.entries(node.services || {}).map(([key, service]) => ({
+    label: key.charAt(0).toUpperCase() + key.slice(1),
+    status: statusLabel(service.status),
+    score: service.score,
+  }));
+}
+
+export function networkRankingsFromNodes(snapshot: NetworkNodesSnapshot | null, categorySlug?: string): NetworkRanking[] {
   if (!snapshot?.nodes?.length) return [];
 
   return snapshot.nodes
     .map((node) => {
       const metric = metricForCategory(node, categorySlug);
+      const providerUrl = providerUrlForNode(node);
       return {
         id: `network-node-${node.nodeId.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()}-${categorySlug || 'overview'}`,
         title: node.displayName || node.operator || hostForNode(node),
@@ -128,8 +161,20 @@ export function networkRankingsFromNodes(snapshot: NetworkNodesSnapshot | null, 
           period: 'Live network snapshot',
           methodology: methodologyForNode(node, categorySlug),
         },
+        profile: {
+          operator: node.operator || node.displayName || hostForNode(node),
+          providerUrl,
+          networkProfileUrl: node.networkProfileUrl || `https://network.certifyd.me/node/${encodeURIComponent(node.nodeId)}`,
+          settingsUrl: node.settingsUrl,
+          location: node.location?.displayLocation,
+          status: statusLabel(node.overallStatus),
+          roles: node.roles || [],
+          proofCount: Number(node.trust?.proofCount || 0),
+          nodeAgeDays: node.history?.nodeAgeDays,
+          services: serviceListForNode(node),
+        },
         __score: metric.score,
-      } as TechnicalRanking & { __score: number };
+      } as NetworkRanking & { __score: number };
     })
     .sort((a, b) => b.__score - a.__score)
     .map((ranking) => {

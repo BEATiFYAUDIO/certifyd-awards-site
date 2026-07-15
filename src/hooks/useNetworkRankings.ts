@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
-import { fetchNetworkNodes, networkRankingsFromNodes, type NetworkNodesSnapshot } from '../lib/networkNodes';
-import type { TechnicalRanking } from '../types';
+import { fetchNetworkNodes, networkRankingsFromNodes, type NetworkNodesSnapshot, type NetworkRanking } from '../lib/networkNodes';
 
-export function useNetworkRankings(categorySlug?: string, limit?: number): { rankings: TechnicalRanking[]; loading: boolean; updatedAt: Date | null } {
+export function useNetworkRankings(categorySlug?: string, limit?: number): { rankings: NetworkRanking[]; loading: boolean; updatedAt: Date | null } {
   const [snapshot, setSnapshot] = useState<NetworkNodesSnapshot | null>(null);
   const [loading, setLoading] = useState(true);
 

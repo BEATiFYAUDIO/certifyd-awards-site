@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { NetworkCandidateCard } from '../components/awards/NetworkCandidateCard';
 import { getTechnologyCategory, getTechnologyAwardImageUrl } from '../data/technology';
 import { NotFound } from './NotFound';
 import { useNetworkRankings } from '../hooks/useNetworkRankings';
@@ -31,7 +32,7 @@ export function TechCategoryDetail() {
           <p className="muted">Filtered against the Certifyd Network map for this category&apos;s evidence.</p>
         </div>
         {loading ? <p className="muted">Loading network operators…</p> : null}
-        {rankings.length ? <div className="ranking-grid operator-candidate-grid">{rankings.map((ranking, index) => <article className="ranking-card technology-ranking-card operator-candidate-card" key={ranking.id}><span className="status-pill ok">Candidate {index + 1} of {rankings.length}</span><h3>{ranking.title}</h3><p className="ranking-benefit">{ranking.source.methodology}</p><div className="ranking-metric"><strong>{ranking.value}</strong><span>{ranking.metricName}</span></div><small>{ranking.source.label} · Source snapshot: {ranking.source.lastUpdatedAt}</small></article>)}</div> : <div className="empty-state"><h3>No network operator rankings are available right now.</h3><p>Recognition appears when the Certifyd Network map returns eligible nodes.</p></div>}
+        {rankings.length ? <div className="ranking-grid operator-candidate-grid">{rankings.map((ranking, index) => <NetworkCandidateCard ranking={ranking} index={index} total={rankings.length} key={ranking.id} />)}</div> : <div className="empty-state"><h3>No network operator rankings are available right now.</h3><p>Recognition appears when the Certifyd Network map returns eligible nodes.</p></div>}
       </section>
       <div className="hero-actions">
         <Link className="secondary-action" to="/technology">Back to Creator Innovation</Link>

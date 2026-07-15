@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AwardCreatorCard } from '../components/awards/AwardCreatorCard';
+import { NetworkCandidateCard } from '../components/awards/NetworkCandidateCard';
 import { NomineeCard } from '../components/awards/NomineeCard';
 import { ScoreBreakdown } from '../components/awards/ScoreBreakdown';
 import { foundersAward, getCategory, getCreator, getWork } from '../data/awards';
@@ -188,16 +189,7 @@ export function Home() {
         </div>
         <div className="ranking-grid innovation-ranking-grid operator-candidate-grid">
           {liveTechnologyRankings.map((ranking, index) => (
-            <article className="ranking-card technology-ranking-card operator-candidate-card" key={ranking.id}>
-              <span className="status-pill ok">Candidate {index + 1} of {liveTechnologyRankings.length}</span>
-              <h3>{ranking.title}</h3>
-              <p className="ranking-benefit">{ranking.source.methodology}</p>
-              <div className="ranking-metric">
-                <strong>{ranking.value}</strong>
-                <span>{ranking.metricName}</span>
-              </div>
-              <small>{ranking.source.label} · {ranking.source.period} · Updated {ranking.source.lastUpdatedAt}</small>
-            </article>
+            <NetworkCandidateCard ranking={ranking} index={index} total={liveTechnologyRankings.length} key={ranking.id} />
           ))}
         </div>
       </section>

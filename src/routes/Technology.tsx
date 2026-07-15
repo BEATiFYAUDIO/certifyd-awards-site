@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { NetworkCandidateCard } from '../components/awards/NetworkCandidateCard';
 import { technologyCategories, getTechnologyAwardImageUrl, networkAwardIntro, networkParticipationCopy } from '../data/technology';
 import { useNetworkRankings } from '../hooks/useNetworkRankings';
 
@@ -39,16 +40,7 @@ export function Technology() {
         {loading ? <p className="muted">Loading network operators…</p> : null}
         <div className="ranking-grid innovation-ranking-grid operator-candidate-grid">
           {liveRankings.map((ranking, index) => (
-            <article className="ranking-card technology-ranking-card operator-candidate-card" key={ranking.id}>
-              <span className="status-pill ok">Candidate {index + 1} of {liveRankings.length}</span>
-              <h3>{ranking.title}</h3>
-              <p className="ranking-benefit">{ranking.source.methodology}</p>
-              <div className="ranking-metric">
-                <strong>{ranking.value}</strong>
-                <span>{ranking.metricName}</span>
-              </div>
-              <small>{ranking.source.label} · {ranking.source.period} · Updated {ranking.source.lastUpdatedAt}</small>
-            </article>
+            <NetworkCandidateCard ranking={ranking} index={index} total={liveRankings.length} key={ranking.id} />
           ))}
         </div>
       </section>
