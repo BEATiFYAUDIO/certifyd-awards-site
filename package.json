@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "postbuild": "node scripts/postbuild.mjs",
     "lint": "eslint .",
+    "sync:network": "node scripts/sync-network-nodes.mjs",
     "test:scoring": "tsx src/lib/scoring.test.ts",
     "preview": "vite preview"
   },

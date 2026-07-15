@@ -30,7 +30,7 @@ export function useFanHydratedEntries(baseEntries: AwardEntry[] = []): { entries
         const currentEntries = baseEntriesRef.current;
         if (cancelled) return;
         const ranked = currentEntries.length > 0 ? rankHydratedEntries(currentEntries, fanItems) : rankFanAwardEntries(fanItems);
-        setHydratedEntries(ranked.filter((entry) => entry.liveRankSource === 'fan-pwa'));
+        setHydratedEntries(ranked.filter((entry) => entry.liveRankSource === 'public-discovery'));
         setUpdatedAt(new Date());
       } catch {
         if (!cancelled) setHydratedEntries([]);

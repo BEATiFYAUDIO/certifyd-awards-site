@@ -1,0 +1,204 @@
+{
+  "source": "https://network.certifyd.me/",
+  "generatedAt": "2026-07-15T16:24:43.480Z",
+  "nodes": [
+    {
+      "nodeId": "node:d6d094696d223d809d5c8b70559b746d15b2a9a6b5bc9d86380cdd27ece9b04c",
+      "providerCanonicalUrl": "https://certifyd.beatifygroup.com",
+      "providerNodeId": "node:d6d094696d223d809d5c8b70559b746d15b2a9a6b5bc9d86380cdd27ece9b04c",
+      "providerPublicKey": "ed25519:MCowBQYDK2VwAyEA02l0qOzeWOxVUrcbLzAyZIxSjoHhGWvsJbwU4W0PhW0",
+      "providerProfileId": "cmo8n1v6k0006xwyezum2ep23",
+      "displayName": "Beatify Group",
+      "operator": "Beatify Group",
+      "roles": [
+        "creator",
+        "identity",
+        "content",
+        "commerce",
+        "settlement",
+        "proof"
+      ],
+      "location": {
+        "country": "Canada",
+        "region": "ON",
+        "displayLocation": "Innisfil, ON",
+        "precision": "region",
+        "source": "browser_confirmed"
+      },
+      "overallStatus": "limited",
+      "services": {
+        "identity": {
+          "status": "ready"
+        },
+        "content": {
+          "status": "ready"
+        },
+        "commerce": {
+          "status": "limited",
+          "message": "Provider role is advertised but commerce readiness is degraded.",
+          "reasonCodes": [
+            "LOW_INBOUND_LIQUIDITY"
+          ],
+          "score": 84
+        },
+        "settlement": {
+          "status": "limited",
+          "message": "Settlement readiness is degraded.",
+          "reasonCodes": [
+            "LOW_INBOUND_LIQUIDITY"
+          ],
+          "score": 84
+        },
+        "proofs": {
+          "status": "ready"
+        }
+      },
+      "readiness": {
+        "provisioned": {
+          "status": "limited",
+          "message": "Node is not fully ready to provision creators.",
+          "reasonCodes": [
+            "COMMERCE_LIMITED",
+            "SETTLEMENT_LIMITED"
+          ],
+          "score": 50
+        },
+        "durable": {
+          "status": "ready",
+          "reasonCodes": [
+            "COMMERCE_LIMITED"
+          ],
+          "score": 88
+        },
+        "reachable": {
+          "status": "ready"
+        }
+      },
+      "trust": {
+        "operatorVerified": true,
+        "proofCapable": true,
+        "proofCount": 8
+      },
+      "history": {
+        "nodeAgeDays": 85,
+        "reliability30d": null,
+        "reliability90d": null,
+        "successfulPayments30d": null
+      },
+      "connect": {
+        "providerNodeId": "node:d6d094696d223d809d5c8b70559b746d15b2a9a6b5bc9d86380cdd27ece9b04c",
+        "providerPublicKey": "ed25519:MCowBQYDK2VwAyEA02l0qOzeWOxVUrcbLzAyZIxSjoHhGWvsJbwU4W0PhW0",
+        "providerProfileId": "cmo8n1v6k0006xwyezum2ep23",
+        "providerCanonicalUrl": "https://certifyd.beatifygroup.com",
+        "capabilities": {
+          "identity": true,
+          "content": true,
+          "commerce": true,
+          "settlement": true,
+          "proofs": true
+        }
+      },
+      "technical": {
+        "version": "network-map-v1"
+      }
+    },
+    {
+      "nodeId": "node:768fef95328f2621ed0b01caf69d39ac4a0a915a1de6ec4506ac5a075928d76e",
+      "displayName": "Certifyd Creator Profile",
+      "operator": "Certifyd",
+      "roles": [
+        "creator",
+        "identity",
+        "content",
+        "commerce",
+        "settlement",
+        "proof"
+      ],
+      "location": {
+        "country": "Canada",
+        "region": "Ontario",
+        "city": "Innisfil",
+        "displayLocation": "Innisfil, Ontario",
+        "precision": "city",
+        "source": "operator_declared"
+      },
+      "overallStatus": "limited",
+      "services": {
+        "identity": {
+          "status": "ready"
+        },
+        "content": {
+          "status": "ready"
+        },
+        "commerce": {
+          "status": "limited",
+          "message": "Provider role is advertised but commerce readiness is degraded.",
+          "reasonCodes": [
+            "LOW_INBOUND_LIQUIDITY"
+          ],
+          "score": 84
+        },
+        "settlement": {
+          "status": "limited",
+          "message": "Settlement readiness is degraded.",
+          "reasonCodes": [
+            "LOW_INBOUND_LIQUIDITY"
+          ],
+          "score": 84
+        },
+        "proofs": {
+          "status": "ready"
+        }
+      },
+      "readiness": {
+        "provisioned": {
+          "status": "limited",
+          "message": "Node is not fully ready to provision creators.",
+          "reasonCodes": [
+            "COMMERCE_LIMITED",
+            "SETTLEMENT_LIMITED"
+          ],
+          "score": 50
+        },
+        "durable": {
+          "status": "ready",
+          "reasonCodes": [
+            "COMMERCE_LIMITED"
+          ],
+          "score": 85
+        },
+        "reachable": {
+          "status": "ready"
+        }
+      },
+      "trust": {
+        "operatorVerified": true,
+        "proofCapable": true,
+        "proofCount": 3
+      },
+      "history": {
+        "nodeAgeDays": null,
+        "reliability30d": null,
+        "reliability90d": null,
+        "successfulPayments30d": null
+      },
+      "connect": {
+        "providerNodeId": "node:768fef95328f2621ed0b01caf69d39ac4a0a915a1de6ec4506ac5a075928d76e",
+        "providerPublicKey": "ed25519:MCowBQYDK2VwAyEAP-5l7T3Ej7fZJDfxus5KEQJSMc-aGjXr1BSMpsDd9yY",
+        "providerProfileId": "cmolwkufl0006vjwo9jkwvvq6",
+        "providerCanonicalUrl": "https://public.certifyd.me",
+        "capabilities": {
+          "identity": true,
+          "content": true,
+          "commerce": true,
+          "settlement": true,
+          "proofs": true
+        }
+      },
+      "technical": {
+        "version": "network-map-v1",
+        "network": "certifyd"
+      }
+    }
+  ]
+}

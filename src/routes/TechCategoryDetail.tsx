@@ -1,14 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
-import { getTechnologyCategory, getTechnicalProvider, getTechnologyAwardImageUrl } from '../data/technology';
+import { getTechnologyCategory, getTechnologyAwardImageUrl } from '../data/technology';
 import { NotFound } from './NotFound';
-import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
-import { technologyRankingsFromFanEntries } from '../lib/fanDiscovery';
+import { useNetworkRankings } from '../hooks/useNetworkRankings';
 
 export function TechCategoryDetail() {
   const { categoryId } = useParams();
   const category = categoryId ? getTechnologyCategory(categoryId) : undefined;
-  const { entries } = useFanHydratedEntries();
-  const rankings = technologyRankingsFromFanEntries(entries);
+  const { rankings, loading } = useNetworkRankings(category?.slug);
   if (!category) return <NotFound />;
   const imageUrl = getTechnologyAwardImageUrl(category);
 
@@ -27,8 +25,9 @@ export function TechCategoryDetail() {
         <article className="glass-card"><span className="eyebrow">Evidence considered</span><ul>{category.metrics.map((item) => <li key={item}>{item}</li>)}</ul></article>
       </div>
       <section className="rankings-section">
-        <div className="section-heading"><span className="eyebrow">Live recognition</span><h2>Creator benefit and supporting evidence.</h2></div>
-        {rankings.length ? <div className="ranking-grid">{rankings.map((ranking) => { const provider = getTechnicalProvider(ranking.providerId); return <article className="ranking-card" key={ranking.id}><span className="status-pill ok">Live Fan PWA</span><h3>{ranking.title}</h3><p className="ranking-benefit">{provider?.summary}</p><strong>{ranking.value}</strong><p>{provider?.name} · {ranking.metricName}</p><small>{ranking.source.methodology}</small></article>; })}</div> : <div className="empty-state"><h3>No live Fan PWA rankings are available right now.</h3><p>Recognition appears when public creator nodes return discoverable work.</p></div>}
+        <div className="section-heading"><span className="eyebrow">Live recognition</span><h2>Network-map evidence for this category.</h2></div>
+        {loading ? <p className="muted">Loading network operators…</p> : null}
+        {rankings.length ? <div className="ranking-grid">{rankings.map((ranking) => <article className="ranking-card" key={ranking.id}><span className="status-pill ok">Network map</span><h3>{ranking.title}</h3><p className="ranking-benefit">{ranking.source.methodology}</p><strong>{ranking.value}</strong><p>{ranking.source.label} · {ranking.metricName}</p><small>Source snapshot: {ranking.source.lastUpdatedAt}</small></article>)}</div> : <div className="empty-state"><h3>No network operator rankings are available right now.</h3><p>Recognition appears when the Certifyd Network map returns eligible nodes.</p></div>}
       </section>
       <div className="hero-actions">
         <Link className="secondary-action" to="/technology">Back to Creator Innovation</Link>

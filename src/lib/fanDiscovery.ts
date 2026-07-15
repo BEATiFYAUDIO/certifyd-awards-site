@@ -30,7 +30,7 @@ export type FanHydratedEntry = AwardEntry & {
   fanSupportScore: number;
   fanRelationshipScore: number;
   fanSortTime: number;
-  liveRankSource: 'fan-pwa' | 'seeded-awards-data';
+  liveRankSource: 'public-discovery' | 'seeded-awards-data';
 };
 
 type OriginsResponse = { origins?: string[] };
@@ -262,19 +262,19 @@ export function fanItemToAwardEntry(item: FanDiscoverableItem): FanHydratedEntry
     categoryId: categoryForFanItem(item),
     creatorId: creatorIdForFanItem(item),
     title,
-    summary: String(item.description || `Live Fan PWA entry from ${item.creatorHandle || 'a Certifyd creator'}.`).trim(),
+    summary: String(item.description || `Live public discovery entry from ${item.creatorHandle || 'a Certifyd creator'}.`).trim(),
     contributors: [{ creatorId: creatorIdForFanItem(item), role: 'Creator' }],
     proofs: [
       {
         id: `${safeEntryId(item)}-discovery`,
-        label: 'Fan PWA discovery record',
+        label: 'Public discovery record',
         status: 'public',
-        hash: String(item.contentId || item.sourceContentId || item.id || 'fan-pwa'),
-        source: String(item.publicOrigin || 'Fan PWA'),
+        hash: String(item.contentId || item.sourceContentId || item.id || 'public-discovery'),
+        source: String(item.publicOrigin || 'Public discovery'),
       },
     ],
     scoring: [
-      { label: 'Support', reason: 'Public support, purchase, unlock, tip, or popularity signal from Fan PWA discovery.', normalizedScore: supportNormalized, weight: 0.35 },
+      { label: 'Support', reason: 'Public support, purchase, unlock, tip, or popularity signal from public discovery.', normalizedScore: supportNormalized, weight: 0.35 },
       { label: 'Recency', reason: 'Freshness from published, created, or updated timestamps.', normalizedScore: recent, weight: 0.25 },
       { label: 'Relationships', reason: 'Public collaborator, contributor, split, lineage, or connected-work signal.', normalizedScore: relationshipNormalized, weight: 0.25 },
       { label: 'Availability', reason: 'Reachable public discovery item with commerce or healthy origin signals.', normalizedScore: postureNormalized, weight: 0.15 },
@@ -287,7 +287,7 @@ export function fanItemToAwardEntry(item: FanDiscoverableItem): FanHydratedEntry
     fanSupportScore: support,
     fanRelationshipScore: relationship,
     fanSortTime: itemSortTime(item),
-    liveRankSource: 'fan-pwa',
+    liveRankSource: 'public-discovery',
   };
 }
 
@@ -405,14 +405,14 @@ export function hydrateAwardEntries(baseEntries: AwardEntry[], fanItems: FanDisc
       fanSupportScore: fanItem ? publicSupportScore(fanItem) : 0,
       fanRelationshipScore: fanItem ? publicRelationshipScore(fanItem) : 0,
       fanSortTime: fanItem ? itemSortTime(fanItem) : 0,
-      liveRankSource: fanItem ? 'fan-pwa' : 'seeded-awards-data',
+      liveRankSource: fanItem ? 'public-discovery' : 'seeded-awards-data',
     };
   });
 }
 
 export function rankHydratedEntries(baseEntries: AwardEntry[], fanItems: FanDiscoverableItem[]): FanHydratedEntry[] {
   return hydrateAwardEntries(baseEntries, fanItems).sort((a, b) => {
-    if (a.liveRankSource !== b.liveRankSource) return a.liveRankSource === 'fan-pwa' ? -1 : 1;
+    if (a.liveRankSource !== b.liveRankSource) return a.liveRankSource === 'public-discovery' ? -1 : 1;
     if (a.fanScore !== b.fanScore) return b.fanScore - a.fanScore;
     if (a.fanSupportScore !== b.fanSupportScore) return b.fanSupportScore - a.fanSupportScore;
     if (a.fanSortTime !== b.fanSortTime) return b.fanSortTime - a.fanSortTime;
@@ -461,7 +461,7 @@ export function creatorsFromFanEntries(liveEntries: FanHydratedEntry[], limit = 
         avatarUrl: typeof item?.creatorAvatarUrl === 'string' ? item.creatorAvatarUrl : undefined,
         wallpaperUrl: typeof item?.coverUrl === 'string' ? item.coverUrl : undefined,
         verified: true,
-        verificationLabel: 'Live Fan PWA creator',
+        verificationLabel: 'Live public discovery creator',
         primaryRole: 'Creator',
         nominatedWorks: rows.map((entry) => entry.title),
         source: 'creator-node',
@@ -489,15 +489,15 @@ export function technologyRankingsFromFanEntries(liveEntries: FanHydratedEntry[]
         id: `live-origin-${origin.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()}`,
         title: new URL(origin).hostname,
         categorySlug: 'public-node-excellence',
-        metricName: 'Live works discoverable',
-        value: `${rows.length} ${rows.length === 1 ? 'work' : 'works'}`,
+        metricName: 'Discoverable works returned',
+        value: `${rows.length} live ${rows.length === 1 ? 'work' : 'works'}`,
         providerId: 'provider-certifyd-creator-node',
         source: {
-          label: 'Fan PWA discovery',
+          label: 'Public creator-node discovery',
           status: 'verified',
           lastUpdatedAt: new Date().toISOString().slice(0, 10),
           period: 'Live public discovery',
-          methodology: `${creators.size} creator ${creators.size === 1 ? 'profile' : 'profiles'} currently returning public discoverable works. Score uses live works, creator coverage, public support, and latest activity.`,
+          methodology: `${creators.size} creator ${creators.size === 1 ? 'profile is' : 'profiles are'} currently returning discoverable work from this origin. This measures live discovery coverage: works returned, creator coverage, public support, and latest activity. Operator readiness belongs on the Certifyd Network map.`,
         },
         __score: score,
       } as TechnicalRanking & { __score: number };

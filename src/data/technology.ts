@@ -105,7 +105,7 @@ export const technicalProviders: TechnicalProvider[] = [
     slug: 'certifyd-creator',
     name: 'Certifyd Creator',
     type: 'Founding Certifyd node operator',
-    summary: 'Operates a public creator profile node that supports identity, content, commerce, settlement, and proof capabilities in the Certifyd Network.',
+    summary: 'Public creator-node participation is tracked on the Certifyd Network map; awards discovery cards show live works returned by creator nodes.',
     nodeOrigin: 'https://public.certifyd.me',
     verificationStatus: 'Preview Ranking',
   },

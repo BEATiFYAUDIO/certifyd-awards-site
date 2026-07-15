@@ -4,10 +4,10 @@ import { AwardCreatorCard } from '../components/awards/AwardCreatorCard';
 import { NomineeCard } from '../components/awards/NomineeCard';
 import { ScoreBreakdown } from '../components/awards/ScoreBreakdown';
 import { foundersAward, getCategory, getCreator, getWork } from '../data/awards';
-import { getTechnicalProvider } from '../data/technology';
 import { artworkUrl } from '../lib/artwork';
 import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
-import { creatorsFromFanEntries, technologyRankingsFromFanEntries } from '../lib/fanDiscovery';
+import { useNetworkRankings } from '../hooks/useNetworkRankings';
+import { creatorsFromFanEntries } from '../lib/fanDiscovery';
 
 const creativeCategories = ['Work of the Year', 'Creator of the Year', 'Song of the Year', 'Album of the Year', 'Video of the Year', 'Podcast of the Year', 'Spoken Word of the Year', 'Independent Creator', 'Collaboration of the Year', 'Live Performance', 'Fan-Supported Work', 'Cultural Impact'];
 const innovationCategories = ['Network Partner of the Year', 'Public Node Excellence', 'Creator Infrastructure Award', 'Publishing Excellence Award', 'Discovery Excellence Award', 'Identity Excellence Award', 'Community Node Award', 'Open Network Leadership Award', 'Verification Excellence Award', 'Creator Commerce Provider'];
@@ -21,9 +21,9 @@ const heroVideos = [
 export function Home() {
   const [activeHeroVideo, setActiveHeroVideo] = useState(0);
   const { entries: hydratedEntries, loading: fanHydrating, updatedAt: fanUpdatedAt } = useFanHydratedEntries();
+  const { rankings: liveTechnologyRankings } = useNetworkRankings(undefined, 4);
   const featuredEntries = hydratedEntries.slice(0, 4);
   const creators = creatorsFromFanEntries(hydratedEntries, 3);
-  const liveTechnologyRankings = technologyRankingsFromFanEntries(hydratedEntries).slice(0, 4);
   const featured = featuredEntries[0];
   const featuredCreator = featured ? getCreator(featured.creatorId) : undefined;
   const featuredWork = featured ? getWork(featured.workId) : undefined;
@@ -90,10 +90,10 @@ export function Home() {
               <Link className="secondary-action" to={`/nominees/${featured.id}`}>View the Story</Link>
               {featured.fanItem?.buyUrl || featured.fanItem?.publicUrl || featuredWork?.publicUrl ? <a className="secondary-action" href={String(featured.fanItem?.buyUrl || featured.fanItem?.publicUrl || featuredWork?.publicUrl)} target="_blank" rel="noreferrer">Open Work</a> : null}
             </div>
-            <small className="muted">Live from Fan PWA{fanUpdatedAt ? ` · ${fanUpdatedAt.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}` : ''}</small>
+            <small className="muted">Live public discovery{fanUpdatedAt ? ` · ${fanUpdatedAt.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}` : ''}</small>
           </div>
         </section>
-      ) : fanHydrating ? null : <section className="featured-story-section"><div className="featured-story-copy"><span className="eyebrow">Stories Worth Celebrating</span><h2>No live Fan PWA entries available.</h2><p>Current awards surfaces only show works returned by public Fan PWA discovery.</p></div></section>}
+      ) : fanHydrating ? null : <section className="featured-story-section"><div className="featured-story-copy"><span className="eyebrow">Stories Worth Celebrating</span><h2>No live public discovery entries available.</h2><p>Current awards surfaces only show works returned by public creator-node discovery.</p></div></section>}
 
       <section className="weekend-section">
         <div className="section-heading centered">
@@ -179,25 +179,22 @@ export function Home() {
 
       <section className="rankings-section innovation-rankings">
         <div className="section-heading inline">
-          <div><span className="eyebrow">The people and technology behind the work</span><h2>Creator Innovation</h2></div>
+          <div><span className="eyebrow">Network operators supporting creators</span><h2>Creator Innovation</h2></div>
           <Link to="/technology">Explore Creator Innovation</Link>
         </div>
         <div className="ranking-grid innovation-ranking-grid">
-          {liveTechnologyRankings.map((ranking) => {
-            const provider = getTechnicalProvider(ranking.providerId);
-            return (
-              <article className="ranking-card technology-ranking-card" key={ranking.id}>
-                <span className="status-pill ok">Live Fan PWA</span>
-                <h3>{ranking.title}</h3>
-                <p className="ranking-benefit">{ranking.source.methodology}</p>
-                <div className="ranking-metric">
-                  <strong>{ranking.value}</strong>
-                  <span>{ranking.metricName}</span>
-                </div>
-                <small>{provider?.name} · {ranking.source.period} · Updated {ranking.source.lastUpdatedAt}</small>
-              </article>
-            );
-          })}
+          {liveTechnologyRankings.map((ranking) => (
+            <article className="ranking-card technology-ranking-card" key={ranking.id}>
+              <span className="status-pill ok">Network map</span>
+              <h3>{ranking.title}</h3>
+              <p className="ranking-benefit">{ranking.source.methodology}</p>
+              <div className="ranking-metric">
+                <strong>{ranking.value}</strong>
+                <span>{ranking.metricName}</span>
+              </div>
+              <small>{ranking.source.label} · {ranking.source.period} · Updated {ranking.source.lastUpdatedAt}</small>
+            </article>
+          ))}
         </div>
       </section>
 

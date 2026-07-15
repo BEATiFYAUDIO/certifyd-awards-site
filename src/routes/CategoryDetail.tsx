@@ -29,11 +29,11 @@ export function CategoryDetail() {
       </div>
       {example ? <ScoreBreakdown scoring={example.scoring} /> : null}
       <div className="section-heading inline">
-        <div><span className="eyebrow">Nominees</span><h2>Live Fan PWA entries</h2></div>
+        <div><span className="eyebrow">Nominees</span><h2>Live discovery entries</h2></div>
         <Link to="/nominate">Submit a nomination</Link>
       </div>
       <div className="nominee-list two-column">
-        {nominees.length ? nominees.map((entry) => <NomineeCard key={entry.id} entry={entry} />) : <p className="muted">No live Fan PWA entries are available for this category right now.</p>}
+        {nominees.length ? nominees.map((entry) => <NomineeCard key={entry.id} entry={entry} />) : <p className="muted">No live public discovery entries are available for this category right now.</p>}
       </div>
     </section>
   );

@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
-import { technologyCategories, getTechnicalProvider, getTechnologyAwardImageUrl, networkAwardIntro, networkParticipationCopy } from '../data/technology';
-import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
-import { technologyRankingsFromFanEntries } from '../lib/fanDiscovery';
+import { technologyCategories, getTechnologyAwardImageUrl, networkAwardIntro, networkParticipationCopy } from '../data/technology';
+import { useNetworkRankings } from '../hooks/useNetworkRankings';
 
 export function Technology() {
   const families = Array.from(new Set(technologyCategories.map((category) => category.family)));
-  const { entries } = useFanHydratedEntries();
-  const liveRankings = technologyRankingsFromFanEntries(entries);
+  const { rankings: liveRankings, loading } = useNetworkRankings();
   return (
     <section className="page-section awards-division-page">
       <span className="eyebrow">Day 1 · Creator Innovation</span>
@@ -35,25 +33,23 @@ export function Technology() {
       <section className="rankings-section">
         <div className="section-heading">
           <span className="eyebrow">Live recognition</span>
-          <h2>Active public nodes.</h2>
-          <p className="muted">Ranked from current Fan PWA discovery data.</p>
+          <h2>Network operators supporting creators.</h2>
+          <p className="muted">Hydrated from the Certifyd Network map snapshot. These cards show node roles, readiness, proof capability, and creator-commerce support.</p>
         </div>
+        {loading ? <p className="muted">Loading network operators…</p> : null}
         <div className="ranking-grid innovation-ranking-grid">
-          {liveRankings.map((ranking) => {
-            const provider = getTechnicalProvider(ranking.providerId);
-            return (
-              <article className="ranking-card technology-ranking-card" key={ranking.id}>
-                <span className="status-pill ok">Live Fan PWA</span>
-                <h3>{ranking.title}</h3>
-                <p className="ranking-benefit">{ranking.source.methodology}</p>
-                <div className="ranking-metric">
-                  <strong>{ranking.value}</strong>
-                  <span>{ranking.metricName}</span>
-                </div>
-                <small>{provider?.name} · {ranking.source.period} · Updated {ranking.source.lastUpdatedAt}</small>
-              </article>
-            );
-          })}
+          {liveRankings.map((ranking) => (
+            <article className="ranking-card technology-ranking-card" key={ranking.id}>
+              <span className="status-pill ok">Network map</span>
+              <h3>{ranking.title}</h3>
+              <p className="ranking-benefit">{ranking.source.methodology}</p>
+              <div className="ranking-metric">
+                <strong>{ranking.value}</strong>
+                <span>{ranking.metricName}</span>
+              </div>
+              <small>{ranking.source.label} · {ranking.source.period} · Updated {ranking.source.lastUpdatedAt}</small>
+            </article>
+          ))}
         </div>
       </section>
       <section className="glass-card network-cta-card">
