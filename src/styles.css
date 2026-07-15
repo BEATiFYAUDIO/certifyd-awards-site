@@ -2529,3 +2529,39 @@ h2,
     white-space: normal !important;
   }
 }
+
+/* Founders page final pass: keep the title readable and use the award image cleanly. */
+.founders-home-visual img,
+.founders-hero-visual img {
+  object-position: center 42%;
+}
+
+@media (max-width: 720px) {
+  .founders-hero {
+    padding: 24px 16px !important;
+    gap: 20px !important;
+  }
+
+  .founders-hero h1 {
+    max-width: 100% !important;
+    font-size: clamp(3.2rem, 14vw, 4.4rem) !important;
+    line-height: 0.94 !important;
+    letter-spacing: -0.045em !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: manual !important;
+  }
+
+  .founders-hero h1 span {
+    display: block;
+    max-width: 9ch;
+  }
+
+  .founders-home-visual img,
+  .founders-hero-visual img {
+    aspect-ratio: 4 / 5;
+    min-height: 0 !important;
+    object-fit: cover;
+    border-radius: 24px;
+  }
+}

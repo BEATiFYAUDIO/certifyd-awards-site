@@ -29,7 +29,7 @@ function useFoundersAwardMeta() {
       ['og:title', pageTitle],
       ['og:description', pageDescription],
       ['og:url', canonicalUrl],
-      ['og:image', 'https://awards.certifyd.me/media/vassal-benford-founders-award.png'],
+      ['og:image', 'https://awards.certifyd.me/media/certifyd-awards-music-note.webp'],
     ].forEach(([property, content]) => {
       setMeta(`meta[property="${property}"]`, 'content', content, () => {
         const meta = document.createElement('meta');
@@ -56,7 +56,7 @@ export function FoundersAward() {
           </div>
         </div>
         <figure className="founders-hero-visual">
-          <img src="/media/vassal-benford-founders-award.png" alt="Vassal Benford Founders' Award crystal globe trophy" />
+          <img src="/media/certifyd-awards-music-note.webp" alt="Certifyd Awards gold music note trophy" />
         </figure>
       </section>
 
