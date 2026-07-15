@@ -2536,6 +2536,34 @@ h2,
   object-position: center 42%;
 }
 
+.founders-hero .founders-title {
+  max-width: 11ch !important;
+  font-size: clamp(4.2rem, 6.6vw, 7.2rem) !important;
+  line-height: 0.9 !important;
+  letter-spacing: -0.045em !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+  hyphens: manual !important;
+}
+
+.founders-hero .founders-title span {
+  display: block !important;
+  max-width: none !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+  white-space: nowrap !important;
+}
+
+@media (min-width: 721px) and (max-width: 1280px) {
+  .founders-hero {
+    grid-template-columns: minmax(420px, 0.92fr) minmax(420px, 1.08fr) !important;
+  }
+
+  .founders-hero .founders-title {
+    font-size: clamp(3.5rem, 5.4vw, 5.6rem) !important;
+  }
+}
+
 @media (max-width: 720px) {
   .founders-hero {
     padding: 24px 16px !important;
