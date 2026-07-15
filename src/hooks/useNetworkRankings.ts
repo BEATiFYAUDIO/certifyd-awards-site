@@ -8,7 +8,6 @@ export function useNetworkRankings(categorySlug?: string, limit?: number): { ran
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
     fetchNetworkNodes()
       .then((data) => {
         if (!cancelled) setSnapshot(data);
