@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { categories, getCategoryAwardImageUrl } from '../data/awards';
 
 export function MusicCategories() {
-  const visible = categories.filter((category) => ['major', 'music', 'creator-integrity', 'community'].includes(category.group));
+  const visible = categories.filter((category) => ['major', 'music', 'news', 'technology', 'gaming', 'sports', 'media', 'published', 'creator-integrity', 'community'].includes(category.group));
   return (
     <section className="page-section">
       <span className="eyebrow">Creative Excellence</span>

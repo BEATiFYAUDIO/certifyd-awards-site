@@ -10,6 +10,7 @@ export type FanDiscoverableItem = {
   description?: string | null;
   creatorHandle?: string | null;
   contentType?: string | null;
+  genre?: string | null;
   primaryTopic?: string | null;
   coverUrl?: string | null;
   previewUrl?: string | null;
@@ -179,10 +180,55 @@ function recencyScore(item: FanDiscoverableItem): number {
   return Math.max(0, Math.min(100, 100 - days));
 }
 
+function metadataText(item: FanDiscoverableItem): string {
+  return [
+    item.genre,
+    item.primaryTopic,
+    item.contentType,
+    item.title,
+    item.description,
+    item.category,
+    item.tags,
+  ]
+    .flatMap((part) => Array.isArray(part) ? part : [part])
+    .map((part) => String(part || '').toLowerCase())
+    .join(' ');
+}
+
+function hasAny(value: string, words: string[]): boolean {
+  return words.some((word) => value.includes(word));
+}
+
 function categoryForFanItem(item: FanDiscoverableItem): string {
   const type = String(item.contentType || '').toLowerCase();
+  const topic = String(item.primaryTopic || '').toLowerCase();
+  const genre = String(item.genre || '').toLowerCase();
+  const text = metadataText(item);
+
+  if (hasAny(`${genre} ${topic}`, ['news', 'broadcast', 'reporting', 'journalism']) || hasAny(text, ['newsmax', 'news broadcast'])) {
+    return 'cat-news-broadcast';
+  }
+
+  if (hasAny(`${genre} ${topic}`, ['technology', 'tech', 'software', 'ai', 'bitcoin', 'crypto', 'blockchain', 'developer'])) {
+    return 'cat-tech-work';
+  }
+
+  if (hasAny(`${genre} ${topic}`, ['gaming', 'game', 'esports', 'stream'])) {
+    return 'cat-gaming-work';
+  }
+
+  if (hasAny(`${genre} ${topic}`, ['sports', 'sport', 'fitness', 'athlete'])) {
+    return 'cat-sports-work';
+  }
+
+  if (hasAny(`${genre} ${topic}`, ['music', 'song', 'album', 'audio', 'r&b', 'hip hop', 'rap', 'pop', 'rock', 'gospel', 'country', 'latin'])) {
+    if (type === 'video') return 'cat-video-year';
+    return 'cat-song-year';
+  }
+
   if (type === 'song' || type === 'audio') return 'cat-song-year';
-  if (type === 'video') return 'cat-video-year';
+  if (type === 'video') return 'cat-short-form-video';
+  if (['book', 'document', 'file', 'image'].includes(type)) return 'cat-published-work';
   if (publicSupportScore(item) > 0) return 'cat-fan-supported';
   return 'cat-work-year';
 }

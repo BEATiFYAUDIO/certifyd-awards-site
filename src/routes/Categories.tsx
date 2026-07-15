@@ -3,11 +3,17 @@ import { CategoryCard } from '../components/awards/CategoryCard';
 import { categories } from '../data/awards';
 import type { AwardGroup } from '../types';
 
-const filters: Array<AwardGroup | 'all'> = ['all', 'major', 'music', 'creator-integrity', 'community', 'innovation'];
+const filters: Array<AwardGroup | 'all'> = ['all', 'major', 'music', 'news', 'technology', 'gaming', 'sports', 'media', 'published', 'creator-integrity', 'community', 'innovation'];
 const labels: Record<AwardGroup | 'all', string> = {
   all: 'All',
   major: 'Signature',
   music: 'Music',
+  news: 'News',
+  technology: 'Technology',
+  gaming: 'Gaming',
+  sports: 'Sports',
+  media: 'Video and media',
+  published: 'Published work',
   'creator-integrity': 'Credits and trust',
   community: 'Community',
   innovation: 'Innovation',

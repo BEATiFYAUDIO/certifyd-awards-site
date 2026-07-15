@@ -6,7 +6,7 @@ import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
 import { creatorsFromFanEntries } from '../lib/fanDiscovery';
 
 export function Music() {
-  const creativeCategories = categories.filter((category) => ['major', 'music', 'creator-integrity', 'community'].includes(category.group));
+  const creativeCategories = categories.filter((category) => ['major', 'music', 'news', 'technology', 'gaming', 'sports', 'media', 'published', 'creator-integrity', 'community'].includes(category.group));
   const { entries: hydratedEntries } = useFanHydratedEntries();
   const featuredEntries = hydratedEntries.slice(0, 5);
   const creators = creatorsFromFanEntries(hydratedEntries);

@@ -3,6 +3,12 @@ export type AwardStatus = 'preview' | 'upcoming' | 'open' | 'closed' | 'archived
 export type AwardGroup =
   | 'major'
   | 'music'
+  | 'news'
+  | 'technology'
+  | 'gaming'
+  | 'sports'
+  | 'media'
+  | 'published'
   | 'creator-integrity'
   | 'community'
   | 'innovation';
