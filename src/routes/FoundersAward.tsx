@@ -29,7 +29,7 @@ function useFoundersAwardMeta() {
       ['og:title', pageTitle],
       ['og:description', pageDescription],
       ['og:url', canonicalUrl],
-      ['og:image', 'https://awards.certifyd.me/media/certifyd-awards-music-note.webp'],
+      ['og:image', 'https://awards.certifyd.me/media/certifyd-awards-music-note-20260715.webp'],
     ].forEach(([property, content]) => {
       setMeta(`meta[property="${property}"]`, 'content', content, () => {
         const meta = document.createElement('meta');
@@ -51,7 +51,8 @@ export function FoundersAward() {
           <h1 className="founders-title">
             <span>The Vassal</span>
             <span>Benford</span>
-            <span>Founders&apos; Award</span>
+            <span>Founders&apos;</span>
+            <span>Award</span>
           </h1>
           <p className="lead">Honoring those whose vision, leadership, and lifelong contribution have shaped the future of creators and culture.</p>
           <div className="hero-actions">
@@ -60,7 +61,7 @@ export function FoundersAward() {
           </div>
         </div>
         <figure className="founders-hero-visual">
-          <img src="/media/certifyd-awards-music-note.webp" alt="Certifyd Awards gold music note trophy" />
+          <img src="/media/certifyd-awards-music-note-20260715.webp" alt="Certifyd Awards gold music note trophy" />
         </figure>
       </section>
 

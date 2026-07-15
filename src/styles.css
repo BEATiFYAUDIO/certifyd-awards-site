@@ -2536,6 +2536,25 @@ h2,
   object-position: center 42%;
 }
 
+@media (min-width: 1181px) {
+  .awards-hero.creator-hero {
+    grid-template-columns: minmax(520px, 0.95fr) minmax(420px, 0.85fr) !important;
+    gap: clamp(28px, 3.5vw, 56px) !important;
+    padding-left: max(48px, calc((100vw - 1320px) / 2)) !important;
+    padding-right: max(48px, calc((100vw - 1320px) / 2)) !important;
+  }
+
+  .awards-hero.creator-hero .hero-content h1 {
+    max-width: 780px !important;
+    font-size: clamp(6.2rem, 8.7vw, 10rem) !important;
+    line-height: 0.86 !important;
+  }
+
+  .awards-hero.creator-hero .hero-award-visual {
+    max-width: 520px !important;
+  }
+}
+
 .founders-hero .founders-title {
   max-width: 11ch !important;
   font-size: clamp(4.2rem, 6.6vw, 7.2rem) !important;
