@@ -61,7 +61,7 @@ export function FoundersAward() {
           </div>
         </div>
         <figure className="founders-hero-visual">
-          <img src="/media/certifyd-awards-music-note-20260715.webp" alt="Certifyd Awards gold music note trophy" />
+          <img src="/media/certifyd-awards-modern-trophy.png" alt="Certifyd Awards gold music note trophy" />
         </figure>
       </section>
 

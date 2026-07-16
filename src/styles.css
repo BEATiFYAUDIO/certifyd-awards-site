@@ -3084,3 +3084,23 @@ h2,
     display: none !important;
   }
 }
+
+/* Founders Award page: use the modern hero asset at a restrained scale. */
+@media (min-width: 1181px) {
+  .founders-hero {
+    grid-template-columns: minmax(560px, 1fr) minmax(300px, 0.56fr) !important;
+  }
+
+  .founders-hero-visual {
+    justify-self: center !important;
+    width: min(360px, 100%) !important;
+  }
+
+  .founders-hero-visual img {
+    width: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: 1122 / 1402 !important;
+    object-fit: cover !important;
+    border-radius: 22px !important;
+  }
+}
