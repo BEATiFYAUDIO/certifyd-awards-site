@@ -148,8 +148,8 @@ p { color: #d8dbe4; line-height: 1.65; }
 .category-card, .nominee-card, .winner-card { transition: transform 160ms ease, border-color 160ms ease; }
 .category-award-image {
   width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: contain;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   object-position: center;
   display: block;
   margin-bottom: 16px;
@@ -681,12 +681,12 @@ main { width: 100%; }
 }
 .large-category-tile .category-award-image { max-height: 260px; }
 .technology-award-image {
-  aspect-ratio: 2 / 3;
-  object-fit: contain;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   background: #03050b;
 }
 .large-category-tile .technology-award-image {
-  max-height: 320px;
+  max-height: 260px;
 }
 .large-category-tile:hover { border-color: rgba(247,147,26,.5); transform: translateY(-2px); }
 .category-detail-hero {

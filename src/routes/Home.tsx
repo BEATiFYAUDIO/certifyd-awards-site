@@ -54,7 +54,8 @@ export function Home() {
   const featuredEntries = hydratedEntries.slice(0, 4);
   const creators = creatorsFromFanEntries(hydratedEntries, 3);
   const carouselEntries = hydratedEntries;
-  const featured = carouselEntries[activeFeaturedIndex] || carouselEntries[0];
+  const safeFeaturedIndex = carouselEntries.length > 0 ? activeFeaturedIndex % carouselEntries.length : 0;
+  const featured = carouselEntries[safeFeaturedIndex];
   const featuredCreator = featured ? getCreator(featured.creatorId) : undefined;
   const featuredWork = featured ? getWork(featured.workId) : undefined;
   const featuredCategory = featured ? getCategory(featured.categoryId) : undefined;
@@ -68,10 +69,6 @@ export function Home() {
 
     return () => window.clearInterval(intervalId);
   }, []);
-
-  useEffect(() => {
-    if (activeFeaturedIndex >= carouselEntries.length) setActiveFeaturedIndex(0);
-  }, [activeFeaturedIndex, carouselEntries.length]);
 
   useEffect(() => {
     if (carouselEntries.length <= 1) return undefined;
@@ -137,7 +134,7 @@ export function Home() {
             {carouselEntries.length > 1 ? (
               <div className="featured-carousel-controls" aria-label="Featured work carousel controls">
                 <button type="button" onClick={() => setActiveFeaturedIndex((current) => (current - 1 + carouselEntries.length) % carouselEntries.length)}>Previous</button>
-                <span>{activeFeaturedIndex + 1} of {carouselEntries.length}</span>
+                <span>{safeFeaturedIndex + 1} of {carouselEntries.length}</span>
                 <button type="button" onClick={() => setActiveFeaturedIndex((current) => (current + 1) % carouselEntries.length)}>Next</button>
               </div>
             ) : null}
