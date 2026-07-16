@@ -104,8 +104,8 @@ export function Home() {
             <Link className="secondary-action" to="/nominate">Submit a Nomination</Link>
           </div>
         </div>
-        <aside className="hero-award-visual" aria-label="Certifyd Awards trophy concept">
-          <img src="/media/certifyd-awards-modern-trophy.png" alt="Certifyd Awards gold music note trophy" />
+        <aside className="hero-award-visual" aria-hidden="true">
+          <img src="/media/certifyd-awards-modern-trophy.png" alt="" />
         </aside>
         <div className="hero-proof-strip" aria-label="Certifyd Awards values">
           <div><span aria-hidden="true">⬡</span><strong>Verified Excellence</strong><small>Work backed by proof</small></div>
