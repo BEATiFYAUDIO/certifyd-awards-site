@@ -2886,3 +2886,23 @@ h2,
     border-radius: 8px !important;
   }
 }
+
+/* Founders home card: keep the trophy secondary to the copy. */
+@media (min-width: 1181px) {
+  .founders-home-section {
+    grid-template-columns: minmax(520px, 1.08fr) minmax(320px, 0.62fr) !important;
+  }
+
+  .founders-home-visual {
+    justify-self: center !important;
+    width: min(360px, 100%) !important;
+  }
+
+  .founders-home-visual img {
+    width: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: 1122 / 1402 !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+  }
+}
