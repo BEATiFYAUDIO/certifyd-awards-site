@@ -2911,3 +2911,9 @@ h2,
 .awards-hero.creator-hero {
   min-height: calc(100svh - 69px) !important;
 }
+
+@media (min-width: 1181px) {
+  .awards-hero.creator-hero .hero-content {
+    transform: translateY(-18px) !important;
+  }
+}
