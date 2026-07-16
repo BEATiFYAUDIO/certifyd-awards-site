@@ -312,6 +312,9 @@ const categoryAwardImageSlugs = new Set([
   'gaming-work-of-the-year',
   'sports-work-of-the-year',
   'short-form-video-of-the-year',
+  'book-of-the-year',
+  'video-of-the-year',
+  'short-film-of-the-year',
   'published-work-of-the-year',
   'most-transparent-creator',
   'best-verified-catalog',
@@ -322,5 +325,5 @@ const categoryAwardImageSlugs = new Set([
   'fan-supported-creator',
 ]);
 export function getCategoryAwardImageUrl(category: AwardCategory) {
-  return categoryAwardImageSlugs.has(category.slug) ? `/media/categories/${category.slug}.webp?v=20260716-music-four-reparse` : undefined;
+  return categoryAwardImageSlugs.has(category.slug) ? `/media/categories/${category.slug}.webp?v=20260716-trophy-set-v1` : undefined;
 }
