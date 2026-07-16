@@ -702,7 +702,9 @@ main { width: 100%; }
 }
 
 .award-category-section .large-category-tile .category-award-image {
-  aspect-ratio: 2 / 3;
+  width: min(100%, 220px);
+  align-self: center;
+  aspect-ratio: 8 / 9;
   max-height: none;
   object-fit: cover;
   object-position: center;
@@ -734,7 +736,7 @@ main { width: 100%; }
 }
 .category-detail-award {
   width: 100%;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 8 / 9;
   object-fit: cover;
   border-radius: 30px;
   border: 1px solid rgba(247,147,26,.28);
