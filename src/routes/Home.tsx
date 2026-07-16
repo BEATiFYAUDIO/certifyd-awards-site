@@ -95,16 +95,24 @@ export function Home() {
         />
         <div className="hero-shade" />
         <div className="hero-content">
+          <span className="hero-kicker">Honoring excellence. Celebrating impact.</span>
           <h1>Certifyd<br />Awards</h1>
           <p>Creators. Work. Credits. Culture.</p>
+          <p className="hero-copy">Celebrating the creators shaping culture. Honoring excellence across music, art, and digital innovation.</p>
           <div className="hero-actions">
-            <Link className="primary-action" to="/music">Explore the Awards</Link>
+            <Link className="primary-action" to="/music">Explore the Awards <span aria-hidden="true">›</span></Link>
             <Link className="secondary-action" to="/nominate">Submit a Nomination</Link>
           </div>
         </div>
         <aside className="hero-award-visual" aria-label="Certifyd Awards trophy concept">
           <img src="/media/music-note-artist-award.webp" alt="Certifyd Awards gold music note trophy" />
         </aside>
+        <div className="hero-proof-strip" aria-label="Certifyd Awards values">
+          <div><span aria-hidden="true">⬡</span><strong>Verified Excellence</strong><small>Work backed by proof</small></div>
+          <div><span aria-hidden="true">♙</span><strong>Creator First</strong><small>Built for and by creators</small></div>
+          <div><span aria-hidden="true">◎</span><strong>Cultural Impact</strong><small>Recognizing what moves culture</small></div>
+          <div><span aria-hidden="true">♕</span><strong>Prestige &amp; Legacy</strong><small>Awards that stand the test of time</small></div>
+        </div>
       </section>
 
       {featured ? (
