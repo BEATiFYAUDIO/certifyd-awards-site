@@ -3067,13 +3067,17 @@ h2,
     border-radius: 0 !important;
     background: transparent !important;
     box-shadow: none !important;
-    opacity: 0.86 !important;
+    opacity: 0.72 !important;
     object-fit: cover !important;
     object-position: center center !important;
     -webkit-mask-image:
-      radial-gradient(ellipse at center, #000 54%, rgba(0, 0, 0, 0.82) 72%, transparent 100%);
+      linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 14%, #000 82%, transparent 100%);
     mask-image:
-      radial-gradient(ellipse at center, #000 54%, rgba(0, 0, 0, 0.82) 72%, transparent 100%);
+      linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 14%, #000 82%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
   }
 }
 
