@@ -20,7 +20,7 @@ export function Music() {
         <div><h2>Creator recognition that shows the work behind the work.</h2><p>Creative Excellence includes identity, publication records, collaborators, community support, and understandable scoring context.</p></div>
         <Link className="primary-action" to="/music/categories">Creative Excellence Categories</Link>
       </div>
-      <section className="content-section tight"><div className="section-heading"><span className="eyebrow">Creative categories</span><h2>Work, stories, performance, and community impact.</h2></div><div className="category-strip">{creativeCategories.map((category) => {
+      <section className="content-section tight music-category-section"><div className="section-heading"><span className="eyebrow">Creative categories</span><h2>Work, stories, performance, and community impact.</h2></div><div className="category-strip">{creativeCategories.map((category) => {
         const imageUrl = getCategoryAwardImageUrl(category);
         return <Link className="large-category-tile" to={`/music/categories/${category.slug}`} key={category.id}>{imageUrl ? <img className="category-award-image" src={imageUrl} alt="" loading="lazy" /> : null}<h3>{category.title}</h3><p>{category.summary}</p></Link>;
       })}</div></section>
