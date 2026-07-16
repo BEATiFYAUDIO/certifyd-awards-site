@@ -128,7 +128,7 @@ export const technicalRankings: TechnicalRanking[] = [
     metricName: 'Published works hosted',
     value: '12 works',
     providerId: 'provider-certifyd-creator-node',
-    source: { label: 'Public discovery preview', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Published works hosted is treated as creator impact, not raw infrastructure trivia: it reflects how much work can be surfaced and routed back to its creator node.' },
+    source: { label: 'Creator impact preview', status: 'preview', lastUpdatedAt: '2026-07-13', period: '2026 preview window', methodology: 'Published works hosted is treated as creator impact, not raw infrastructure trivia: it reflects how much work can be surfaced and routed back to its creator node.' },
   },
   {
     id: 'rank-reliability-certifyd',

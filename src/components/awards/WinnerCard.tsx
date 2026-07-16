@@ -12,7 +12,6 @@ export function WinnerCard({ entry }: { entry: AwardEntry }) {
       <h3>{category?.title}</h3>
       <p>{entry.title} · {creator?.name}</p>
       <strong>{formatScore(entryScore(entry))}</strong>
-      <small>Score calculated from current public discovery signals.</small>
     </article>
   );
 }

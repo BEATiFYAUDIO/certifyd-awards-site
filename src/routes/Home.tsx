@@ -29,7 +29,7 @@ const heroVideos = [
 
 export function Home() {
   const [activeHeroVideo, setActiveHeroVideo] = useState(0);
-  const { entries: hydratedEntries, loading: fanHydrating, updatedAt: fanUpdatedAt } = useFanHydratedEntries();
+  const { entries: hydratedEntries, loading: fanHydrating } = useFanHydratedEntries();
   const { rankings: liveTechnologyRankings, loading: networkLoading } = useNetworkRankings(undefined, 4);
   const featuredEntries = hydratedEntries.slice(0, 4);
   const creators = creatorsFromFanEntries(hydratedEntries, 3);
@@ -99,10 +99,9 @@ export function Home() {
               <Link className="secondary-action" to={`/nominees/${featured.id}`}>View the Story</Link>
               {featured.fanItem?.buyUrl || featured.fanItem?.publicUrl || featuredWork?.publicUrl ? <a className="secondary-action" href={String(featured.fanItem?.buyUrl || featured.fanItem?.publicUrl || featuredWork?.publicUrl)} target="_blank" rel="noreferrer">Open Work</a> : null}
             </div>
-            <small className="muted">Live public discovery{fanUpdatedAt ? ` · ${fanUpdatedAt.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}` : ''}</small>
           </div>
         </section>
-      ) : fanHydrating ? null : <section className="featured-story-section"><div className="featured-story-copy"><span className="eyebrow">Stories Worth Celebrating</span><h2>No live public discovery entries available.</h2><p>Current awards surfaces only show works returned by public creator-node discovery.</p></div></section>}
+      ) : fanHydrating ? null : <section className="featured-story-section"><div className="featured-story-copy"><span className="eyebrow">Stories Worth Celebrating</span><h2>No entries available.</h2></div></section>}
 
       <section className="weekend-section">
         <div className="section-heading centered">

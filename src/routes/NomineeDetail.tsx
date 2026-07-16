@@ -16,13 +16,13 @@ export function NomineeDetail() {
   const entry = entryId ? liveEntries.find((row) => row.id === entryId) : undefined;
   const staleSeededEntry = entryId ? getEntry(entryId) : undefined;
   if (!entry) {
-    if (loading) return <section className="page-section"><p className="lead">Loading live public discovery award entry…</p></section>;
+    if (loading) return <section className="page-section"><p className="lead">Loading award entry…</p></section>;
     if (staleSeededEntry) {
       return (
         <section className="page-section">
           <span className="eyebrow">Offline entry</span>
-          <h1>This work is not live in public discovery right now.</h1>
-          <p className="lead">Awards pages now render current public discovery data only. If the creator node returns this content again, it will reappear automatically.</p>
+          <h1>This work is not available right now.</h1>
+          <p className="lead">If the creator node returns this content again, it will reappear automatically.</p>
           <Link className="secondary-action" to="/nominees">Back to live nominees</Link>
         </section>
       );
@@ -45,7 +45,7 @@ export function NomineeDetail() {
           <h1>{entry.title}</h1>
           <p className="lead">{entry.summary}</p>
           <div className="proof-stack">
-            <span>{creatorLabel}</span><span>{work?.genre ?? String(liveEntry.fanItem?.contentType || creator?.role || 'Work')}</span><span>Public support signal: {liveEntry.fanSupportScore || formatSats(entry.fanSupportSats)}</span><span>Live public discovery entry</span><span>Proof available</span>
+            <span>{creatorLabel}</span><span>{work?.genre ?? String(liveEntry.fanItem?.contentType || creator?.role || 'Work')}</span><span>Public support signal: {liveEntry.fanSupportScore || formatSats(entry.fanSupportSats)}</span><span>Proof available</span>
           </div>
         </div>
         <div className="detail-art" style={artUrl ? undefined : { background: work?.image ?? creator?.avatarColor }}>
@@ -67,8 +67,8 @@ export function NomineeDetail() {
 
       <section className="glass-card disclosure-card">
         <span className="eyebrow">Preview disclosure</span>
-        <h2>Live discovery data, not seeded placement.</h2>
-        <p>This page is built from the current public discovery feed. Ranking uses public support, recency, relationship, and availability signals returned by creator nodes.</p>
+        <h2>Current data, not seeded placement.</h2>
+        <p>Ranking uses public support, recency, relationship, and availability signals returned by creator nodes.</p>
         <div className="hero-actions">
           <Link className="secondary-action" to="/methodology">Read methodology</Link>
           {liveEntry.fanItem?.buyUrl || liveEntry.fanItem?.publicUrl || work?.publicUrl ? <a className="primary-action" href={String(liveEntry.fanItem?.buyUrl || liveEntry.fanItem?.publicUrl || work?.publicUrl)} target="_blank" rel="noreferrer">Open Public Work</a> : null}

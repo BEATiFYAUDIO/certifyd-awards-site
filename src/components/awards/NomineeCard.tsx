@@ -29,7 +29,6 @@ export function NomineeCard({ entry }: { entry: AwardEntry }) {
         <div className="card-meta soft-meta">
           <VerificationBadge label={resultLabel(entry.resultStatus)} tone={entry.resultStatus === 'sample-winner' ? 'gold' : 'blue'} />
           <span>{category?.title}</span>
-          {liveEntry.liveRankSource === 'public-discovery' ? <span>Live discovery</span> : null}
         </div>
         <h3>{entry.title}</h3>
         <p className="creator-line">{creatorLabel}</p>

@@ -19,7 +19,7 @@ export function Nominees() {
   return (
     <section className="page-section">
       <span className="eyebrow">Nominees directory</span>
-      <h1>Browse live works, creators, proofs, and public discovery scores.</h1>
+      <h1>Browse works, creators, and scores.</h1>
       <div className="directory-tools">
         <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search nominees, creators, genres..." />
         <select value={categoryId} onChange={(event) => setCategoryId(event.target.value)}>
@@ -28,7 +28,7 @@ export function Nominees() {
         </select>
       </div>
       <div className="nominee-list two-column">
-        {visible.length ? visible.map((entry) => <NomineeCard key={entry.id} entry={entry} />) : <p className="muted">No live public discovery entries match this view right now.</p>}
+        {visible.length ? visible.map((entry) => <NomineeCard key={entry.id} entry={entry} />) : <p className="muted">No entries match this view right now.</p>}
       </div>
     </section>
   );
