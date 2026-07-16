@@ -702,7 +702,7 @@ main { width: 100%; }
 }
 
 .award-category-section .large-category-tile .category-award-image {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   max-height: none;
   object-fit: cover;
   object-position: center;
