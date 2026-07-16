@@ -2906,3 +2906,8 @@ h2,
     border-radius: 8px !important;
   }
 }
+
+/* Home title section should fill the first viewport. */
+.awards-hero.creator-hero {
+  min-height: calc(100svh - 69px) !important;
+}
