@@ -711,7 +711,7 @@ main { width: 100%; }
 }
 
 .award-category-section .large-category-tile .technology-award-image {
-  width: min(100%, 188px);
+  width: 100%;
   align-self: center;
   max-height: none;
 }
