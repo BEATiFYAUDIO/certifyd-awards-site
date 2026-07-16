@@ -322,5 +322,5 @@ const categoryAwardImageSlugs = new Set([
   'fan-supported-creator',
 ]);
 export function getCategoryAwardImageUrl(category: AwardCategory) {
-  return categoryAwardImageSlugs.has(category.slug) ? `/media/categories/${category.slug}.webp?v=20260716-clean-recrops` : undefined;
+  return categoryAwardImageSlugs.has(category.slug) ? `/media/categories/${category.slug}.webp?v=20260716-stretched-recrops` : undefined;
 }
