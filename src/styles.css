@@ -2869,3 +2869,20 @@ h2,
     border-radius: 24px;
   }
 }
+
+/* Home hero trophy: use the vassal landing page scale. */
+@media (min-width: 1181px) {
+  .awards-hero.creator-hero .hero-award-visual {
+    width: min(344px, 28vw) !important;
+    max-width: 344px !important;
+  }
+
+  .awards-hero.creator-hero .hero-award-visual img {
+    width: 100% !important;
+    aspect-ratio: 1122 / 1402 !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    border-radius: 8px !important;
+  }
+}
