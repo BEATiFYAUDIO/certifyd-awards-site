@@ -27,17 +27,39 @@ const heroVideos = [
   '/media/awards-hero-carousel-12.mp4',
 ];
 
+function titleCase(value: string) {
+  return value.replace(/[-_]+/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function featuredWorkContext(
+  featured: ReturnType<typeof useFanHydratedEntries>['entries'][number],
+  creatorName?: string,
+  categoryTitle?: string,
+) {
+  const directSummary = String(featured.summary || featured.fanItem?.description || '').trim();
+  if (directSummary) return directSummary;
+
+  const rawType = String(featured.fanItem?.contentType || featured.fanItem?.genre || featured.fanItem?.primaryTopic || '').trim();
+  const workType = rawType ? titleCase(rawType) : categoryTitle || 'creative work';
+  const creator = creatorName || featured.fanItem?.creatorHandle || 'the creator';
+  const category = categoryTitle ? ` It is currently being considered for ${categoryTitle}.` : '';
+  return `${featured.title} is a ${workType.toLowerCase()} from ${creator}.${category}`;
+}
+
 export function Home() {
   const [activeHeroVideo, setActiveHeroVideo] = useState(0);
+  const [activeFeaturedIndex, setActiveFeaturedIndex] = useState(0);
   const { entries: hydratedEntries, loading: fanHydrating } = useFanHydratedEntries();
   const { rankings: liveTechnologyRankings, loading: networkLoading } = useNetworkRankings(undefined, 4);
   const featuredEntries = hydratedEntries.slice(0, 4);
   const creators = creatorsFromFanEntries(hydratedEntries, 3);
-  const featured = featuredEntries[0];
+  const carouselEntries = hydratedEntries;
+  const featured = carouselEntries[activeFeaturedIndex] || carouselEntries[0];
   const featuredCreator = featured ? getCreator(featured.creatorId) : undefined;
   const featuredWork = featured ? getWork(featured.workId) : undefined;
   const featuredCategory = featured ? getCategory(featured.categoryId) : undefined;
   const featuredArtUrl = featured?.fanItem?.coverUrl || artworkUrl(featuredWork?.image);
+  const featuredSummary = featured ? featuredWorkContext(featured, featuredCreator?.name, featuredCategory?.title) : '';
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -46,6 +68,19 @@ export function Home() {
 
     return () => window.clearInterval(intervalId);
   }, []);
+
+  useEffect(() => {
+    if (activeFeaturedIndex >= carouselEntries.length) setActiveFeaturedIndex(0);
+  }, [activeFeaturedIndex, carouselEntries.length]);
+
+  useEffect(() => {
+    if (carouselEntries.length <= 1) return undefined;
+    const intervalId = window.setInterval(() => {
+      setActiveFeaturedIndex((current) => (current + 1) % carouselEntries.length);
+    }, 8000);
+
+    return () => window.clearInterval(intervalId);
+  }, [carouselEntries.length]);
 
   return (
     <>
@@ -87,11 +122,11 @@ export function Home() {
           <div className="featured-story-copy">
             <span className="eyebrow">Stories Worth Celebrating</span>
             <h2>{featured.title}</h2>
-            <p>{featured.summary}</p>
+            <p>{featuredSummary}</p>
             <div className="story-meta-list">
               <span>{featuredCreator?.name}</span>
               {featured.fanItem?.creatorHandle ? <span>@{String(featured.fanItem.creatorHandle).replace(/^@+/, '')}</span> : null}
-              <span>{featuredCategory?.title}</span>
+              {featuredCategory?.title ? <span>Nominated for {featuredCategory.title}</span> : null}
               <span>{featured.contributors.length} credited contributors</span>
               <span>Records available</span>
             </div>
@@ -99,6 +134,13 @@ export function Home() {
               <Link className="secondary-action" to={`/nominees/${featured.id}`}>View the Story</Link>
               {featured.fanItem?.buyUrl || featured.fanItem?.publicUrl || featuredWork?.publicUrl ? <a className="secondary-action" href={String(featured.fanItem?.buyUrl || featured.fanItem?.publicUrl || featuredWork?.publicUrl)} target="_blank" rel="noreferrer">Open Work</a> : null}
             </div>
+            {carouselEntries.length > 1 ? (
+              <div className="featured-carousel-controls" aria-label="Featured work carousel controls">
+                <button type="button" onClick={() => setActiveFeaturedIndex((current) => (current - 1 + carouselEntries.length) % carouselEntries.length)}>Previous</button>
+                <span>{activeFeaturedIndex + 1} of {carouselEntries.length}</span>
+                <button type="button" onClick={() => setActiveFeaturedIndex((current) => (current + 1) % carouselEntries.length)}>Next</button>
+              </div>
+            ) : null}
           </div>
         </section>
       ) : fanHydrating ? null : <section className="featured-story-section"><div className="featured-story-copy"><span className="eyebrow">Stories Worth Celebrating</span><h2>No entries available.</h2></div></section>}
@@ -106,7 +148,7 @@ export function Home() {
       <section className="weekend-section">
         <div className="section-heading centered">
           <span className="eyebrow">Certifyd Awards Weekend</span>
-          <h2>Creative work. Creator infrastructure. Public record.</h2>
+          <h2>Creative work. Creator infrastructure.</h2>
         </div>
         <div className="pillar-grid">
           <article className="event-pillar music-pillar creator-pillar">
@@ -145,7 +187,7 @@ export function Home() {
         <div className="section-heading inline">
           <div>
             <span className="eyebrow">Featured nominees</span>
-            <h2>Works with visible records.</h2>
+            <h2>Certifyd Works</h2>
           </div>
           <span className="status-pill preview">Preview season</span>
         </div>

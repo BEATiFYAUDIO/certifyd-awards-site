@@ -1715,6 +1715,31 @@ small {
   margin-top: 18px;
 }
 
+.featured-carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.featured-carousel-controls button {
+  border: 1px solid rgba(84, 165, 240, 0.28);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.045);
+  color: #f4f7fb;
+  font: inherit;
+  cursor: pointer;
+}
+
+.featured-carousel-controls button:hover {
+  border-color: rgba(247, 147, 26, 0.58);
+  color: var(--gold);
+}
+
 .nominee-art img,
 .featured-story-art img,
 .detail-art img {
