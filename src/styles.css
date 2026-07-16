@@ -1505,10 +1505,13 @@ small {
 }
 
 .featured-story-art {
-  min-height: 440px;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
   border-radius: 34px;
   border: 1px solid rgba(84, 165, 240, 0.22);
-  background-size: cover !important;
+  background-color: #03050b;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
   background-position: center !important;
   box-shadow: 0 34px 120px rgba(0, 0, 0, 0.44);
 }
@@ -1638,8 +1641,11 @@ small {
 
   .featured-story-art,
   .contributor-cloud {
-    min-height: 270px;
     border-radius: 22px;
+  }
+
+  .featured-story-art {
+    min-height: 0;
   }
 
   .featured-story-copy,
