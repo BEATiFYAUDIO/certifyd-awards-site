@@ -19,7 +19,7 @@ export function Technology() {
         </div>
       </div>
       {families.map((family) => (
-        <section className="content-section tight" key={family}>
+        <section className="content-section tight award-category-section" key={family}>
           <div className="section-heading"><span className="eyebrow">{family}</span><h2>{family}</h2></div>
           <div className="category-strip">
             {technologyCategories.filter((category) => category.family === family).map((category) => (

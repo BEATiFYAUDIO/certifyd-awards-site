@@ -8,7 +8,7 @@ export function MusicCategories() {
       <span className="eyebrow">Creative Excellence</span>
       <h1>Creative Excellence categories</h1>
       <p className="lead">Categories recognize original work, creators, contributors, catalog integrity, collaboration, and fan-supported relationships.</p>
-      <div className="category-strip full">
+      <div className="category-strip full award-category-section">
         {visible.map((category) => {
           const imageUrl = getCategoryAwardImageUrl(category);
           return (

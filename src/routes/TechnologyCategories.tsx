@@ -7,7 +7,7 @@ export function TechnologyCategories() {
       <span className="eyebrow">Creator Innovation</span>
       <h1>Creator Innovation categories</h1>
       <p className="lead">{networkAwardIntro}</p>
-      <div className="category-strip full">
+      <div className="category-strip full award-category-section">
         {technologyCategories.map((category) => (
           <Link className="large-category-tile" to={`/technology/categories/${category.slug}`} key={category.id}>
             {getTechnologyAwardImageUrl(category) ? <img className="category-award-image technology-award-image" src={getTechnologyAwardImageUrl(category)} alt="" loading="lazy" /> : null}

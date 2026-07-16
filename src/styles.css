@@ -690,14 +690,33 @@ main { width: 100%; }
 }
 .large-category-tile:hover { border-color: rgba(247,147,26,.5); transform: translateY(-2px); }
 
-.music-category-section .category-strip {
+.award-category-section .category-strip,
+.category-strip.award-category-section {
   align-items: start;
+  gap: 18px;
 }
 
-.music-category-section .large-category-tile .category-award-image {
-  aspect-ratio: 3 / 4;
+.award-category-section .large-category-tile {
+  min-height: 0;
+  padding: 18px;
+}
+
+.award-category-section .large-category-tile .category-award-image {
+  aspect-ratio: 1 / 1;
   max-height: none;
   object-fit: cover;
+  object-position: center;
+  margin-bottom: 12px;
+  border-radius: 18px;
+}
+
+.award-category-section .large-category-tile h3 {
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+}
+
+.award-category-section .large-category-tile p {
+  font-size: 0.88rem;
+  line-height: 1.45;
 }
 
 .category-detail-hero {
