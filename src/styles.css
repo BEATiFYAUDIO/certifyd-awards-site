@@ -3052,6 +3052,12 @@ h2,
     align-self: center !important;
     z-index: 1 !important;
     margin: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow:
+      0 34px 120px rgba(0, 0, 0, 0.26),
+      0 0 92px rgba(84, 165, 240, 0.08) !important;
   }
 
   .awards-hero.creator-hero .hero-award-visual img {
@@ -3061,10 +3067,13 @@ h2,
     border-radius: 0 !important;
     background: transparent !important;
     box-shadow: none !important;
+    opacity: 0.86 !important;
     object-fit: cover !important;
     object-position: center center !important;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 88%, transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 88%, transparent 100%);
+    -webkit-mask-image:
+      radial-gradient(ellipse at center, #000 54%, rgba(0, 0, 0, 0.82) 72%, transparent 100%);
+    mask-image:
+      radial-gradient(ellipse at center, #000 54%, rgba(0, 0, 0, 0.82) 72%, transparent 100%);
   }
 }
 

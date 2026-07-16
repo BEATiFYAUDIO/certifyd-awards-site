@@ -105,7 +105,7 @@ export function Home() {
           </div>
         </div>
         <aside className="hero-award-visual" aria-label="Certifyd Awards trophy concept">
-          <img src="/media/music-note-artist-award.webp" alt="Certifyd Awards gold music note trophy" />
+          <img src="/media/certifyd-awards-modern-trophy.png" alt="Certifyd Awards gold music note trophy" />
         </aside>
         <div className="hero-proof-strip" aria-label="Certifyd Awards values">
           <div><span aria-hidden="true">⬡</span><strong>Verified Excellence</strong><small>Work backed by proof</small></div>
@@ -180,7 +180,7 @@ export function Home() {
           </div>
         </div>
         <figure className="founders-home-visual" aria-label={foundersAward.name}>
-          <img src="/media/music-note-artist-award.webp" alt="Certifyd Awards gold music note trophy" />
+          <img src="/media/certifyd-awards-modern-trophy.png" alt="Certifyd Awards gold music note trophy" />
         </figure>
       </section>
 
