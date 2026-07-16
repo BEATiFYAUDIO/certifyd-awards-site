@@ -176,7 +176,7 @@ export function Home() {
           </div>
         </div>
         <figure className="founders-home-visual" aria-label={foundersAward.name}>
-          <img src="/media/certifyd-awards-music-note-20260715.webp" alt="Certifyd Awards gold music note trophy" />
+          <img src="/media/music-note-artist-award.webp" alt="Certifyd Awards gold music note trophy" />
         </figure>
       </section>
 
