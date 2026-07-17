@@ -12,8 +12,8 @@ export function Methodology() {
       <section className="standard-title-hero">
         <div className="standard-title-hero-content">
           <span className="eyebrow">Methodology and rules</span>
-          <h1>Recognition should be meaningful, understandable, and earned.</h1>
-          <p className="lead">Data supports recognition. It does not replace human creativity, context, or judgment.</p>
+          <h1>Methodology</h1>
+          <p className="lead">How recognition is reviewed, explained, and earned.</p>
         </div>
       </section>
       <section className="page-section standard-page-content">

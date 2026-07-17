@@ -12,8 +12,8 @@ export function Winners() {
       <section className="standard-title-hero">
         <div className="standard-title-hero-content">
           <span className="eyebrow">Winners archive</span>
-          <h1>Winner credentials will be public, explainable, and proof-linked.</h1>
-          <p className="lead">A preview of how winners will be presented once final results are live.</p>
+          <h1>Winners Archive</h1>
+          <p className="lead">Public results with proof-linked credentials.</p>
         </div>
       </section>
       <section className="page-section standard-page-content">
