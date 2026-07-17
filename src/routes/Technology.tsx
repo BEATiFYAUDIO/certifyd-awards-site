@@ -5,14 +5,8 @@ import { technologyCategories, networkAwardIntro, networkParticipationCopy } fro
 import { useNetworkRankings } from '../hooks/useNetworkRankings';
 
 const heroVideos = [
-  '/media/awards-hero-carousel-2.mp4?v=20260717-video-refresh-1',
-  '/media/awards-hero-carousel-3.mp4?v=20260717-video-refresh-1',
-  '/media/awards-hero-carousel-4.mp4?v=20260717-video-refresh-1',
-  '/media/awards-hero-carousel-5.mp4?v=20260717-video-refresh-1',
-  '/media/awards-hero-carousel-8.mp4?v=20260717-video-refresh-1',
-  '/media/awards-hero-carousel-9.mp4?v=20260717-video-refresh-1',
-  '/media/awards-hero-carousel-10.mp4?v=20260717-video-refresh-1',
-  '/media/awards-hero-carousel-11.mp4?v=20260717-video-refresh-1',
+  '/media/awards-hero-local-1.mp4',
+  '/media/awards-hero-local-2.mp4',
 ];
 
 export function Technology() {

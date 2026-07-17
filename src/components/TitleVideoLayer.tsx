@@ -3,7 +3,7 @@ export function TitleVideoLayer() {
     <>
       <video
         className="title-hero-video"
-        src="/media/awards-hero-carousel-2.mp4?v=20260717-video-refresh-1"
+        src="/media/awards-hero-local-1.mp4"
         autoPlay
         muted
         loop
