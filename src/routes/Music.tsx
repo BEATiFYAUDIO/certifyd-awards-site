@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AwardCreatorCard } from '../components/awards/AwardCreatorCard';
 import { NomineeCard } from '../components/awards/NomineeCard';
@@ -6,47 +5,15 @@ import { categories, getCategory } from '../data/awards';
 import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
 import { creatorsFromFanEntries } from '../lib/fanDiscovery';
 
-const heroVideos = [
-  '/media/awards-hero-carousel-1.mp4',
-  '/media/awards-hero-carousel-2.mp4',
-  '/media/awards-hero-carousel-3.mp4',
-  '/media/awards-hero-carousel-4.mp4',
-  '/media/awards-hero-carousel-5.mp4',
-  '/media/awards-hero-carousel-6.mp4',
-  '/media/awards-hero-carousel-7.mp4',
-  '/media/awards-hero-carousel-8.mp4',
-  '/media/awards-hero-carousel-9.mp4',
-];
-
 export function Music() {
-  const [activeHeroVideo, setActiveHeroVideo] = useState(0);
   const creativeCategories = categories.filter((category) => ['major', 'music', 'news', 'technology', 'gaming', 'sports', 'media', 'published', 'creator-integrity', 'community'].includes(category.group));
   const { entries: hydratedEntries } = useFanHydratedEntries();
   const featuredEntries = hydratedEntries.slice(0, 5);
   const creators = creatorsFromFanEntries(hydratedEntries);
 
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setActiveHeroVideo((current) => (current + 1) % heroVideos.length);
-    }, 9000);
-
-    return () => window.clearInterval(intervalId);
-  }, []);
-
   return (
     <>
       <section className="awards-hero creator-hero music-page-hero">
-        <video
-          key={heroVideos[activeHeroVideo]}
-          className="hero-video"
-          src={heroVideos[activeHeroVideo]}
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/media/awards-stage.webp"
-          aria-hidden="true"
-        />
         <div className="hero-shade" />
         <div className="hero-content">
           <span className="hero-kicker">Day 2 · Creative Excellence</span>

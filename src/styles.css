@@ -255,7 +255,37 @@ body {
     linear-gradient(180deg, #0A0715 0%, #070914 48%, #0A0715 100%);
 }
 
-main { width: 100%; }
+main {
+  width: 100%;
+  position: relative;
+  isolation: isolate;
+}
+
+main > :not(.persistent-hero-video-layer) {
+  position: relative;
+  z-index: 1;
+}
+
+.persistent-hero-video-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(560px, calc(100svh - 69px), 840px);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.persistent-hero-video-layer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.52;
+  filter: saturate(1.2) contrast(1.06);
+  animation: heroVideoFade 700ms ease both;
+}
+
 .site-header {
   padding: 16px max(18px, calc((100vw - 1320px) / 2));
   border-color: rgba(84, 165, 240, 0.16);
