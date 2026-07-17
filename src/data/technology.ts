@@ -160,5 +160,5 @@ export function getTechnicalProvider(id: string) {
 
 const technologyAwardImageSlugs = new Set(technologyCategories.map((category) => category.slug));
 export function getTechnologyAwardImageUrl(category: TechnicalCategory) {
-  return technologyAwardImageSlugs.has(category.slug) ? `/media/technology-categories/${category.slug}.webp?v=20260716-muted-plaque-v6` : undefined;
+  return technologyAwardImageSlugs.has(category.slug) ? `/media/technology-categories/${category.slug}.webp?v=20260716-logo-patch-v7` : undefined;
 }
