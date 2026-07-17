@@ -12,6 +12,17 @@ const navItems = [
 export function Layout() {
   return (
     <div className="site-shell">
+      <video
+        className="site-background-video"
+        src="/media/awards-hero-carousel-2.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/media/awards-stage.webp"
+        aria-hidden="true"
+      />
+      <div className="site-background-shade" aria-hidden="true" />
       <header className="site-header">
         <a href="https://vassal.certifyd.me" className="brand-lockup" aria-label="Certifyd home">
           <span className="brand-mark"><img src="/certifyd-logo-refined.svg" alt="" /></span>
