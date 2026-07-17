@@ -13,12 +13,19 @@ export function Music() {
 
   return (
     <section className="page-section awards-division-page">
-      <span className="eyebrow">Day 2 · Creative Excellence</span>
-      <h1>Creative Excellence</h1>
-      <p className="lead">Celebrating outstanding creators, performances, stories, recordings, collaborations, and original work.</p>
-      <div className="division-hero music-division">
-        <div><h2>Creator recognition that shows the work behind the work.</h2><p>Creative Excellence includes identity, publication records, collaborators, community support, and understandable scoring context.</p></div>
-        <Link className="primary-action" to="/music/categories">Creative Excellence Categories</Link>
+      <div className="division-title-hero music-title-hero">
+        <div className="division-title-copy">
+          <span className="eyebrow">Day 2 · Creative Excellence</span>
+          <h1>Creative Excellence</h1>
+          <p className="lead">Celebrating outstanding creators, performances, stories, recordings, collaborations, and original work.</p>
+          <p>Creator recognition that shows the work behind the work through identity, publication records, collaborators, community support, and understandable scoring context.</p>
+          <div className="hero-actions">
+            <Link className="primary-action" to="/music/categories">Creative Excellence Categories</Link>
+          </div>
+        </div>
+        <figure className="division-title-award">
+          <img src="/media/certifyd-awards-modern-trophy.png?v=20260717-fixed-logo-v7" alt="Certifyd Awards gold music note trophy" />
+        </figure>
       </div>
       <section className="content-section tight award-category-section"><div className="section-heading"><span className="eyebrow">Creative categories</span><h2>Work, stories, performance, and community impact.</h2></div><div className="category-strip">{creativeCategories.map((category) => {
         const imageUrl = getCategoryAwardImageUrl(category);
