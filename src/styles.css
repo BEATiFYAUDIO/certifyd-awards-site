@@ -383,6 +383,37 @@ main > :not(.persistent-hero-video-layer) {
     linear-gradient(0deg, rgba(2, 4, 11, 0.98) 0%, transparent 36%, rgba(2, 4, 11, 0.24) 100%);
 }
 
+.standard-title-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  right: max(20px, calc((100vw - 1320px) / 2));
+  bottom: clamp(28px, 6vh, 58px);
+  width: clamp(240px, 31vw, 410px);
+  aspect-ratio: 1122 / 1402;
+  pointer-events: none;
+  background: url('/media/certifyd-awards-modern-trophy.png?v=20260717-fixed-logo-v7') center bottom / contain no-repeat;
+  opacity: 0.78;
+  filter:
+    drop-shadow(0 30px 45px rgba(0, 0, 0, 0.5))
+    drop-shadow(0 0 24px rgba(255, 171, 45, 0.1));
+  -webkit-mask-image:
+    radial-gradient(ellipse at 50% 55%, #000 0%, #000 58%, rgba(0, 0, 0, 0.7) 74%, transparent 100%),
+    linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.5) 7%, #000 18%, #000 82%, rgba(0, 0, 0, 0.48) 94%, transparent 100%),
+    linear-gradient(0deg, transparent 0%, rgba(0, 0, 0, 0.82) 6%, #000 15%, #000 90%, rgba(0, 0, 0, 0.62) 97%, transparent 100%);
+  mask-image:
+    radial-gradient(ellipse at 50% 55%, #000 0%, #000 58%, rgba(0, 0, 0, 0.7) 74%, transparent 100%),
+    linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.5) 7%, #000 18%, #000 82%, rgba(0, 0, 0, 0.48) 94%, transparent 100%),
+    linear-gradient(0deg, transparent 0%, rgba(0, 0, 0, 0.82) 6%, #000 15%, #000 90%, rgba(0, 0, 0, 0.62) 97%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+.standard-title-hero:has(.category-detail-award)::after,
+.standard-title-hero:has(.detail-art)::after {
+  display: none;
+}
+
 .standard-title-hero-content {
   position: relative;
   z-index: 1;
@@ -3700,6 +3731,13 @@ h2,
   .standard-title-hero {
     min-height: auto !important;
     padding: 54px 18px 42px !important;
+  }
+
+  .standard-title-hero::after {
+    right: 18px !important;
+    bottom: 22px !important;
+    width: min(34vw, 132px) !important;
+    opacity: 0.5 !important;
   }
 
   .standard-title-hero h1 {
