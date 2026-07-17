@@ -364,8 +364,8 @@ main > :not(.persistent-hero-video-layer) {
   isolation: isolate;
   display: grid;
   align-items: center;
-  min-height: clamp(520px, calc(100svh - 69px), 720px);
-  padding: clamp(84px, 10vh, 128px) max(20px, calc((100vw - 1320px) / 2)) clamp(48px, 7vh, 84px);
+  min-height: clamp(680px, calc(100svh - 69px), 840px);
+  padding: clamp(46px, 6vh, 72px) max(32px, calc((100vw - 1320px) / 2)) 18px;
   overflow: hidden;
   border-bottom: 1px solid rgba(84, 165, 240, 0.16);
 }
@@ -387,13 +387,13 @@ main > :not(.persistent-hero-video-layer) {
   content: "";
   position: absolute;
   z-index: 0;
-  right: max(20px, calc((100vw - 1320px) / 2));
-  bottom: clamp(28px, 6vh, 58px);
-  width: clamp(240px, 31vw, 410px);
+  right: max(18px, calc((100vw - 1320px) / 2 - 36px));
+  bottom: clamp(58px, 8vh, 92px);
+  width: clamp(460px, 38vw, 590px);
   aspect-ratio: 1122 / 1402;
   pointer-events: none;
   background: url('/media/certifyd-awards-modern-trophy.png?v=20260717-fixed-logo-v7') center bottom / contain no-repeat;
-  opacity: 0.78;
+  opacity: 0.86;
   filter:
     drop-shadow(0 30px 45px rgba(0, 0, 0, 0.5))
     drop-shadow(0 0 24px rgba(255, 171, 45, 0.1));
