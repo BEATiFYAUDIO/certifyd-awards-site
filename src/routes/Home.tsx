@@ -13,14 +13,14 @@ import { creatorsFromFanEntries } from '../lib/fanDiscovery';
 const creativeCategories = ['Work of the Year', 'Creator of the Year', 'Song of the Year', 'Album of the Year', 'Video of the Year', 'Podcast of the Year', 'Spoken Word of the Year', 'Independent Creator', 'Collaboration of the Year', 'Live Performance', 'Fan-Supported Work', 'Cultural Impact'];
 const innovationCategories = ['Network Partner of the Year', 'Public Node Excellence', 'Creator Infrastructure Award', 'Publishing Excellence Award', 'Discovery Excellence Award', 'Identity Excellence Award', 'Community Node Award', 'Open Network Leadership Award', 'Verification Excellence Award', 'Creator Commerce Provider'];
 const heroVideos = [
-  '/media/awards-hero-carousel-2.mp4',
-  '/media/awards-hero-carousel-3.mp4',
-  '/media/awards-hero-carousel-4.mp4',
-  '/media/awards-hero-carousel-5.mp4',
-  '/media/awards-hero-carousel-8.mp4',
-  '/media/awards-hero-carousel-9.mp4',
-  '/media/awards-hero-carousel-10.mp4',
-  '/media/awards-hero-carousel-11.mp4',
+  '/media/awards-hero-carousel-2.mp4?v=20260717-video-refresh-1',
+  '/media/awards-hero-carousel-3.mp4?v=20260717-video-refresh-1',
+  '/media/awards-hero-carousel-4.mp4?v=20260717-video-refresh-1',
+  '/media/awards-hero-carousel-5.mp4?v=20260717-video-refresh-1',
+  '/media/awards-hero-carousel-8.mp4?v=20260717-video-refresh-1',
+  '/media/awards-hero-carousel-9.mp4?v=20260717-video-refresh-1',
+  '/media/awards-hero-carousel-10.mp4?v=20260717-video-refresh-1',
+  '/media/awards-hero-carousel-11.mp4?v=20260717-video-refresh-1',
 ];
 
 function titleCase(value: string) {
