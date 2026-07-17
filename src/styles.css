@@ -191,6 +191,10 @@ input, select, textarea {
   background: rgba(255,255,255,.06);
   padding: 14px 16px;
 }
+select option {
+  color: #07101d;
+  background: #f3f6fb;
+}
 textarea { resize: vertical; }
 .nomination-form { display: grid; gap: 16px; max-width: 760px; }
 .nomination-form label { display: grid; gap: 8px; color: #d9dce6; font-weight: 800; }
