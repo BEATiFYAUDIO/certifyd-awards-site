@@ -257,12 +257,14 @@ body {
     radial-gradient(circle at 12% 5%, rgba(84, 165, 240, 0.18), transparent 32rem),
     radial-gradient(circle at 95% 28%, rgba(247, 147, 26, 0.10), transparent 30rem),
     linear-gradient(180deg, #0A0715 0%, #070914 48%, #0A0715 100%);
+  overflow-x: hidden;
 }
 
 main {
   width: 100%;
   position: relative;
   isolation: isolate;
+  overflow-x: clip;
 }
 
 main > :not(.persistent-hero-video-layer) {
@@ -273,12 +275,13 @@ main > :not(.persistent-hero-video-layer) {
 .persistent-hero-video-layer {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  width: 100vw;
   height: clamp(560px, calc(100svh - 69px), 840px);
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
+  transform: translateX(-50%);
 }
 
 .persistent-hero-video-layer video {
@@ -425,11 +428,14 @@ main > :not(.persistent-hero-video-layer) {
 }
 
 .standard-title-hero h1 {
-  max-width: min(760px, calc(100vw - 560px));
-  font-size: clamp(4rem, 7.2vw, 7.4rem);
-  line-height: 0.88;
-  letter-spacing: -0.08em;
+  max-width: min(980px, calc(100vw - 560px));
+  font-size: clamp(4rem, 6.8vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.065em;
   margin: 10px 0 22px;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
 }
 
 .standard-title-hero .lead,
@@ -440,7 +446,7 @@ main > :not(.persistent-hero-video-layer) {
 }
 
 .standard-title-tools {
-  max-width: min(760px, calc(100vw - 560px));
+  max-width: min(860px, calc(100vw - 560px));
   margin-top: 28px;
 }
 
@@ -3734,7 +3740,10 @@ h2,
 
   .standard-title-hero {
     min-height: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
     padding: 54px 18px 42px !important;
+    overflow: hidden !important;
   }
 
   .standard-title-hero::after {
@@ -3745,9 +3754,15 @@ h2,
   }
 
   .standard-title-hero h1 {
-    font-size: clamp(3.15rem, 15.5vw, 4.4rem) !important;
-    line-height: 0.9 !important;
-    letter-spacing: -0.065em !important;
+    max-width: 100% !important;
+    font-size: clamp(3rem, 12.5vw, 4.1rem) !important;
+    line-height: 0.94 !important;
+    letter-spacing: -0.045em !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    hyphens: none !important;
+    white-space: normal !important;
+    text-wrap: balance !important;
   }
 
   .standard-title-hero .lead,
@@ -3758,5 +3773,15 @@ h2,
 
   .standard-page-content {
     padding-top: 38px !important;
+  }
+}
+
+@media (min-width: 721px) {
+  .standard-title-hero:not(:has(.category-title-layout)) h1 {
+    max-width: min(980px, calc(100vw - 560px)) !important;
+    overflow-wrap: normal !important;
+    word-break: keep-all !important;
+    hyphens: none !important;
+    white-space: nowrap !important;
   }
 }
