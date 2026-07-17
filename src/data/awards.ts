@@ -325,5 +325,5 @@ const categoryAwardImageSlugs = new Set([
   'fan-supported-creator',
 ]);
 export function getCategoryAwardImageUrl(category: AwardCategory) {
-  return categoryAwardImageSlugs.has(category.slug) ? `/media/categories/${category.slug}.webp?v=20260717-header-logo-shape-v2` : undefined;
+  return categoryAwardImageSlugs.has(category.slug) ? `/media/categories/${category.slug}.webp?v=20260717-header-logo-shape-v4` : undefined;
 }
