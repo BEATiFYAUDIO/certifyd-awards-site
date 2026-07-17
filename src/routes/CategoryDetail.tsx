@@ -15,26 +15,30 @@ export function CategoryDetail() {
   const imageUrl = getCategoryAwardImageUrl(category);
 
   return (
-    <section className="page-section filtered-page-section">
-      <div className="category-detail-hero">
-        <div>
-          <span className="eyebrow">{category.group.replace('-', ' ')}</span>
-          <h1>{category.title}</h1>
-          <p className="lead">{category.summary}</p>
-          <div className="criteria-row large">
-            {category.criteria.map((criterion) => <span key={criterion}>{criterion}</span>)}
+    <>
+      <section className="standard-title-hero">
+        <div className="standard-title-hero-content category-title-layout">
+          <div>
+            <span className="eyebrow">{category.group.replace('-', ' ')}</span>
+            <h1>{category.title}</h1>
+            <p className="lead">{category.summary}</p>
+            <div className="criteria-row large">
+              {category.criteria.map((criterion) => <span key={criterion}>{criterion}</span>)}
+            </div>
           </div>
+          {imageUrl ? <img className="category-detail-award" src={imageUrl} alt={`${category.title} award trophy`} /> : null}
         </div>
-        {imageUrl ? <img className="category-detail-award" src={imageUrl} alt={`${category.title} award trophy`} /> : null}
-      </div>
-      {example ? <ScoreBreakdown scoring={example.scoring} /> : null}
-      <div className="section-heading inline">
-        <div><span className="eyebrow">Nominees</span><h2>Nominees</h2></div>
-        <Link to="/nominate">Submit a nomination</Link>
-      </div>
-      <div className="nominee-list two-column">
-        {nominees.length ? nominees.map((entry) => <NomineeCard key={entry.id} entry={entry} />) : <p className="muted">No entries are available for this category right now.</p>}
-      </div>
-    </section>
+      </section>
+      <section className="page-section standard-page-content">
+        {example ? <ScoreBreakdown scoring={example.scoring} /> : null}
+        <div className="section-heading inline">
+          <div><span className="eyebrow">Nominees</span><h2>Nominees</h2></div>
+          <Link to="/nominate">Submit a nomination</Link>
+        </div>
+        <div className="nominee-list two-column">
+          {nominees.length ? nominees.map((entry) => <NomineeCard key={entry.id} entry={entry} />) : <p className="muted">No entries are available for this category right now.</p>}
+        </div>
+      </section>
+    </>
   );
 }

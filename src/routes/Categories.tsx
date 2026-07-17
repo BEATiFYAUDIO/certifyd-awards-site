@@ -24,15 +24,21 @@ export function Categories() {
   const visible = useMemo(() => active === 'all' ? categories : categories.filter((category) => category.group === active), [active]);
 
   return (
-    <section className="page-section">
-      <span className="eyebrow">Creative Excellence</span>
-      <h1>Categories for remarkable work and the people behind it.</h1>
-      <div className="filter-row">
-        {filters.map((filter) => <button className={active === filter ? 'active' : ''} key={filter} onClick={() => setActive(filter)}>{labels[filter]}</button>)}
-      </div>
-      <div className="card-grid categories-grid">
-        {visible.map((category) => <CategoryCard key={category.id} category={category} />)}
-      </div>
-    </section>
+    <>
+      <section className="standard-title-hero">
+        <div className="standard-title-hero-content">
+          <span className="eyebrow">Creative Excellence</span>
+          <h1>Categories for remarkable work and the people behind it.</h1>
+          <div className="filter-row standard-title-tools">
+            {filters.map((filter) => <button className={active === filter ? 'active' : ''} key={filter} onClick={() => setActive(filter)}>{labels[filter]}</button>)}
+          </div>
+        </div>
+      </section>
+      <section className="page-section standard-page-content">
+        <div className="card-grid categories-grid">
+          {visible.map((category) => <CategoryCard key={category.id} category={category} />)}
+        </div>
+      </section>
+    </>
   );
 }
