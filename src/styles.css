@@ -799,6 +799,13 @@ main { width: 100%; }
 .music-category-section .text-category-tile p {
   font-size: .96rem;
 }
+.music-page-hero .hero-award-visual img {
+  border-color: rgba(247,147,26,.18);
+  background: transparent;
+  box-shadow: 0 36px 120px rgba(0,0,0,.45), 0 0 90px rgba(84,165,240,.12);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 62%, rgba(0,0,0,.82) 76%, transparent 100%);
+  mask-image: radial-gradient(ellipse at center, #000 62%, rgba(0,0,0,.82) 76%, transparent 100%);
+}
 .content-section.tight { padding: 32px 0; }
 .category-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .category-strip.full { margin-top: 32px; }
