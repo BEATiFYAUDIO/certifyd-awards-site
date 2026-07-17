@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NetworkCandidateCard } from '../components/awards/NetworkCandidateCard';
-import { technologyCategories, networkAwardIntro, networkParticipationCopy } from '../data/technology';
+import { technologyCategories } from '../data/technology';
 import { useNetworkRankings } from '../hooks/useNetworkRankings';
 
 const heroVideos = [
@@ -48,21 +48,19 @@ export function Technology() {
           <span className="hero-kicker">Day 1 · Creator Innovation</span>
           <h1>Creator<br />Innovation</h1>
           <p>Infrastructure. Identity. Discovery. Commerce.</p>
-          <p className="hero-copy">{networkAwardIntro}</p>
-          <p className="hero-copy">{networkParticipationCopy}</p>
+          <p className="hero-copy">Honoring the infrastructure, identity, discovery, and commerce systems that keep creator work reachable and owned.</p>
           <div className="hero-actions">
             <Link className="primary-action" to="/technology/categories">Creator Innovation Categories</Link>
-            <a className="secondary-action" href="https://network.certifyd.me/" target="_blank" rel="noreferrer">Learn more about the Certifyd Network</a>
           </div>
         </div>
         <aside className="hero-award-visual" aria-hidden="true">
           <img src="/media/certifyd-awards-modern-trophy.png?v=20260717-fixed-logo-v7" alt="" />
         </aside>
         <div className="hero-proof-strip" aria-label="Creator Innovation values">
-          <div><span aria-hidden="true">⬡</span><strong>Network Proof</strong><small>Public infrastructure records</small></div>
-          <div><span aria-hidden="true">♙</span><strong>Creator Access</strong><small>Services creators can use</small></div>
-          <div><span aria-hidden="true">◎</span><strong>Reliable Discovery</strong><small>Reachable profiles and endpoints</small></div>
-          <div><span aria-hidden="true">♕</span><strong>Commerce Ready</strong><small>Direct support and ownership</small></div>
+          <div><span aria-hidden="true">⬡</span><strong>Network Proof</strong><small>Public records</small></div>
+          <div><span aria-hidden="true">♙</span><strong>Creator Access</strong><small>Usable services</small></div>
+          <div><span aria-hidden="true">◎</span><strong>Discovery</strong><small>Reachable origins</small></div>
+          <div><span aria-hidden="true">♕</span><strong>Commerce</strong><small>Direct ownership</small></div>
         </div>
       </section>
       <section className="page-section awards-division-page technology-category-section">
