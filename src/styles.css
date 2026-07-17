@@ -783,7 +783,8 @@ main { width: 100%; }
   margin: 0;
   transform: none;
 }
-.music-category-section .text-category-tile {
+.music-category-section .text-category-tile,
+.technology-category-section .text-category-tile {
   min-height: 220px;
   gap: 12px;
   justify-content: start;
@@ -791,15 +792,18 @@ main { width: 100%; }
     radial-gradient(circle at 86% 12%, rgba(84, 165, 240, .16), transparent 12rem),
     linear-gradient(145deg, rgba(27,34,48,.88), rgba(7,10,18,.88));
 }
-.music-category-section .text-category-tile h3 {
+.music-category-section .text-category-tile h3,
+.technology-category-section .text-category-tile h3 {
   margin-top: 18px;
   font-size: clamp(1.3rem, 2vw, 1.85rem);
   line-height: 1;
 }
-.music-category-section .text-category-tile p {
+.music-category-section .text-category-tile p,
+.technology-category-section .text-category-tile p {
   font-size: .96rem;
 }
-.music-page-hero .hero-award-visual img {
+.music-page-hero .hero-award-visual img,
+.technology-page-hero .hero-award-visual img {
   border-color: rgba(247,147,26,.18);
   background: transparent;
   box-shadow: 0 36px 120px rgba(0,0,0,.45), 0 0 90px rgba(84,165,240,.12);
