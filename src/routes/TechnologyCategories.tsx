@@ -7,7 +7,7 @@ export function TechnologyCategories() {
       <section className="standard-title-hero">
         <div className="standard-title-hero-content">
           <span className="eyebrow">Creator Innovation</span>
-          <h1>Creator Innovation categories</h1>
+          <h1>Creator Innovation</h1>
           <p className="lead">Infrastructure, identity, discovery, and commerce systems that help creator work stay reachable.</p>
           <div className="hero-actions">
             <a className="secondary-action" href="https://network.certifyd.me/" target="_blank" rel="noreferrer">View the Network Map</a>

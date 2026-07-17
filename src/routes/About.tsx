@@ -6,7 +6,7 @@ export function About() {
       <section className="standard-title-hero">
         <div className="standard-title-hero-content">
           <span className="eyebrow">About Certifyd Awards</span>
-          <h1>Celebrating remarkable work and the ecosystem behind it.</h1>
+          <h1>About Certifyd Awards</h1>
           <p className="lead">Recognition for creators, contributors, platforms, providers, communities, and fans.</p>
         </div>
       </section>

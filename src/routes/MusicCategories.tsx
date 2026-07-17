@@ -8,7 +8,7 @@ export function MusicCategories() {
       <section className="standard-title-hero">
         <div className="standard-title-hero-content">
           <span className="eyebrow">Creative Excellence</span>
-          <h1>Creative Excellence categories</h1>
+          <h1>Creative Excellence</h1>
           <p className="lead">Original work, creators, contributors, catalog integrity, collaboration, and fan-supported relationships.</p>
         </div>
       </section>

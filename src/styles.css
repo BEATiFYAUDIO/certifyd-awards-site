@@ -421,8 +421,8 @@ main > :not(.persistent-hero-video-layer) {
 }
 
 .standard-title-hero h1 {
-  max-width: 980px;
-  font-size: clamp(4.2rem, 8.4vw, 8.8rem);
+  max-width: min(760px, calc(100vw - 560px));
+  font-size: clamp(4rem, 7.2vw, 7.4rem);
   line-height: 0.88;
   letter-spacing: -0.08em;
   margin: 10px 0 22px;
@@ -436,7 +436,7 @@ main > :not(.persistent-hero-video-layer) {
 }
 
 .standard-title-tools {
-  max-width: 960px;
+  max-width: min(760px, calc(100vw - 560px));
   margin-top: 28px;
 }
 

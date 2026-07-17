@@ -21,7 +21,7 @@ export function Nominees() {
       <section className="standard-title-hero">
         <div className="standard-title-hero-content">
           <span className="eyebrow">Nominees directory</span>
-          <h1>Browse works, creators, and scores.</h1>
+          <h1>Nominees Directory</h1>
           <div className="directory-tools standard-title-tools">
             <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search nominees, creators, genres..." />
             <select value={categoryId} onChange={(event) => setCategoryId(event.target.value)}>

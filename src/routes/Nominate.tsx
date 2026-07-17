@@ -14,7 +14,7 @@ export function Nominate() {
       <section className="standard-title-hero">
         <div className="standard-title-hero-content">
           <span className="eyebrow">Nominations</span>
-          <h1>Nominate work worth celebrating.</h1>
+          <h1>Submit a Nomination</h1>
           <p className="lead">Tell us about a creator, work, collaboration, platform, provider, or technical contribution that made a meaningful impact.</p>
         </div>
       </section>

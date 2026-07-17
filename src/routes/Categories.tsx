@@ -28,7 +28,7 @@ export function Categories() {
       <section className="standard-title-hero">
         <div className="standard-title-hero-content">
           <span className="eyebrow">Creative Excellence</span>
-          <h1>Categories for remarkable work and the people behind it.</h1>
+          <h1>Award Categories</h1>
           <div className="filter-row standard-title-tools">
             {filters.map((filter) => <button className={active === filter ? 'active' : ''} key={filter} onClick={() => setActive(filter)}>{labels[filter]}</button>)}
           </div>
