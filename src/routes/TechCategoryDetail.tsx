@@ -1,5 +1,4 @@
 import { Link, useParams } from 'react-router-dom';
-import { TitleVideoLayer } from '../components/TitleVideoLayer';
 import { NetworkCandidateCard } from '../components/awards/NetworkCandidateCard';
 import { getTechnologyCategory, getTechnologyAwardImageUrl } from '../data/technology';
 import { NotFound } from './NotFound';
@@ -13,9 +12,8 @@ export function TechCategoryDetail() {
   const imageUrl = getTechnologyAwardImageUrl(category);
 
   return (
-    <section className="page-section detail-page">
+    <section className="page-section detail-page filtered-page-section">
       <div className="category-detail-hero">
-        <TitleVideoLayer />
         <div>
           <span className="eyebrow">Creator Innovation · {category.family}</span>
           <h1>{category.title}</h1>

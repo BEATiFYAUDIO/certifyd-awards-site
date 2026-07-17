@@ -17,7 +17,7 @@ export function Nominees() {
   }), [hydratedEntries, query, categoryId]);
 
   return (
-    <section className="page-section">
+    <section className="page-section filtered-page-section">
       <span className="eyebrow">Nominees directory</span>
       <h1>Browse works, creators, and scores.</h1>
       <div className="directory-tools">

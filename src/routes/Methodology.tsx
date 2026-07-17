@@ -8,7 +8,7 @@ export function Methodology() {
   const example = entries[0];
 
   return (
-    <section className="page-section">
+    <section className="page-section filtered-page-section">
       <span className="eyebrow">Methodology and rules</span>
       <h1>Recognition should be meaningful, understandable, and earned.</h1>
       <p className="lead">Certifyd Awards makes the reasoning behind every result easier to understand. Data supports recognition; it does not replace human creativity, context, or judgment.</p>

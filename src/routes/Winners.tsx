@@ -8,7 +8,7 @@ export function Winners() {
   const sampleWinners = hydratedEntries.slice(0, 5).map((entry) => ({ ...entry, resultStatus: 'sample-winner' as const }));
 
   return (
-    <section className="page-section">
+    <section className="page-section filtered-page-section">
       <span className="eyebrow">Winners archive</span>
       <h1>Winner credentials will be public, explainable, and proof-linked.</h1>
       <p className="lead">The current archive is a demonstration of how winners will be presented. It is not a final production result set.</p>

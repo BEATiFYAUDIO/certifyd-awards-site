@@ -10,7 +10,7 @@ export function Nominate() {
   }
 
   return (
-    <section className="page-section form-page">
+    <section className="page-section form-page filtered-page-section">
       <span className="eyebrow">Nominations</span>
       <h1>Nominate work worth celebrating.</h1>
       <p className="lead">Tell us about a creator, work, collaboration, platform, provider, or technical contribution that made a meaningful impact.</p>

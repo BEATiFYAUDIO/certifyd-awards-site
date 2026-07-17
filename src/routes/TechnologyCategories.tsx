@@ -3,7 +3,7 @@ import { technologyCategories, getTechnologyAwardImageUrl, networkAwardIntro } f
 
 export function TechnologyCategories() {
   return (
-    <section className="page-section">
+    <section className="page-section filtered-page-section">
       <span className="eyebrow">Creator Innovation</span>
       <h1>Creator Innovation categories</h1>
       <p className="lead">{networkAwardIntro}</p>
