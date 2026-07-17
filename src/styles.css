@@ -3785,3 +3785,42 @@ h2,
     white-space: nowrap !important;
   }
 }
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+}
+
+.brand-mark img {
+  margin: auto;
+  object-position: center center;
+}
+
+@media (max-width: 720px) {
+  .site-header .brand-lockup {
+    width: 100% !important;
+    justify-content: center !important;
+    justify-self: center !important;
+  }
+
+  .awards-hero.creator-hero,
+  .standard-title-hero {
+    width: 100vw !important;
+    max-width: none !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    transform: none !important;
+  }
+
+  .persistent-hero-video-layer,
+  .awards-hero.creator-hero .hero-video,
+  .awards-hero.creator-hero .hero-shade,
+  .standard-title-hero::before {
+    left: calc(50% - 50vw) !important;
+    right: calc(50% - 50vw) !important;
+    width: auto !important;
+    max-width: none !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+}
