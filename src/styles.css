@@ -694,14 +694,14 @@ main { width: 100%; }
 }
 
 .award-category-section .large-category-tile .category-award-image {
-  width: min(100%, 220px);
-  align-self: center;
+  width: 100%;
+  align-self: stretch;
   aspect-ratio: 8 / 9;
   max-height: none;
   object-fit: cover;
   object-position: center;
-  margin-bottom: 12px;
-  border-radius: 18px;
+  margin-bottom: 14px;
+  border-radius: 20px;
 }
 
 .award-category-section .large-category-tile h3 {
