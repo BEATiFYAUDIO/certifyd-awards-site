@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { TitleVideoLayer } from '../components/TitleVideoLayer';
 import { NetworkCandidateCard } from '../components/awards/NetworkCandidateCard';
 import { technologyCategories, getTechnologyAwardImageUrl, networkAwardIntro, networkParticipationCopy } from '../data/technology';
 import { useNetworkRankings } from '../hooks/useNetworkRankings';
@@ -12,6 +13,7 @@ export function Technology() {
       <h1>Creator Innovation</h1>
       <p className="lead">{networkAwardIntro}</p>
       <div className="division-hero tech-division">
+        <TitleVideoLayer />
         <div><h2>Outstanding technical contribution to creator infrastructure.</h2><p>{networkParticipationCopy}</p></div>
         <div className="hero-actions">
           <Link className="primary-action" to="/technology/categories">Creator Innovation Categories</Link>

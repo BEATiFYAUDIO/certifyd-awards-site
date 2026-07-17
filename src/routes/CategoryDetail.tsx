@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { TitleVideoLayer } from '../components/TitleVideoLayer';
 import { NomineeCard } from '../components/awards/NomineeCard';
 import { ScoreBreakdown } from '../components/awards/ScoreBreakdown';
 import { getCategory, getCategoryAwardImageUrl } from '../data/awards';
@@ -17,6 +18,7 @@ export function CategoryDetail() {
   return (
     <section className="page-section">
       <div className="category-detail-hero">
+        <TitleVideoLayer />
         <div>
           <span className="eyebrow">{category.group.replace('-', ' ')}</span>
           <h1>{category.title}</h1>

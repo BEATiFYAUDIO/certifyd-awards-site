@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { TitleVideoLayer } from '../components/TitleVideoLayer';
 import { AwardCreatorCard } from '../components/awards/AwardCreatorCard';
 import { NomineeCard } from '../components/awards/NomineeCard';
 import { categories, getCategory } from '../data/awards';
@@ -14,6 +15,7 @@ export function Music() {
   return (
     <section className="page-section awards-division-page">
       <div className="division-title-hero music-title-hero">
+        <TitleVideoLayer />
         <div className="division-title-copy hero-content">
           <span className="hero-kicker">Day 2 · Creative Excellence</span>
           <h1>Creative Excellence</h1>

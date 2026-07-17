@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { TitleVideoLayer } from '../components/TitleVideoLayer';
 import { foundersAward } from '../data/awards';
 
 const pageTitle = "The Vassal Benford Founders' Award | Certifyd Awards";
@@ -46,6 +47,7 @@ export function FoundersAward() {
   return (
     <div className="founders-page">
       <section className="founders-hero">
+        <TitleVideoLayer />
         <div className="founders-hero-copy">
           <span className="eyebrow">The Highest Honor</span>
           <h1 className="founders-title">
