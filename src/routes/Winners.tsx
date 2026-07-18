@@ -13,7 +13,7 @@ export function Winners() {
         <div className="standard-title-hero-content">
           <span className="eyebrow">Winners archive</span>
           <h1>Winners Archive</h1>
-          <p className="lead">Public results with proof-linked credentials.</p>
+          <p className="lead">Public results with linked credentials.</p>
         </div>
       </section>
       <section className="page-section standard-page-content">

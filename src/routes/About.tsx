@@ -24,7 +24,7 @@ export function About() {
               <li>The contributors who helped bring it to life.</li>
               <li>The story and cultural context behind it.</li>
               <li>The community support around it.</li>
-              <li>The credits, proof, and evidence considered.</li>
+              <li>The credits, records, and context considered.</li>
               <li>How the result can be understood.</li>
             </ul>
           </div>

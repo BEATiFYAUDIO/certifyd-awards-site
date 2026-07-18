@@ -48,7 +48,7 @@ export function NomineeDetail() {
             <h1>{entry.title}</h1>
             <p className="lead">{entry.summary}</p>
             <div className="proof-stack">
-              <span>{creatorLabel}</span><span>{work?.genre ?? String(liveEntry.fanItem?.contentType || creator?.role || 'Work')}</span><span>Public support signal: {liveEntry.fanSupportScore || formatSats(entry.fanSupportSats)}</span><span>Proof available</span>
+              <span>{creatorLabel}</span><span>{work?.genre ?? String(liveEntry.fanItem?.contentType || creator?.role || 'Work')}</span><span>Public support signal: {liveEntry.fanSupportScore || formatSats(entry.fanSupportSats)}</span><span>Records available</span>
             </div>
           </div>
           <div className="detail-art" style={artUrl ? undefined : { background: work?.image ?? creator?.avatarColor }}>
@@ -66,7 +66,7 @@ export function NomineeDetail() {
         </section>
 
         <section className="glass-card">
-          <div className="section-heading"><span className="eyebrow">Proof records</span><h2>Inspectable records behind this nomination</h2></div>
+          <div className="section-heading"><span className="eyebrow">Public records</span><h2>Inspectable records behind this nomination</h2></div>
           <ProofRecordList proofs={entry.proofs} />
         </section>
 

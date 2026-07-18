@@ -2,7 +2,7 @@ import { calculateWeightedScore, formatScore, validateWeights } from '../../lib/
 import type { ScoreComponent } from '../../types';
 
 const publicLabels: Record<string, string> = {
-  Proof: 'Recorded work',
+  Records: 'Recorded work',
   Support: 'Audience support',
   Transparency: 'Complete credits',
   Recency: 'Current season',
@@ -11,7 +11,7 @@ const publicLabels: Record<string, string> = {
 };
 
 const publicReasons: Record<string, string> = {
-  Proof: 'Release information, authorship details, and reviewable publication records.',
+  Records: 'Release information, authorship details, and reviewable publication records.',
   Support: 'Visible audience activity around the work, including public response and discovery momentum.',
   Transparency: 'Clear credit information for the people and partners who helped bring the work to life.',
   Recency: 'Fresh public activity from the current awards season.',

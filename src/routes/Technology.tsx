@@ -24,7 +24,7 @@ export function Technology() {
           <img src="/media/certifyd-awards-modern-trophy.png?v=20260717-fixed-logo-v7" alt="" />
         </aside>
         <div className="hero-proof-strip" aria-label="Creator Innovation values">
-          <div><span aria-hidden="true">⬡</span><strong>Network Proof</strong><small>Public records</small></div>
+          <div><span aria-hidden="true">⬡</span><strong>Network Records</strong><small>Public records</small></div>
           <div><span aria-hidden="true">♙</span><strong>Creator Access</strong><small>Usable services</small></div>
           <div><span aria-hidden="true">◎</span><strong>Discovery</strong><small>Reachable origins</small></div>
           <div><span aria-hidden="true">♕</span><strong>Commerce</strong><small>Direct ownership</small></div>

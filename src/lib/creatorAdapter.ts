@@ -21,7 +21,7 @@ export function toAwardCreator(creator: Creator): AwardCreator {
     avatarUrl: creator.avatarUrl,
     wallpaperUrl: creator.wallpaperUrl,
     verified: creator.verified,
-    verificationLabel: creator.verified ? 'Verified identity' : 'Identity pending',
+    verificationLabel: creator.verified ? 'Listed identity' : 'Identity pending',
     primaryRole: creator.role || 'Creator',
     nominatedWorks: creatorEntries.map((entry) => getWork(entry.workId)?.title ?? entry.title).filter(Boolean),
     source: 'seeded-awards-data',

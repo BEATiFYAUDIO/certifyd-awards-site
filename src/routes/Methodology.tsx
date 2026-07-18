@@ -20,7 +20,7 @@ export function Methodology() {
         <div className="principle-grid">
           {[
             ['Creators first', 'The work, creator, story, and contributors lead the experience.'],
-            ['Proof supports recognition', 'Identity, publication, receipt, and contributor records help explain why a nomination matters.'],
+            ['Records support recognition', 'Identity, publication, receipt, and contributor records help explain why a nomination matters.'],
             ['Community support is one signal', 'Sats-backed community voting can be transparent without replacing craft or judging.'],
             ['Preview means preview', 'This site does not present seeded examples as final live awards.'],
           ].map(([title, copy]) => <article className="glass-card" key={title}><h3>{title}</h3><p>{copy}</p></article>)}

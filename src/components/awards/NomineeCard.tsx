@@ -34,9 +34,9 @@ export function NomineeCard({ entry }: { entry: AwardEntry }) {
         <p className="creator-line">{creatorLabel}</p>
         <p>{entry.summary}</p>
         <div className="proof-stack card-proof-stack">
-          <span>{creator?.verified ? 'Verified creator' : 'Identity pending'}</span>
+          <span>{creator?.verified ? 'Listed creator' : 'Identity pending'}</span>
           <span>Credits available</span>
-          <span>Proof available</span>
+          <span>Records available</span>
           <span>Community support</span>
         </div>
         <div className="supporting-metrics">

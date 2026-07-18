@@ -74,7 +74,7 @@ export function Home() {
           <img src="/media/certifyd-awards-modern-trophy.png?v=20260717-fixed-logo-v7" alt="" />
         </aside>
         <div className="hero-proof-strip" aria-label="Certifyd Awards values">
-          <div><span aria-hidden="true">⬡</span><strong>Verified Excellence</strong><small>Work backed by proof</small></div>
+          <div><span aria-hidden="true">⬡</span><strong>Certified Excellence</strong><small>Credits and records aligned</small></div>
           <div><span aria-hidden="true">♙</span><strong>Creator First</strong><small>Built for and by creators</small></div>
           <div><span aria-hidden="true">◎</span><strong>Cultural Impact</strong><small>Recognizing what moves culture</small></div>
           <div><span aria-hidden="true">♕</span><strong>Prestige &amp; Legacy</strong><small>Awards that stand the test of time</small></div>

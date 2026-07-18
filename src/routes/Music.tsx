@@ -28,7 +28,7 @@ export function Music() {
           <img src="/media/certifyd-awards-modern-trophy.png?v=20260717-fixed-logo-v7" alt="" />
         </aside>
         <div className="hero-proof-strip" aria-label="Creative Excellence values">
-          <div><span aria-hidden="true">⬡</span><strong>Verified Work</strong><small>Credit and proof trails</small></div>
+          <div><span aria-hidden="true">⬡</span><strong>Certified Work</strong><small>Credits and records</small></div>
           <div><span aria-hidden="true">♙</span><strong>Creator Context</strong><small>Identity and collaborators</small></div>
           <div><span aria-hidden="true">◎</span><strong>Public Impact</strong><small>Culture and community signal</small></div>
           <div><span aria-hidden="true">♕</span><strong>Creative Legacy</strong><small>Work that carries forward</small></div>
@@ -37,7 +37,7 @@ export function Music() {
       <section className="content-section tight award-category-section music-category-section"><div className="section-heading"><span className="eyebrow">Creative categories</span><h2>Work, stories, performance, and community impact.</h2></div><div className="category-strip">{creativeCategories.map((category) => (
         <Link className="large-category-tile text-category-tile" to={`/music/categories/${category.slug}`} key={category.id}><span className="eyebrow">{category.group.replace('-', ' ')}</span><h3>{category.title}</h3><p>{category.summary}</p></Link>
       ))}</div></section>
-      <section className="content-section tight"><div className="section-heading"><span className="eyebrow">Featured nominees</span><h2>Works with visible credit and proof trails.</h2></div><div className="nominee-list two-column">{featuredEntries.map((entry) => <NomineeCard key={entry.id} entry={entry} />)}</div></section>
+      <section className="content-section tight"><div className="section-heading"><span className="eyebrow">Featured nominees</span><h2>Works with visible credits and records.</h2></div><div className="nominee-list two-column">{featuredEntries.map((entry) => <NomineeCard key={entry.id} entry={entry} />)}</div></section>
       <section className="content-section tight"><div className="section-heading"><span className="eyebrow">Creators</span><h2>People behind the work.</h2></div><div className="creator-awards-grid">{creators.map((creator, index) => <AwardCreatorCard key={creator.id} creator={creator} category={getCategory(featuredEntries[index]?.categoryId ?? '')?.title} score="Live fan signal" />)}</div></section>
     </>
   );
