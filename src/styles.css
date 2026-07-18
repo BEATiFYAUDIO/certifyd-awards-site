@@ -3768,7 +3768,29 @@ h2,
     width: min(74vw, 300px) !important;
     max-width: 300px !important;
     margin: 4px auto 0 !important;
-    transform: none !important;
+    transform: translateX(4vw) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .awards-hero.creator-hero .hero-award-visual::before {
+    inset: 12% -6% 5% 6% !important;
+    background: radial-gradient(ellipse at 54% 52%, rgba(255, 163, 43, 0.11) 0%, rgba(84, 165, 240, 0.055) 36%, transparent 70%) !important;
+    filter: blur(34px) !important;
+  }
+
+  .awards-hero.creator-hero .hero-award-visual img {
+    background: transparent !important;
+    box-shadow: none !important;
+    object-position: 53% bottom !important;
+    -webkit-mask-image:
+      radial-gradient(ellipse at 53% 54%, #000 0%, #000 50%, rgba(0, 0, 0, 0.76) 66%, transparent 88%),
+      linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.32) 10%, #000 24%, #000 78%, rgba(0, 0, 0, 0.26) 91%, transparent 100%),
+      linear-gradient(0deg, transparent 0%, rgba(0, 0, 0, 0.72) 7%, #000 17%, #000 88%, rgba(0, 0, 0, 0.46) 96%, transparent 100%) !important;
+    mask-image:
+      radial-gradient(ellipse at 53% 54%, #000 0%, #000 50%, rgba(0, 0, 0, 0.76) 66%, transparent 88%),
+      linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.32) 10%, #000 24%, #000 78%, rgba(0, 0, 0, 0.26) 91%, transparent 100%),
+      linear-gradient(0deg, transparent 0%, rgba(0, 0, 0, 0.72) 7%, #000 17%, #000 88%, rgba(0, 0, 0, 0.46) 96%, transparent 100%) !important;
   }
 
   .awards-hero.creator-hero .hero-proof-strip {
