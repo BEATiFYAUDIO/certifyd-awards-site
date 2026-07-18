@@ -3777,11 +3777,17 @@ h2,
 }
 
 @media (min-width: 721px) {
+  .standard-title-hero > .standard-title-hero-content:not(.category-title-layout) {
+    width: min(760px, calc(100vw - 760px)) !important;
+    max-width: min(760px, calc(100vw - 760px)) !important;
+    justify-self: start !important;
+  }
+
   .standard-title-hero:not(:has(.category-title-layout)) h1,
   .standard-title-hero:not(:has(.category-title-layout)) .lead,
   .standard-title-hero:not(:has(.category-title-layout)) .standard-title-hero-copy,
   .standard-title-hero:not(:has(.category-title-layout)) .standard-title-tools {
-    max-width: min(820px, calc(100vw - 680px)) !important;
+    max-width: 100% !important;
   }
 
   .standard-title-hero:not(:has(.category-title-layout)) h1 {
