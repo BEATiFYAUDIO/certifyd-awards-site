@@ -3883,7 +3883,7 @@ h2,
     left: 50% !important;
     width: 100vw !important;
     max-width: none !important;
-    height: clamp(560px, calc(100svh - 69px), 840px) !important;
+    height: max(100svh, 980px) !important;
     right: auto !important;
     background: #02040b !important;
     transform: translateX(-50%) !important;
@@ -3891,7 +3891,7 @@ h2,
 
   .persistent-hero-video-layer video,
   .awards-hero.creator-hero .hero-video {
-    object-fit: contain !important;
+    object-fit: cover !important;
     object-position: center center !important;
     opacity: 0.64 !important;
     filter: brightness(1.2) saturate(1.16) contrast(1.04) !important;
