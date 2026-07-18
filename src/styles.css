@@ -477,6 +477,10 @@ main > :not(.persistent-hero-video-layer) {
   aspect-ratio: 1;
 }
 
+.nominee-title-actions {
+  margin-top: 22px;
+}
+
 @media (max-width: 720px) {
   .standard-title-hero {
     min-height: auto;

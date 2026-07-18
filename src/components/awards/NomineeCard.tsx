@@ -12,6 +12,12 @@ function resultLabel(status: AwardEntry['resultStatus']) {
   return 'Nominee preview';
 }
 
+function supportLabel(entry: AwardEntry, liveEntry: Partial<FanHydratedEntry>) {
+  if (liveEntry.fanSupportScore && liveEntry.fanSupportScore > 0) return `${liveEntry.fanSupportScore} public signals`;
+  if (entry.fanSupportSats > 0) return formatSats(entry.fanSupportSats);
+  return 'Activity pending';
+}
+
 export function NomineeCard({ entry }: { entry: AwardEntry }) {
   const creator = getCreator(entry.creatorId);
   const work = getWork(entry.workId);
@@ -41,7 +47,7 @@ export function NomineeCard({ entry }: { entry: AwardEntry }) {
         </div>
         <div className="supporting-metrics">
           <span>Live fan signal</span>
-          <span>Community support: {liveEntry.fanSupportScore ? `${liveEntry.fanSupportScore} public signals` : formatSats(entry.fanSupportSats)}</span>
+          <span>Community support: {supportLabel(entry, liveEntry)}</span>
         </div>
         <strong className="story-link-label">View the Story</strong>
       </div>

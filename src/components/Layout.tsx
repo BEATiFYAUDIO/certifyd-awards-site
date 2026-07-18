@@ -1,4 +1,5 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import { PersistentHeroVideo } from './PersistentHeroVideo';
 
 const navItems = [
@@ -11,6 +12,18 @@ const navItems = [
 ];
 
 export function Layout() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [pathname]);
+
   return (
     <div className="site-shell">
       <header className="site-header">

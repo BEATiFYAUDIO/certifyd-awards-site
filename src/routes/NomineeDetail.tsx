@@ -10,6 +10,12 @@ import { artworkUrl } from '../lib/artwork';
 import { useFanHydratedEntries } from '../hooks/useFanHydratedEntries';
 import type { FanHydratedEntry } from '../lib/fanDiscovery';
 
+function supportLabel(entry: FanHydratedEntry) {
+  if (entry.fanSupportScore > 0) return `${entry.fanSupportScore} public signals`;
+  if (entry.fanSupportSats > 0) return formatSats(entry.fanSupportSats);
+  return null;
+}
+
 export function NomineeDetail() {
   const { entryId } = useParams();
   const { entries: liveEntries, loading } = useFanHydratedEntries();
@@ -37,7 +43,9 @@ export function NomineeDetail() {
   const category = getCategory(entry.categoryId);
   const liveEntry = entry as FanHydratedEntry;
   const artUrl = liveEntry.fanItem?.coverUrl || artworkUrl(work?.image);
+  const workUrl = liveEntry.fanItem?.buyUrl || liveEntry.fanItem?.publicUrl || work?.publicUrl;
   const creatorLabel = liveEntry.fanItem?.creatorHandle ? `@${String(liveEntry.fanItem.creatorHandle).replace(/^@+/, '')}` : creator?.name;
+  const supportSignal = supportLabel(liveEntry);
 
   return (
     <>
@@ -48,8 +56,13 @@ export function NomineeDetail() {
             <h1>{entry.title}</h1>
             <p className="lead">{entry.summary}</p>
             <div className="proof-stack">
-              <span>{creatorLabel}</span><span>{work?.genre ?? String(liveEntry.fanItem?.contentType || creator?.role || 'Work')}</span><span>Public support signal: {liveEntry.fanSupportScore || formatSats(entry.fanSupportSats)}</span><span>Records available</span>
+              <span>{creatorLabel}</span><span>{work?.genre ?? String(liveEntry.fanItem?.contentType || creator?.role || 'Work')}</span>{supportSignal ? <span>Public support signal: {supportSignal}</span> : null}<span>Records available</span>
             </div>
+            {workUrl ? (
+              <div className="hero-actions nominee-title-actions">
+                <a className="primary-action" href={String(workUrl)} target="_blank" rel="noreferrer">View Work</a>
+              </div>
+            ) : null}
           </div>
           <div className="detail-art" style={artUrl ? undefined : { background: work?.image ?? creator?.avatarColor }}>
             {artUrl ? <img src={artUrl} alt="" /> : null}
@@ -76,7 +89,6 @@ export function NomineeDetail() {
           <p>Ranking uses public support, recency, relationship, and availability signals returned by creator nodes.</p>
           <div className="hero-actions">
             <Link className="secondary-action" to="/methodology">Read methodology</Link>
-            {liveEntry.fanItem?.buyUrl || liveEntry.fanItem?.publicUrl || work?.publicUrl ? <a className="primary-action" href={String(liveEntry.fanItem?.buyUrl || liveEntry.fanItem?.publicUrl || work?.publicUrl)} target="_blank" rel="noreferrer">Open Public Work</a> : null}
           </div>
         </section>
       </section>
