@@ -3807,6 +3807,7 @@ h2,
 .brand-mark img {
   margin: auto;
   object-position: center center;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 720px) {
