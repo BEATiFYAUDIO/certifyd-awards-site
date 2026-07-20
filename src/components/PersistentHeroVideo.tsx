@@ -5,11 +5,8 @@ const heroVideos = [
   '/media/awards-hero-carousel-2.mp4',
   '/media/awards-hero-carousel-3.mp4',
   '/media/awards-hero-carousel-4.mp4',
+  '/media/awards-hero-carousel-5.mp4',
   '/media/awards-hero-carousel-6.mp4',
-  '/media/awards-hero-carousel-7.mp4',
-  '/media/awards-hero-carousel-9.mp4',
-  '/media/awards-hero-carousel-11.mp4',
-  '/media/awards-hero-carousel-12.mp4',
 ];
 
 export function PersistentHeroVideo() {
@@ -27,6 +24,7 @@ export function PersistentHeroVideo() {
     <div className="persistent-hero-video-layer" aria-hidden="true">
       <video
         key={heroVideos[activeHeroVideo]}
+        className={`persistent-hero-video persistent-hero-video-${activeHeroVideo + 1}`}
         src={heroVideos[activeHeroVideo]}
         autoPlay
         muted

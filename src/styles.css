@@ -293,6 +293,11 @@ main > :not(.persistent-hero-video-layer) {
   animation: heroVideoFade 700ms ease both;
 }
 
+.persistent-hero-video-layer .persistent-hero-video-2 {
+  transform: scale(1.06);
+  transform-origin: center center;
+}
+
 .site-header {
   padding: 16px max(18px, calc((100vw - 1320px) / 2));
   border-color: rgba(84, 165, 240, 0.16);
@@ -3917,6 +3922,10 @@ h2,
     object-position: center center !important;
     opacity: 0.52 !important;
     filter: saturate(1.2) contrast(1.06) !important;
+  }
+
+  .persistent-hero-video-layer .persistent-hero-video-2 {
+    transform: scale(1.06) !important;
   }
 
   .awards-hero.creator-hero .hero-shade,
