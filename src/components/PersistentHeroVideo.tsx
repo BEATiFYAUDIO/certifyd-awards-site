@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
 const heroVideos = [
-  '/media/awards-hero-carousel-1.mp4',
-  '/media/awards-hero-carousel-2.mp4',
-  '/media/awards-hero-carousel-3.mp4',
-  '/media/awards-hero-carousel-4.mp4',
-  '/media/awards-hero-carousel-5.mp4',
-  '/media/awards-hero-carousel-6.mp4',
+  '/media/awards-hero-carousel-1.mp4?v=20260720',
+  '/media/awards-hero-carousel-2.mp4?v=20260720',
+  '/media/awards-hero-carousel-3.mp4?v=20260720',
+  '/media/awards-hero-carousel-4.mp4?v=20260720',
+  '/media/awards-hero-carousel-5.mp4?v=20260720',
+  '/media/awards-hero-carousel-6.mp4?v=20260720',
 ];
 
 export function PersistentHeroVideo() {
