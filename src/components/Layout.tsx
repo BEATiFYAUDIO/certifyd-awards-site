@@ -8,6 +8,7 @@ const navItems = [
   ['/technology', 'Creator Innovation'],
   ['/nominees', 'Nominees'],
   ['/winners', 'Winners'],
+  ['/founders-award', "Founders' Award"],
   ['/methodology', 'Methodology'],
 ];
 
